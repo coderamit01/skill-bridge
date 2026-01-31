@@ -7,15 +7,12 @@ export enum UserRole {
   STUDENT = 'student',
   TUTOR = 'tutor'
 }
-export enum UserStatus {
-  BAN = 'ban',
-  UNBAN = 'unban'
-}
+
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
-  trustedOrigins: ['http://localhost:5000','http://localhost:3000'],
+  trustedOrigins: [process.env.APP_URL!],
   user: {
     additionalFields: {
       role: {
