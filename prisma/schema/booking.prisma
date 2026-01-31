@@ -1,11 +1,18 @@
+enum BookStatus {
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
 model booking {
-  id           String   @id @default(uuid())
+  id           String     @id @default(uuid())
   user_id      String
   tutor_id     String
   session_date DateTime
   start_time   DateTime
   end_time     DateTime
   price        Decimal
-  created_at   DateTime @default(now())
-  updated_at   DateTime @updatedAt
+  status       BookStatus
+  created_at   DateTime   @default(now())
+  updated_at   DateTime   @updatedAt
 }
