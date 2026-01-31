@@ -1,4 +1,3 @@
-import { email, includes, json } from "better-auth";
 import { prisma } from "../lib/prisma";
 import { UserRole } from "../lib/auth";
 

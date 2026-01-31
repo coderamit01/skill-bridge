@@ -1,0 +1,7 @@
+model student {
+  id         String  @id @default(uuid())
+  user_id    String
+  school     String
+  age        Int?
+  address    String?
+}

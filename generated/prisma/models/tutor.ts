@@ -30,14 +30,12 @@ export type TutorAvgAggregateOutputType = {
   hourly_rate: runtime.Decimal | null
   experience_years: runtime.Decimal | null
   avg_rating: runtime.Decimal | null
-  slot_duration: runtime.Decimal | null
 }
 
 export type TutorSumAggregateOutputType = {
   hourly_rate: runtime.Decimal | null
   experience_years: runtime.Decimal | null
   avg_rating: runtime.Decimal | null
-  slot_duration: runtime.Decimal | null
 }
 
 export type TutorMinAggregateOutputType = {
@@ -49,10 +47,8 @@ export type TutorMinAggregateOutputType = {
   education: string | null
   category_id: string | null
   avg_rating: runtime.Decimal | null
-  avilable_days: $Enums.Day | null
   avilable_start_time: Date | null
   avilable_end_time: Date | null
-  slot_duration: runtime.Decimal | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -66,10 +62,8 @@ export type TutorMaxAggregateOutputType = {
   education: string | null
   category_id: string | null
   avg_rating: runtime.Decimal | null
-  avilable_days: $Enums.Day | null
   avilable_start_time: Date | null
   avilable_end_time: Date | null
-  slot_duration: runtime.Decimal | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -83,10 +77,8 @@ export type TutorCountAggregateOutputType = {
   education: number
   category_id: number
   avg_rating: number
-  avilable_days: number
   avilable_start_time: number
   avilable_end_time: number
-  slot_duration: number
   created_at: number
   updated_at: number
   _all: number
@@ -97,14 +89,12 @@ export type TutorAvgAggregateInputType = {
   hourly_rate?: true
   experience_years?: true
   avg_rating?: true
-  slot_duration?: true
 }
 
 export type TutorSumAggregateInputType = {
   hourly_rate?: true
   experience_years?: true
   avg_rating?: true
-  slot_duration?: true
 }
 
 export type TutorMinAggregateInputType = {
@@ -116,10 +106,8 @@ export type TutorMinAggregateInputType = {
   education?: true
   category_id?: true
   avg_rating?: true
-  avilable_days?: true
   avilable_start_time?: true
   avilable_end_time?: true
-  slot_duration?: true
   created_at?: true
   updated_at?: true
 }
@@ -133,10 +121,8 @@ export type TutorMaxAggregateInputType = {
   education?: true
   category_id?: true
   avg_rating?: true
-  avilable_days?: true
   avilable_start_time?: true
   avilable_end_time?: true
-  slot_duration?: true
   created_at?: true
   updated_at?: true
 }
@@ -150,10 +136,8 @@ export type TutorCountAggregateInputType = {
   education?: true
   category_id?: true
   avg_rating?: true
-  avilable_days?: true
   avilable_start_time?: true
   avilable_end_time?: true
-  slot_duration?: true
   created_at?: true
   updated_at?: true
   _all?: true
@@ -252,12 +236,10 @@ export type TutorGroupByOutputType = {
   hourly_rate: runtime.Decimal | null
   experience_years: runtime.Decimal | null
   education: string | null
-  category_id: string
+  category_id: string | null
   avg_rating: runtime.Decimal | null
-  avilable_days: $Enums.Day
-  avilable_start_time: Date | null
-  avilable_end_time: Date | null
-  slot_duration: runtime.Decimal | null
+  avilable_start_time: Date
+  avilable_end_time: Date
   created_at: Date
   updated_at: Date
   _count: TutorCountAggregateOutputType | null
@@ -292,12 +274,10 @@ export type tutorWhereInput = {
   hourly_rate?: Prisma.DecimalNullableFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   experience_years?: Prisma.DecimalNullableFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   education?: Prisma.StringNullableFilter<"tutor"> | string | null
-  category_id?: Prisma.StringFilter<"tutor"> | string
+  category_id?: Prisma.StringNullableFilter<"tutor"> | string | null
   avg_rating?: Prisma.DecimalNullableFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  avilable_days?: Prisma.EnumDayFilter<"tutor"> | $Enums.Day
-  avilable_start_time?: Prisma.DateTimeNullableFilter<"tutor"> | Date | string | null
-  avilable_end_time?: Prisma.DateTimeNullableFilter<"tutor"> | Date | string | null
-  slot_duration?: Prisma.DecimalNullableFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time?: Prisma.DateTimeFilter<"tutor"> | Date | string
+  avilable_end_time?: Prisma.DateTimeFilter<"tutor"> | Date | string
   created_at?: Prisma.DateTimeFilter<"tutor"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"tutor"> | Date | string
 }
@@ -309,12 +289,10 @@ export type tutorOrderByWithRelationInput = {
   hourly_rate?: Prisma.SortOrderInput | Prisma.SortOrder
   experience_years?: Prisma.SortOrderInput | Prisma.SortOrder
   education?: Prisma.SortOrderInput | Prisma.SortOrder
-  category_id?: Prisma.SortOrder
+  category_id?: Prisma.SortOrderInput | Prisma.SortOrder
   avg_rating?: Prisma.SortOrderInput | Prisma.SortOrder
-  avilable_days?: Prisma.SortOrder
-  avilable_start_time?: Prisma.SortOrderInput | Prisma.SortOrder
-  avilable_end_time?: Prisma.SortOrderInput | Prisma.SortOrder
-  slot_duration?: Prisma.SortOrderInput | Prisma.SortOrder
+  avilable_start_time?: Prisma.SortOrder
+  avilable_end_time?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -329,12 +307,10 @@ export type tutorWhereUniqueInput = Prisma.AtLeast<{
   hourly_rate?: Prisma.DecimalNullableFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   experience_years?: Prisma.DecimalNullableFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   education?: Prisma.StringNullableFilter<"tutor"> | string | null
-  category_id?: Prisma.StringFilter<"tutor"> | string
+  category_id?: Prisma.StringNullableFilter<"tutor"> | string | null
   avg_rating?: Prisma.DecimalNullableFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  avilable_days?: Prisma.EnumDayFilter<"tutor"> | $Enums.Day
-  avilable_start_time?: Prisma.DateTimeNullableFilter<"tutor"> | Date | string | null
-  avilable_end_time?: Prisma.DateTimeNullableFilter<"tutor"> | Date | string | null
-  slot_duration?: Prisma.DecimalNullableFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time?: Prisma.DateTimeFilter<"tutor"> | Date | string
+  avilable_end_time?: Prisma.DateTimeFilter<"tutor"> | Date | string
   created_at?: Prisma.DateTimeFilter<"tutor"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"tutor"> | Date | string
 }, "id">
@@ -346,12 +322,10 @@ export type tutorOrderByWithAggregationInput = {
   hourly_rate?: Prisma.SortOrderInput | Prisma.SortOrder
   experience_years?: Prisma.SortOrderInput | Prisma.SortOrder
   education?: Prisma.SortOrderInput | Prisma.SortOrder
-  category_id?: Prisma.SortOrder
+  category_id?: Prisma.SortOrderInput | Prisma.SortOrder
   avg_rating?: Prisma.SortOrderInput | Prisma.SortOrder
-  avilable_days?: Prisma.SortOrder
-  avilable_start_time?: Prisma.SortOrderInput | Prisma.SortOrder
-  avilable_end_time?: Prisma.SortOrderInput | Prisma.SortOrder
-  slot_duration?: Prisma.SortOrderInput | Prisma.SortOrder
+  avilable_start_time?: Prisma.SortOrder
+  avilable_end_time?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   _count?: Prisma.tutorCountOrderByAggregateInput
@@ -371,12 +345,10 @@ export type tutorScalarWhereWithAggregatesInput = {
   hourly_rate?: Prisma.DecimalNullableWithAggregatesFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   experience_years?: Prisma.DecimalNullableWithAggregatesFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   education?: Prisma.StringNullableWithAggregatesFilter<"tutor"> | string | null
-  category_id?: Prisma.StringWithAggregatesFilter<"tutor"> | string
+  category_id?: Prisma.StringNullableWithAggregatesFilter<"tutor"> | string | null
   avg_rating?: Prisma.DecimalNullableWithAggregatesFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  avilable_days?: Prisma.EnumDayWithAggregatesFilter<"tutor"> | $Enums.Day
-  avilable_start_time?: Prisma.DateTimeNullableWithAggregatesFilter<"tutor"> | Date | string | null
-  avilable_end_time?: Prisma.DateTimeNullableWithAggregatesFilter<"tutor"> | Date | string | null
-  slot_duration?: Prisma.DecimalNullableWithAggregatesFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time?: Prisma.DateTimeWithAggregatesFilter<"tutor"> | Date | string
+  avilable_end_time?: Prisma.DateTimeWithAggregatesFilter<"tutor"> | Date | string
   created_at?: Prisma.DateTimeWithAggregatesFilter<"tutor"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"tutor"> | Date | string
 }
@@ -388,12 +360,10 @@ export type tutorCreateInput = {
   hourly_rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   experience_years?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   education?: string | null
-  category_id: string
+  category_id?: string | null
   avg_rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  avilable_days: $Enums.Day
-  avilable_start_time?: Date | string | null
-  avilable_end_time?: Date | string | null
-  slot_duration?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time: Date | string
+  avilable_end_time: Date | string
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -405,12 +375,10 @@ export type tutorUncheckedCreateInput = {
   hourly_rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   experience_years?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   education?: string | null
-  category_id: string
+  category_id?: string | null
   avg_rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  avilable_days: $Enums.Day
-  avilable_start_time?: Date | string | null
-  avilable_end_time?: Date | string | null
-  slot_duration?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time: Date | string
+  avilable_end_time: Date | string
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -422,12 +390,10 @@ export type tutorUpdateInput = {
   hourly_rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   experience_years?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category_id?: Prisma.StringFieldUpdateOperationsInput | string
+  category_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avg_rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  avilable_days?: Prisma.EnumDayFieldUpdateOperationsInput | $Enums.Day
-  avilable_start_time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  avilable_end_time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  slot_duration?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  avilable_end_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -439,12 +405,10 @@ export type tutorUncheckedUpdateInput = {
   hourly_rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   experience_years?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category_id?: Prisma.StringFieldUpdateOperationsInput | string
+  category_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avg_rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  avilable_days?: Prisma.EnumDayFieldUpdateOperationsInput | $Enums.Day
-  avilable_start_time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  avilable_end_time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  slot_duration?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  avilable_end_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -456,12 +420,10 @@ export type tutorCreateManyInput = {
   hourly_rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   experience_years?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   education?: string | null
-  category_id: string
+  category_id?: string | null
   avg_rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  avilable_days: $Enums.Day
-  avilable_start_time?: Date | string | null
-  avilable_end_time?: Date | string | null
-  slot_duration?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time: Date | string
+  avilable_end_time: Date | string
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -473,12 +435,10 @@ export type tutorUpdateManyMutationInput = {
   hourly_rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   experience_years?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category_id?: Prisma.StringFieldUpdateOperationsInput | string
+  category_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avg_rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  avilable_days?: Prisma.EnumDayFieldUpdateOperationsInput | $Enums.Day
-  avilable_start_time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  avilable_end_time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  slot_duration?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  avilable_end_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -490,12 +450,10 @@ export type tutorUncheckedUpdateManyInput = {
   hourly_rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   experience_years?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category_id?: Prisma.StringFieldUpdateOperationsInput | string
+  category_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avg_rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  avilable_days?: Prisma.EnumDayFieldUpdateOperationsInput | $Enums.Day
-  avilable_start_time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  avilable_end_time?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  slot_duration?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  avilable_end_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -509,10 +467,8 @@ export type tutorCountOrderByAggregateInput = {
   education?: Prisma.SortOrder
   category_id?: Prisma.SortOrder
   avg_rating?: Prisma.SortOrder
-  avilable_days?: Prisma.SortOrder
   avilable_start_time?: Prisma.SortOrder
   avilable_end_time?: Prisma.SortOrder
-  slot_duration?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -521,7 +477,6 @@ export type tutorAvgOrderByAggregateInput = {
   hourly_rate?: Prisma.SortOrder
   experience_years?: Prisma.SortOrder
   avg_rating?: Prisma.SortOrder
-  slot_duration?: Prisma.SortOrder
 }
 
 export type tutorMaxOrderByAggregateInput = {
@@ -533,10 +488,8 @@ export type tutorMaxOrderByAggregateInput = {
   education?: Prisma.SortOrder
   category_id?: Prisma.SortOrder
   avg_rating?: Prisma.SortOrder
-  avilable_days?: Prisma.SortOrder
   avilable_start_time?: Prisma.SortOrder
   avilable_end_time?: Prisma.SortOrder
-  slot_duration?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -550,10 +503,8 @@ export type tutorMinOrderByAggregateInput = {
   education?: Prisma.SortOrder
   category_id?: Prisma.SortOrder
   avg_rating?: Prisma.SortOrder
-  avilable_days?: Prisma.SortOrder
   avilable_start_time?: Prisma.SortOrder
   avilable_end_time?: Prisma.SortOrder
-  slot_duration?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -562,11 +513,6 @@ export type tutorSumOrderByAggregateInput = {
   hourly_rate?: Prisma.SortOrder
   experience_years?: Prisma.SortOrder
   avg_rating?: Prisma.SortOrder
-  slot_duration?: Prisma.SortOrder
-}
-
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
 }
 
 export type NullableDecimalFieldUpdateOperationsInput = {
@@ -575,18 +521,6 @@ export type NullableDecimalFieldUpdateOperationsInput = {
   decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
   multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
   divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
-}
-
-export type EnumDayFieldUpdateOperationsInput = {
-  set?: $Enums.Day
-}
-
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
 }
 
 
@@ -600,10 +534,8 @@ export type tutorSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   education?: boolean
   category_id?: boolean
   avg_rating?: boolean
-  avilable_days?: boolean
   avilable_start_time?: boolean
   avilable_end_time?: boolean
-  slot_duration?: boolean
   created_at?: boolean
   updated_at?: boolean
 }, ExtArgs["result"]["tutor"]>
@@ -617,10 +549,8 @@ export type tutorSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   education?: boolean
   category_id?: boolean
   avg_rating?: boolean
-  avilable_days?: boolean
   avilable_start_time?: boolean
   avilable_end_time?: boolean
-  slot_duration?: boolean
   created_at?: boolean
   updated_at?: boolean
 }, ExtArgs["result"]["tutor"]>
@@ -634,10 +564,8 @@ export type tutorSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   education?: boolean
   category_id?: boolean
   avg_rating?: boolean
-  avilable_days?: boolean
   avilable_start_time?: boolean
   avilable_end_time?: boolean
-  slot_duration?: boolean
   created_at?: boolean
   updated_at?: boolean
 }, ExtArgs["result"]["tutor"]>
@@ -651,15 +579,13 @@ export type tutorSelectScalar = {
   education?: boolean
   category_id?: boolean
   avg_rating?: boolean
-  avilable_days?: boolean
   avilable_start_time?: boolean
   avilable_end_time?: boolean
-  slot_duration?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type tutorOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "user_id" | "bio" | "hourly_rate" | "experience_years" | "education" | "category_id" | "avg_rating" | "avilable_days" | "avilable_start_time" | "avilable_end_time" | "slot_duration" | "created_at" | "updated_at", ExtArgs["result"]["tutor"]>
+export type tutorOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "user_id" | "bio" | "hourly_rate" | "experience_years" | "education" | "category_id" | "avg_rating" | "avilable_start_time" | "avilable_end_time" | "created_at" | "updated_at", ExtArgs["result"]["tutor"]>
 
 export type $tutorPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "tutor"
@@ -671,12 +597,10 @@ export type $tutorPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     hourly_rate: runtime.Decimal | null
     experience_years: runtime.Decimal | null
     education: string | null
-    category_id: string
+    category_id: string | null
     avg_rating: runtime.Decimal | null
-    avilable_days: $Enums.Day
-    avilable_start_time: Date | null
-    avilable_end_time: Date | null
-    slot_duration: runtime.Decimal | null
+    avilable_start_time: Date
+    avilable_end_time: Date
     created_at: Date
     updated_at: Date
   }, ExtArgs["result"]["tutor"]>
@@ -1110,10 +1034,8 @@ export interface tutorFieldRefs {
   readonly education: Prisma.FieldRef<"tutor", 'String'>
   readonly category_id: Prisma.FieldRef<"tutor", 'String'>
   readonly avg_rating: Prisma.FieldRef<"tutor", 'Decimal'>
-  readonly avilable_days: Prisma.FieldRef<"tutor", 'Day'>
   readonly avilable_start_time: Prisma.FieldRef<"tutor", 'DateTime'>
   readonly avilable_end_time: Prisma.FieldRef<"tutor", 'DateTime'>
-  readonly slot_duration: Prisma.FieldRef<"tutor", 'Decimal'>
   readonly created_at: Prisma.FieldRef<"tutor", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"tutor", 'DateTime'>
 }

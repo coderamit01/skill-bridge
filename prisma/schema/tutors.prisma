@@ -5,22 +5,10 @@ model tutor {
   hourly_rate         Decimal? @default(0)
   experience_years    Decimal? @default(0)
   education           String?
-  category_id         String
+  category_id         String?
   avg_rating          Decimal? @default(0)
-  avilable_days       Day
-  avilable_start_time DateTime?
-  avilable_end_time   DateTime?
-  slot_duration       Decimal?  @default(0)
+  avilable_start_time DateTime
+  avilable_end_time   DateTime
   created_at          DateTime @default(now())
   updated_at          DateTime @updatedAt
-}
-
-enum Day {
-  Mon
-  Tue
-  Wed
-  Thu
-  Fri
-  Sat
-  Sun
 }

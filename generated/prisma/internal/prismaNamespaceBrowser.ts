@@ -53,6 +53,8 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   booking: 'booking',
   category: 'category',
+  review: 'review',
+  student: 'student',
   tutor: 'tutor',
   User: 'User',
   Session: 'Session',
@@ -79,7 +81,13 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const BookingScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
-  tutor_id: 'tutor_id'
+  tutor_id: 'tutor_id',
+  session_date: 'session_date',
+  start_time: 'start_time',
+  end_time: 'end_time',
+  price: 'price',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 } as const
 
 export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
@@ -93,6 +101,31 @@ export const CategoryScalarFieldEnum = {
 export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
 
 
+export const ReviewScalarFieldEnum = {
+  id: 'id',
+  booking_id: 'booking_id',
+  user_id: 'user_id',
+  tutor_id: 'tutor_id',
+  comment: 'comment',
+  rating: 'rating',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
+
+
+export const StudentScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  school: 'school',
+  age: 'age',
+  address: 'address'
+} as const
+
+export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeof StudentScalarFieldEnum]
+
+
 export const TutorScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
@@ -102,10 +135,8 @@ export const TutorScalarFieldEnum = {
   education: 'education',
   category_id: 'category_id',
   avg_rating: 'avg_rating',
-  avilable_days: 'avilable_days',
   avilable_start_time: 'avilable_start_time',
   avilable_end_time: 'avilable_end_time',
-  slot_duration: 'slot_duration',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const

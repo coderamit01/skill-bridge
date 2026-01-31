@@ -386,6 +386,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   booking: 'booking',
   category: 'category',
+  review: 'review',
+  student: 'student',
   tutor: 'tutor',
   User: 'User',
   Session: 'Session',
@@ -406,7 +408,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "booking" | "category" | "tutor" | "user" | "session" | "account" | "verification"
+    modelProps: "booking" | "category" | "review" | "student" | "tutor" | "user" | "session" | "account" | "verification"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -555,6 +557,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.categoryCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.CategoryCountAggregateOutputType> | number
+        }
+      }
+    }
+    review: {
+      payload: Prisma.$reviewPayload<ExtArgs>
+      fields: Prisma.reviewFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.reviewFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$reviewPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.reviewFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$reviewPayload>
+        }
+        findFirst: {
+          args: Prisma.reviewFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$reviewPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.reviewFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$reviewPayload>
+        }
+        findMany: {
+          args: Prisma.reviewFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$reviewPayload>[]
+        }
+        create: {
+          args: Prisma.reviewCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$reviewPayload>
+        }
+        createMany: {
+          args: Prisma.reviewCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.reviewCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$reviewPayload>[]
+        }
+        delete: {
+          args: Prisma.reviewDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$reviewPayload>
+        }
+        update: {
+          args: Prisma.reviewUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$reviewPayload>
+        }
+        deleteMany: {
+          args: Prisma.reviewDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.reviewUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.reviewUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$reviewPayload>[]
+        }
+        upsert: {
+          args: Prisma.reviewUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$reviewPayload>
+        }
+        aggregate: {
+          args: Prisma.ReviewAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateReview>
+        }
+        groupBy: {
+          args: Prisma.reviewGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ReviewGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.reviewCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ReviewCountAggregateOutputType> | number
+        }
+      }
+    }
+    student: {
+      payload: Prisma.$studentPayload<ExtArgs>
+      fields: Prisma.studentFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.studentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.studentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>
+        }
+        findFirst: {
+          args: Prisma.studentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.studentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>
+        }
+        findMany: {
+          args: Prisma.studentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>[]
+        }
+        create: {
+          args: Prisma.studentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>
+        }
+        createMany: {
+          args: Prisma.studentCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.studentCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>[]
+        }
+        delete: {
+          args: Prisma.studentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>
+        }
+        update: {
+          args: Prisma.studentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>
+        }
+        deleteMany: {
+          args: Prisma.studentDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.studentUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.studentUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>[]
+        }
+        upsert: {
+          args: Prisma.studentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>
+        }
+        aggregate: {
+          args: Prisma.StudentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateStudent>
+        }
+        groupBy: {
+          args: Prisma.studentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.StudentGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.studentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.StudentCountAggregateOutputType> | number
         }
       }
     }
@@ -970,7 +1120,13 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const BookingScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
-  tutor_id: 'tutor_id'
+  tutor_id: 'tutor_id',
+  session_date: 'session_date',
+  start_time: 'start_time',
+  end_time: 'end_time',
+  price: 'price',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 } as const
 
 export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
@@ -984,6 +1140,31 @@ export const CategoryScalarFieldEnum = {
 export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
 
 
+export const ReviewScalarFieldEnum = {
+  id: 'id',
+  booking_id: 'booking_id',
+  user_id: 'user_id',
+  tutor_id: 'tutor_id',
+  comment: 'comment',
+  rating: 'rating',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
+
+
+export const StudentScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  school: 'school',
+  age: 'age',
+  address: 'address'
+} as const
+
+export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeof StudentScalarFieldEnum]
+
+
 export const TutorScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
@@ -993,10 +1174,8 @@ export const TutorScalarFieldEnum = {
   education: 'education',
   category_id: 'category_id',
   avg_rating: 'avg_rating',
-  avilable_days: 'avilable_days',
   avilable_start_time: 'avilable_start_time',
   avilable_end_time: 'avilable_end_time',
-  slot_duration: 'slot_duration',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
@@ -1109,34 +1288,6 @@ export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMod
 
 
 /**
- * Reference to a field of type 'Decimal'
- */
-export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
-    
-
-
-/**
- * Reference to a field of type 'Decimal[]'
- */
-export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
-    
-
-
-/**
- * Reference to a field of type 'Day'
- */
-export type EnumDayFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Day'>
-    
-
-
-/**
- * Reference to a field of type 'Day[]'
- */
-export type ListEnumDayFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Day[]'>
-    
-
-
-/**
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -1151,9 +1302,16 @@ export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 
 
 /**
- * Reference to a field of type 'Boolean'
+ * Reference to a field of type 'Decimal'
  */
-export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+/**
+ * Reference to a field of type 'Decimal[]'
+ */
+export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
     
 
 
@@ -1168,6 +1326,27 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
  * Reference to a field of type 'Int[]'
  */
 export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
+ * Reference to a field of type 'Float'
+ */
+export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+/**
+ * Reference to a field of type 'Float[]'
+ */
+export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 /**
@@ -1267,6 +1446,8 @@ export type PrismaClientOptions = ({
 export type GlobalOmitConfig = {
   booking?: Prisma.bookingOmit
   category?: Prisma.categoryOmit
+  review?: Prisma.reviewOmit
+  student?: Prisma.studentOmit
   tutor?: Prisma.tutorOmit
   user?: Prisma.UserOmit
   session?: Prisma.SessionOmit

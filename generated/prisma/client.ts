@@ -50,6 +50,16 @@ export type booking = Prisma.bookingModel
  */
 export type category = Prisma.categoryModel
 /**
+ * Model review
+ * 
+ */
+export type review = Prisma.reviewModel
+/**
+ * Model student
+ * 
+ */
+export type student = Prisma.studentModel
+/**
  * Model tutor
  * 
  */
