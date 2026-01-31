@@ -4,6 +4,7 @@ import { auth } from './lib/auth';
 import { toNodeHandler } from 'better-auth/node';
 import { tutorRouter } from './modules/tutor/tutor.router';
 import { currentUser } from './modules/currentUser/currentUser';
+import { categoryRouter } from './modules/category/category.router';
 const app = express();
 
 app.use(cors({
@@ -18,6 +19,9 @@ app.all("/api/auth/*splat", toNodeHandler(auth));
 
 app.use('/api/v1', tutorRouter);
 app.use('/api', currentUser);
+
+// category route
+app.use('/api/v1/categories', categoryRouter)
 
 
 
