@@ -51,6 +51,9 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  booking: 'booking',
+  category: 'category',
+  tutor: 'tutor',
   User: 'User',
   Session: 'Session',
   Account: 'Account',
@@ -73,12 +76,51 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const BookingScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  tutor_id: 'tutor_id'
+} as const
+
+export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
+
+
+export const CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+} as const
+
+export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+
+
+export const TutorScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  bio: 'bio',
+  hourly_rate: 'hourly_rate',
+  experience_years: 'experience_years',
+  education: 'education',
+  category_id: 'category_id',
+  avg_rating: 'avg_rating',
+  avilable_days: 'avilable_days',
+  avilable_start_time: 'avilable_start_time',
+  avilable_end_time: 'avilable_end_time',
+  slot_duration: 'slot_duration',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type TutorScalarFieldEnum = (typeof TutorScalarFieldEnum)[keyof typeof TutorScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
   emailVerified: 'emailVerified',
   image: 'image',
+  role: 'role',
+  is_banned: 'is_banned',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

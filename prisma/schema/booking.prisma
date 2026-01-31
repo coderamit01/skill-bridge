@@ -1,0 +1,5 @@
+model booking {
+  id String @id @default(uuid())
+  user_id String
+  tutor_id String
+}

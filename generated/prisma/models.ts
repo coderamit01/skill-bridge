@@ -8,6 +8,9 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/booking'
+export type * from './models/category'
+export type * from './models/tutor'
 export type * from './models/User'
 export type * from './models/Session'
 export type * from './models/Account'

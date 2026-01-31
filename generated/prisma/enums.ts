@@ -9,7 +9,14 @@
 * 🟢 You can import this file directly.
 */
 
+export const Day = {
+  Mon: 'Mon',
+  Tue: 'Tue',
+  Wed: 'Wed',
+  Thu: 'Thu',
+  Fri: 'Fri',
+  Sat: 'Sat',
+  Sun: 'Sun'
+} as const
 
-
-// This file is empty because there are no enums in the schema.
-export {}
+export type Day = (typeof Day)[keyof typeof Day]
