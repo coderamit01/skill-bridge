@@ -1,6 +1,7 @@
 import { Request, NextFunction, Response } from "express";
 import { auth, UserRole } from "../lib/auth";
 import { fromNodeHeaders } from "better-auth/node";
+import { AppError } from "../helpers/appError";
 
 
 const authentication = (...roles: UserRole[]) => {
@@ -10,11 +11,8 @@ const authentication = (...roles: UserRole[]) => {
         headers: fromNodeHeaders(req.headers)
       })
 
-      if(!session) {
-        return res.status(401).json({
-          success: false,
-          message: "You are not authorized!"
-        })
+      if (!session || !session.user) {
+        throw new AppError("Authentication failed. Please log in to access this resource.",401)
       }
 
       req.user = {
@@ -24,16 +22,23 @@ const authentication = (...roles: UserRole[]) => {
         role: session.user.role,
       }
 
-      if(roles.length && !roles.includes(req.user?.role as UserRole)){
-        res.status(403).json({
-          success: false,
-          message: "Forbidden! You don't have permission to access this resources!"
-        })
+      if (roles.length && !roles.includes(req.user?.role as UserRole)) {
+        throw new AppError("Forbidden: You do not have the necessary permissions to access this resource.",403)
       }
 
       next();
-    } catch (err: any) {
-      console.log("Something went wrong", err.message);
+    } catch (error: any) {
+      if (error instanceof AppError) {
+        res.status(error.statusCode).json({
+          success: false,
+          message: error.message
+        })
+      } else {
+        res.status(500).json({
+          success: false,
+          message: "Internal Server Error",
+        });
+      }
     }
   }
 }

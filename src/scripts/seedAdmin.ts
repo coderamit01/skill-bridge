@@ -1,5 +1,6 @@
 import { prisma } from "../lib/prisma";
 import { UserRole } from "../lib/auth";
+import { AppError } from "../helpers/appError";
 
 type adminDataType = {
   name: string,
@@ -10,7 +11,7 @@ type adminDataType = {
 
 async function seedAdmin() {
   try {
-    const adminData:adminDataType = {
+    const adminData: adminDataType = {
       name: "Admin 1",
       email: "admin1@gmail.com",
       password: "admin1234",
@@ -21,7 +22,7 @@ async function seedAdmin() {
         email: adminData.email
       }
     });
-    if (existUser) { throw new Error('User Already exists') };
+    if (existUser) { throw new AppError('User Already exists', 403) };
 
     await fetch(`${process.env.APP_URL}/api/auth/sign-up/email`, {
       method: "POST",
@@ -32,9 +33,8 @@ async function seedAdmin() {
       credentials: "include",
       body: JSON.stringify(adminData)
     });
-    console.log("Admin create Successfully");
   } catch (error) {
-    console.log("Something went wrong");
+    throw new AppError('Internal Server Error', 500)
   }
 }
 
