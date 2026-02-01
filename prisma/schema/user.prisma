@@ -7,6 +7,9 @@ model User {
   image         String?
   role          String    @default("student")
   is_banned     Boolean   @default(false)
+  school        String?
+  age           Int?
+  address       String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   sessions      Session[]
