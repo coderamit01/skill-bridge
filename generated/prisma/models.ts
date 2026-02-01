@@ -8,10 +8,10 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/booking'
-export type * from './models/category'
-export type * from './models/review'
-export type * from './models/tutor'
+export type * from './models/Booking'
+export type * from './models/Category'
+export type * from './models/Review'
+export type * from './models/Tutor'
 export type * from './models/User'
 export type * from './models/Session'
 export type * from './models/Account'

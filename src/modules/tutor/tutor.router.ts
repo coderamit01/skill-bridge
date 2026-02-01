@@ -5,7 +5,8 @@ import { UserRole } from "../../lib/auth";
 
 const router = express.Router();
 
-router.get("/tutors", tutorController.getTutors);
+router.get("/tutors", tutorController.getAllTutors);
+router.get("/tutors/:tutorId", tutorController.getTutorById);
 
 router.post(
   "/tutor/profile",
@@ -13,9 +14,15 @@ router.post(
   tutorController.createProfile,
 );
 router.put(
-  "/tutor/profile/:tutorId",
-  authentication(UserRole.TUTOR, UserRole.ADMIN),
+  "/tutor/profile",
+  authentication(UserRole.TUTOR),
   tutorController.updateProfile,
+);
+
+router.put(
+  "/tutor/availability",
+  authentication(UserRole.TUTOR),
+  tutorController.updateAvialablity,
 );
 
 export const tutorRouter = router;

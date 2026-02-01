@@ -9,10 +9,11 @@
 * 🟢 You can import this file directly.
 */
 
-export const BookStatus = {
+export const BookingStatus = {
+  PENDING: 'PENDING',
   CONFIRMED: 'CONFIRMED',
   COMPLETED: 'COMPLETED',
   CANCELLED: 'CANCELLED'
 } as const
 
-export type BookStatus = (typeof BookStatus)[keyof typeof BookStatus]
+export type BookingStatus = (typeof BookingStatus)[keyof typeof BookingStatus]

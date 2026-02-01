@@ -4,7 +4,23 @@ import { UserRole } from "../../lib/auth";
 import { prisma } from "../../lib/prisma";
 import { TutorProfile, TutorUpdateProfile } from "../../type/tutor";
 
-const getTutors = async () => { };
+const getAllTutors = async () => {
+  return await prisma.tutor.findMany({
+    include: {
+      user: true
+    }
+  });
+};
+const getTutorById = async (id:string) => {
+  return await prisma.tutor.findUnique({
+    where:{
+      id
+    },
+    include: {
+      user: true
+    }
+  });
+};
 const createProfile = async (user: User, data: TutorProfile) => {
   const { id, role } = user;
   if (!user) {
@@ -34,15 +50,11 @@ const createProfile = async (user: User, data: TutorProfile) => {
     },
   });
 };
-const updateProfile = async (user: User,tutorId:string, data: TutorUpdateProfile) => {
+const updateProfile = async (user: User, data: TutorUpdateProfile) => {
   const { id, role } = user;
 
-  if (![UserRole.TUTOR, UserRole.ADMIN].includes(role as UserRole)) {
-    throw new AppError("Access denied.", 403);
-  }
-
   const tutor = await prisma.tutor.findUniqueOrThrow({
-    where: { id: tutorId },
+    where: { user_id: id },
   });
 
   if (role === UserRole.TUTOR && tutor.user_id !== id) {
@@ -50,13 +62,34 @@ const updateProfile = async (user: User,tutorId:string, data: TutorUpdateProfile
   }
 
   return await prisma.tutor.update({
-    where: { id: tutorId },
+    where: { user_id: id },
     data,
+  });
+};
+const updateAvialablity = async (user: User, data: TutorUpdateProfile) => {
+  const { id, role } = user;
+
+  const tutor = await prisma.tutor.findUniqueOrThrow({
+    where: { user_id: id },
+  });
+
+  if (role === UserRole.TUTOR && tutor.user_id !== id) {
+    throw new AppError("Access denied.", 403);
+  }
+
+  return await prisma.tutor.update({
+    where: { user_id: id },
+    data: {
+      avilable_start_time: data.avilable_start_time,
+      avilable_end_time: data.avilable_end_time,
+    }
   });
 };
 
 export const tutorService = {
-  getTutors,
+  getAllTutors,
   createProfile,
   updateProfile,
+  updateAvialablity,
+  getTutorById,
 };

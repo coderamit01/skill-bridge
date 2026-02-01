@@ -1,4 +1,4 @@
-model tutor {
+model Tutor {
   id                  String   @id @default(uuid())
   user_id             String   @unique
   bio                 String?  @db.Text
@@ -9,6 +9,7 @@ model tutor {
   avg_rating          Decimal? @default(0)
   avilable_start_time DateTime
   avilable_end_time   DateTime
+  user                User     @relation(fields: [user_id], references: [id])
   created_at          DateTime @default(now())
   updated_at          DateTime @updatedAt
 }

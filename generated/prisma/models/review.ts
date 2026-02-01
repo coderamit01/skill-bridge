@@ -4,7 +4,7 @@
 // biome-ignore-all lint: generated file
 // @ts-nocheck 
 /*
- * This file exports the `review` model and its related types.
+ * This file exports the `Review` model and its related types.
  *
  * 🟢 You can import this file directly.
  */
@@ -13,10 +13,10 @@ import type * as $Enums from "../enums"
 import type * as Prisma from "../internal/prismaNamespace"
 
 /**
- * Model review
+ * Model Review
  * 
  */
-export type reviewModel = runtime.Types.Result.DefaultSelection<Prisma.$reviewPayload>
+export type ReviewModel = runtime.Types.Result.DefaultSelection<Prisma.$ReviewPayload>
 
 export type AggregateReview = {
   _count: ReviewCountAggregateOutputType | null
@@ -113,37 +113,37 @@ export type ReviewCountAggregateInputType = {
 
 export type ReviewAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which review to aggregate.
+   * Filter which Review to aggregate.
    */
-  where?: Prisma.reviewWhereInput
+  where?: Prisma.ReviewWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of reviews to fetch.
+   * Determine the order of Reviews to fetch.
    */
-  orderBy?: Prisma.reviewOrderByWithRelationInput | Prisma.reviewOrderByWithRelationInput[]
+  orderBy?: Prisma.ReviewOrderByWithRelationInput | Prisma.ReviewOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
    * Sets the start position
    */
-  cursor?: Prisma.reviewWhereUniqueInput
+  cursor?: Prisma.ReviewWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` reviews from the position of the cursor.
+   * Take `±n` Reviews from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` reviews.
+   * Skip the first `n` Reviews.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Count returned reviews
+   * Count returned Reviews
   **/
   _count?: true | ReviewCountAggregateInputType
   /**
@@ -183,11 +183,11 @@ export type GetReviewAggregateType<T extends ReviewAggregateArgs> = {
 
 
 
-export type reviewGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.reviewWhereInput
-  orderBy?: Prisma.reviewOrderByWithAggregationInput | Prisma.reviewOrderByWithAggregationInput[]
+export type ReviewGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ReviewWhereInput
+  orderBy?: Prisma.ReviewOrderByWithAggregationInput | Prisma.ReviewOrderByWithAggregationInput[]
   by: Prisma.ReviewScalarFieldEnum[] | Prisma.ReviewScalarFieldEnum
-  having?: Prisma.reviewScalarWhereWithAggregatesInput
+  having?: Prisma.ReviewScalarWhereWithAggregatesInput
   take?: number
   skip?: number
   _count?: ReviewCountAggregateInputType | true
@@ -213,7 +213,7 @@ export type ReviewGroupByOutputType = {
   _max: ReviewMaxAggregateOutputType | null
 }
 
-type GetReviewGroupByPayload<T extends reviewGroupByArgs> = Prisma.PrismaPromise<
+type GetReviewGroupByPayload<T extends ReviewGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ReviewGroupByOutputType, T['by']> &
       {
@@ -228,21 +228,21 @@ type GetReviewGroupByPayload<T extends reviewGroupByArgs> = Prisma.PrismaPromise
 
 
 
-export type reviewWhereInput = {
-  AND?: Prisma.reviewWhereInput | Prisma.reviewWhereInput[]
-  OR?: Prisma.reviewWhereInput[]
-  NOT?: Prisma.reviewWhereInput | Prisma.reviewWhereInput[]
-  id?: Prisma.StringFilter<"review"> | string
-  booking_id?: Prisma.StringFilter<"review"> | string
-  user_id?: Prisma.StringFilter<"review"> | string
-  tutor_id?: Prisma.StringFilter<"review"> | string
-  comment?: Prisma.StringFilter<"review"> | string
-  rating?: Prisma.IntFilter<"review"> | number
-  created_at?: Prisma.DateTimeFilter<"review"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"review"> | Date | string
+export type ReviewWhereInput = {
+  AND?: Prisma.ReviewWhereInput | Prisma.ReviewWhereInput[]
+  OR?: Prisma.ReviewWhereInput[]
+  NOT?: Prisma.ReviewWhereInput | Prisma.ReviewWhereInput[]
+  id?: Prisma.StringFilter<"Review"> | string
+  booking_id?: Prisma.StringFilter<"Review"> | string
+  user_id?: Prisma.StringFilter<"Review"> | string
+  tutor_id?: Prisma.StringFilter<"Review"> | string
+  comment?: Prisma.StringFilter<"Review"> | string
+  rating?: Prisma.IntFilter<"Review"> | number
+  created_at?: Prisma.DateTimeFilter<"Review"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Review"> | Date | string
 }
 
-export type reviewOrderByWithRelationInput = {
+export type ReviewOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   booking_id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
@@ -253,21 +253,21 @@ export type reviewOrderByWithRelationInput = {
   updated_at?: Prisma.SortOrder
 }
 
-export type reviewWhereUniqueInput = Prisma.AtLeast<{
+export type ReviewWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  AND?: Prisma.reviewWhereInput | Prisma.reviewWhereInput[]
-  OR?: Prisma.reviewWhereInput[]
-  NOT?: Prisma.reviewWhereInput | Prisma.reviewWhereInput[]
-  booking_id?: Prisma.StringFilter<"review"> | string
-  user_id?: Prisma.StringFilter<"review"> | string
-  tutor_id?: Prisma.StringFilter<"review"> | string
-  comment?: Prisma.StringFilter<"review"> | string
-  rating?: Prisma.IntFilter<"review"> | number
-  created_at?: Prisma.DateTimeFilter<"review"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"review"> | Date | string
+  AND?: Prisma.ReviewWhereInput | Prisma.ReviewWhereInput[]
+  OR?: Prisma.ReviewWhereInput[]
+  NOT?: Prisma.ReviewWhereInput | Prisma.ReviewWhereInput[]
+  booking_id?: Prisma.StringFilter<"Review"> | string
+  user_id?: Prisma.StringFilter<"Review"> | string
+  tutor_id?: Prisma.StringFilter<"Review"> | string
+  comment?: Prisma.StringFilter<"Review"> | string
+  rating?: Prisma.IntFilter<"Review"> | number
+  created_at?: Prisma.DateTimeFilter<"Review"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Review"> | Date | string
 }, "id">
 
-export type reviewOrderByWithAggregationInput = {
+export type ReviewOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   booking_id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
@@ -276,28 +276,28 @@ export type reviewOrderByWithAggregationInput = {
   rating?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  _count?: Prisma.reviewCountOrderByAggregateInput
-  _avg?: Prisma.reviewAvgOrderByAggregateInput
-  _max?: Prisma.reviewMaxOrderByAggregateInput
-  _min?: Prisma.reviewMinOrderByAggregateInput
-  _sum?: Prisma.reviewSumOrderByAggregateInput
+  _count?: Prisma.ReviewCountOrderByAggregateInput
+  _avg?: Prisma.ReviewAvgOrderByAggregateInput
+  _max?: Prisma.ReviewMaxOrderByAggregateInput
+  _min?: Prisma.ReviewMinOrderByAggregateInput
+  _sum?: Prisma.ReviewSumOrderByAggregateInput
 }
 
-export type reviewScalarWhereWithAggregatesInput = {
-  AND?: Prisma.reviewScalarWhereWithAggregatesInput | Prisma.reviewScalarWhereWithAggregatesInput[]
-  OR?: Prisma.reviewScalarWhereWithAggregatesInput[]
-  NOT?: Prisma.reviewScalarWhereWithAggregatesInput | Prisma.reviewScalarWhereWithAggregatesInput[]
-  id?: Prisma.StringWithAggregatesFilter<"review"> | string
-  booking_id?: Prisma.StringWithAggregatesFilter<"review"> | string
-  user_id?: Prisma.StringWithAggregatesFilter<"review"> | string
-  tutor_id?: Prisma.StringWithAggregatesFilter<"review"> | string
-  comment?: Prisma.StringWithAggregatesFilter<"review"> | string
-  rating?: Prisma.IntWithAggregatesFilter<"review"> | number
-  created_at?: Prisma.DateTimeWithAggregatesFilter<"review"> | Date | string
-  updated_at?: Prisma.DateTimeWithAggregatesFilter<"review"> | Date | string
+export type ReviewScalarWhereWithAggregatesInput = {
+  AND?: Prisma.ReviewScalarWhereWithAggregatesInput | Prisma.ReviewScalarWhereWithAggregatesInput[]
+  OR?: Prisma.ReviewScalarWhereWithAggregatesInput[]
+  NOT?: Prisma.ReviewScalarWhereWithAggregatesInput | Prisma.ReviewScalarWhereWithAggregatesInput[]
+  id?: Prisma.StringWithAggregatesFilter<"Review"> | string
+  booking_id?: Prisma.StringWithAggregatesFilter<"Review"> | string
+  user_id?: Prisma.StringWithAggregatesFilter<"Review"> | string
+  tutor_id?: Prisma.StringWithAggregatesFilter<"Review"> | string
+  comment?: Prisma.StringWithAggregatesFilter<"Review"> | string
+  rating?: Prisma.IntWithAggregatesFilter<"Review"> | number
+  created_at?: Prisma.DateTimeWithAggregatesFilter<"Review"> | Date | string
+  updated_at?: Prisma.DateTimeWithAggregatesFilter<"Review"> | Date | string
 }
 
-export type reviewCreateInput = {
+export type ReviewCreateInput = {
   id?: string
   booking_id: string
   user_id: string
@@ -308,7 +308,7 @@ export type reviewCreateInput = {
   updated_at?: Date | string
 }
 
-export type reviewUncheckedCreateInput = {
+export type ReviewUncheckedCreateInput = {
   id?: string
   booking_id: string
   user_id: string
@@ -319,7 +319,7 @@ export type reviewUncheckedCreateInput = {
   updated_at?: Date | string
 }
 
-export type reviewUpdateInput = {
+export type ReviewUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   booking_id?: Prisma.StringFieldUpdateOperationsInput | string
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
@@ -330,7 +330,7 @@ export type reviewUpdateInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type reviewUncheckedUpdateInput = {
+export type ReviewUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   booking_id?: Prisma.StringFieldUpdateOperationsInput | string
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
@@ -341,7 +341,7 @@ export type reviewUncheckedUpdateInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type reviewCreateManyInput = {
+export type ReviewCreateManyInput = {
   id?: string
   booking_id: string
   user_id: string
@@ -352,7 +352,7 @@ export type reviewCreateManyInput = {
   updated_at?: Date | string
 }
 
-export type reviewUpdateManyMutationInput = {
+export type ReviewUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   booking_id?: Prisma.StringFieldUpdateOperationsInput | string
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
@@ -363,7 +363,7 @@ export type reviewUpdateManyMutationInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type reviewUncheckedUpdateManyInput = {
+export type ReviewUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   booking_id?: Prisma.StringFieldUpdateOperationsInput | string
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
@@ -374,7 +374,7 @@ export type reviewUncheckedUpdateManyInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type reviewCountOrderByAggregateInput = {
+export type ReviewCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   booking_id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
@@ -385,11 +385,11 @@ export type reviewCountOrderByAggregateInput = {
   updated_at?: Prisma.SortOrder
 }
 
-export type reviewAvgOrderByAggregateInput = {
+export type ReviewAvgOrderByAggregateInput = {
   rating?: Prisma.SortOrder
 }
 
-export type reviewMaxOrderByAggregateInput = {
+export type ReviewMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   booking_id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
@@ -400,7 +400,7 @@ export type reviewMaxOrderByAggregateInput = {
   updated_at?: Prisma.SortOrder
 }
 
-export type reviewMinOrderByAggregateInput = {
+export type ReviewMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   booking_id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
@@ -411,7 +411,7 @@ export type reviewMinOrderByAggregateInput = {
   updated_at?: Prisma.SortOrder
 }
 
-export type reviewSumOrderByAggregateInput = {
+export type ReviewSumOrderByAggregateInput = {
   rating?: Prisma.SortOrder
 }
 
@@ -425,7 +425,7 @@ export type IntFieldUpdateOperationsInput = {
 
 
 
-export type reviewSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type ReviewSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   booking_id?: boolean
   user_id?: boolean
@@ -436,7 +436,7 @@ export type reviewSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   updated_at?: boolean
 }, ExtArgs["result"]["review"]>
 
-export type reviewSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type ReviewSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   booking_id?: boolean
   user_id?: boolean
@@ -447,7 +447,7 @@ export type reviewSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   updated_at?: boolean
 }, ExtArgs["result"]["review"]>
 
-export type reviewSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type ReviewSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   booking_id?: boolean
   user_id?: boolean
@@ -458,7 +458,7 @@ export type reviewSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   updated_at?: boolean
 }, ExtArgs["result"]["review"]>
 
-export type reviewSelectScalar = {
+export type ReviewSelectScalar = {
   id?: boolean
   booking_id?: boolean
   user_id?: boolean
@@ -469,10 +469,10 @@ export type reviewSelectScalar = {
   updated_at?: boolean
 }
 
-export type reviewOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "booking_id" | "user_id" | "tutor_id" | "comment" | "rating" | "created_at" | "updated_at", ExtArgs["result"]["review"]>
+export type ReviewOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "booking_id" | "user_id" | "tutor_id" | "comment" | "rating" | "created_at" | "updated_at", ExtArgs["result"]["review"]>
 
-export type $reviewPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  name: "review"
+export type $ReviewPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  name: "Review"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -487,18 +487,18 @@ export type $reviewPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   composites: {}
 }
 
-export type reviewGetPayload<S extends boolean | null | undefined | reviewDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$reviewPayload, S>
+export type ReviewGetPayload<S extends boolean | null | undefined | ReviewDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$ReviewPayload, S>
 
-export type reviewCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
-  Omit<reviewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+export type ReviewCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
+  Omit<ReviewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
     select?: ReviewCountAggregateInputType | true
   }
 
-export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['review'], meta: { name: 'review' } }
+export interface ReviewDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Review'], meta: { name: 'Review' } }
   /**
    * Find zero or one Review that matches the filter.
-   * @param {reviewFindUniqueArgs} args - Arguments to find a Review
+   * @param {ReviewFindUniqueArgs} args - Arguments to find a Review
    * @example
    * // Get one Review
    * const review = await prisma.review.findUnique({
@@ -507,12 +507,12 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *   }
    * })
    */
-  findUnique<T extends reviewFindUniqueArgs>(args: Prisma.SelectSubset<T, reviewFindUniqueArgs<ExtArgs>>): Prisma.Prisma__reviewClient<runtime.Types.Result.GetResult<Prisma.$reviewPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findUnique<T extends ReviewFindUniqueArgs>(args: Prisma.SelectSubset<T, ReviewFindUniqueArgs<ExtArgs>>): Prisma.Prisma__ReviewClient<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find one Review that matches the filter or throw an error with `error.code='P2025'`
    * if no matches were found.
-   * @param {reviewFindUniqueOrThrowArgs} args - Arguments to find a Review
+   * @param {ReviewFindUniqueOrThrowArgs} args - Arguments to find a Review
    * @example
    * // Get one Review
    * const review = await prisma.review.findUniqueOrThrow({
@@ -521,13 +521,13 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *   }
    * })
    */
-  findUniqueOrThrow<T extends reviewFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, reviewFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__reviewClient<runtime.Types.Result.GetResult<Prisma.$reviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findUniqueOrThrow<T extends ReviewFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, ReviewFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__ReviewClient<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first Review that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {reviewFindFirstArgs} args - Arguments to find a Review
+   * @param {ReviewFindFirstArgs} args - Arguments to find a Review
    * @example
    * // Get one Review
    * const review = await prisma.review.findFirst({
@@ -536,14 +536,14 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *   }
    * })
    */
-  findFirst<T extends reviewFindFirstArgs>(args?: Prisma.SelectSubset<T, reviewFindFirstArgs<ExtArgs>>): Prisma.Prisma__reviewClient<runtime.Types.Result.GetResult<Prisma.$reviewPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findFirst<T extends ReviewFindFirstArgs>(args?: Prisma.SelectSubset<T, ReviewFindFirstArgs<ExtArgs>>): Prisma.Prisma__ReviewClient<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first Review that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {reviewFindFirstOrThrowArgs} args - Arguments to find a Review
+   * @param {ReviewFindFirstOrThrowArgs} args - Arguments to find a Review
    * @example
    * // Get one Review
    * const review = await prisma.review.findFirstOrThrow({
@@ -552,13 +552,13 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *   }
    * })
    */
-  findFirstOrThrow<T extends reviewFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, reviewFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__reviewClient<runtime.Types.Result.GetResult<Prisma.$reviewPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findFirstOrThrow<T extends ReviewFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, ReviewFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__ReviewClient<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find zero or more Reviews that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {reviewFindManyArgs} args - Arguments to filter and select certain fields only.
+   * @param {ReviewFindManyArgs} args - Arguments to filter and select certain fields only.
    * @example
    * // Get all Reviews
    * const reviews = await prisma.review.findMany()
@@ -570,11 +570,11 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * const reviewWithIdOnly = await prisma.review.findMany({ select: { id: true } })
    * 
    */
-  findMany<T extends reviewFindManyArgs>(args?: Prisma.SelectSubset<T, reviewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$reviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+  findMany<T extends ReviewFindManyArgs>(args?: Prisma.SelectSubset<T, ReviewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
   /**
    * Create a Review.
-   * @param {reviewCreateArgs} args - Arguments to create a Review.
+   * @param {ReviewCreateArgs} args - Arguments to create a Review.
    * @example
    * // Create one Review
    * const Review = await prisma.review.create({
@@ -584,11 +584,11 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * })
    * 
    */
-  create<T extends reviewCreateArgs>(args: Prisma.SelectSubset<T, reviewCreateArgs<ExtArgs>>): Prisma.Prisma__reviewClient<runtime.Types.Result.GetResult<Prisma.$reviewPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  create<T extends ReviewCreateArgs>(args: Prisma.SelectSubset<T, ReviewCreateArgs<ExtArgs>>): Prisma.Prisma__ReviewClient<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Create many Reviews.
-   * @param {reviewCreateManyArgs} args - Arguments to create many Reviews.
+   * @param {ReviewCreateManyArgs} args - Arguments to create many Reviews.
    * @example
    * // Create many Reviews
    * const review = await prisma.review.createMany({
@@ -598,11 +598,11 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * })
    *     
    */
-  createMany<T extends reviewCreateManyArgs>(args?: Prisma.SelectSubset<T, reviewCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  createMany<T extends ReviewCreateManyArgs>(args?: Prisma.SelectSubset<T, ReviewCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Create many Reviews and returns the data saved in the database.
-   * @param {reviewCreateManyAndReturnArgs} args - Arguments to create many Reviews.
+   * @param {ReviewCreateManyAndReturnArgs} args - Arguments to create many Reviews.
    * @example
    * // Create many Reviews
    * const review = await prisma.review.createManyAndReturn({
@@ -622,11 +622,11 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  createManyAndReturn<T extends reviewCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, reviewCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$reviewPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+  createManyAndReturn<T extends ReviewCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, ReviewCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
   /**
    * Delete a Review.
-   * @param {reviewDeleteArgs} args - Arguments to delete one Review.
+   * @param {ReviewDeleteArgs} args - Arguments to delete one Review.
    * @example
    * // Delete one Review
    * const Review = await prisma.review.delete({
@@ -636,11 +636,11 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * })
    * 
    */
-  delete<T extends reviewDeleteArgs>(args: Prisma.SelectSubset<T, reviewDeleteArgs<ExtArgs>>): Prisma.Prisma__reviewClient<runtime.Types.Result.GetResult<Prisma.$reviewPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  delete<T extends ReviewDeleteArgs>(args: Prisma.SelectSubset<T, ReviewDeleteArgs<ExtArgs>>): Prisma.Prisma__ReviewClient<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Update one Review.
-   * @param {reviewUpdateArgs} args - Arguments to update one Review.
+   * @param {ReviewUpdateArgs} args - Arguments to update one Review.
    * @example
    * // Update one Review
    * const review = await prisma.review.update({
@@ -653,11 +653,11 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * })
    * 
    */
-  update<T extends reviewUpdateArgs>(args: Prisma.SelectSubset<T, reviewUpdateArgs<ExtArgs>>): Prisma.Prisma__reviewClient<runtime.Types.Result.GetResult<Prisma.$reviewPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  update<T extends ReviewUpdateArgs>(args: Prisma.SelectSubset<T, ReviewUpdateArgs<ExtArgs>>): Prisma.Prisma__ReviewClient<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Delete zero or more Reviews.
-   * @param {reviewDeleteManyArgs} args - Arguments to filter Reviews to delete.
+   * @param {ReviewDeleteManyArgs} args - Arguments to filter Reviews to delete.
    * @example
    * // Delete a few Reviews
    * const { count } = await prisma.review.deleteMany({
@@ -667,13 +667,13 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * })
    * 
    */
-  deleteMany<T extends reviewDeleteManyArgs>(args?: Prisma.SelectSubset<T, reviewDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  deleteMany<T extends ReviewDeleteManyArgs>(args?: Prisma.SelectSubset<T, ReviewDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Update zero or more Reviews.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {reviewUpdateManyArgs} args - Arguments to update one or more rows.
+   * @param {ReviewUpdateManyArgs} args - Arguments to update one or more rows.
    * @example
    * // Update many Reviews
    * const review = await prisma.review.updateMany({
@@ -686,11 +686,11 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * })
    * 
    */
-  updateMany<T extends reviewUpdateManyArgs>(args: Prisma.SelectSubset<T, reviewUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  updateMany<T extends ReviewUpdateManyArgs>(args: Prisma.SelectSubset<T, ReviewUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Update zero or more Reviews and returns the data updated in the database.
-   * @param {reviewUpdateManyAndReturnArgs} args - Arguments to update many Reviews.
+   * @param {ReviewUpdateManyAndReturnArgs} args - Arguments to update many Reviews.
    * @example
    * // Update many Reviews
    * const review = await prisma.review.updateManyAndReturn({
@@ -716,11 +716,11 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  updateManyAndReturn<T extends reviewUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, reviewUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$reviewPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+  updateManyAndReturn<T extends ReviewUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, ReviewUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
   /**
    * Create or update one Review.
-   * @param {reviewUpsertArgs} args - Arguments to update or create a Review.
+   * @param {ReviewUpsertArgs} args - Arguments to update or create a Review.
    * @example
    * // Update or create a Review
    * const review = await prisma.review.upsert({
@@ -735,14 +735,14 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *   }
    * })
    */
-  upsert<T extends reviewUpsertArgs>(args: Prisma.SelectSubset<T, reviewUpsertArgs<ExtArgs>>): Prisma.Prisma__reviewClient<runtime.Types.Result.GetResult<Prisma.$reviewPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  upsert<T extends ReviewUpsertArgs>(args: Prisma.SelectSubset<T, ReviewUpsertArgs<ExtArgs>>): Prisma.Prisma__ReviewClient<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
   /**
    * Count the number of Reviews.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {reviewCountArgs} args - Arguments to filter Reviews to count.
+   * @param {ReviewCountArgs} args - Arguments to filter Reviews to count.
    * @example
    * // Count the number of Reviews
    * const count = await prisma.review.count({
@@ -751,8 +751,8 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *   }
    * })
   **/
-  count<T extends reviewCountArgs>(
-    args?: Prisma.Subset<T, reviewCountArgs>,
+  count<T extends ReviewCountArgs>(
+    args?: Prisma.Subset<T, ReviewCountArgs>,
   ): Prisma.PrismaPromise<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
@@ -791,7 +791,7 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * Group by Review.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {reviewGroupByArgs} args - Group by arguments.
+   * @param {ReviewGroupByArgs} args - Group by arguments.
    * @example
    * // Group by city, order by createdAt, get count
    * const result = await prisma.user.groupBy({
@@ -806,14 +806,14 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * 
   **/
   groupBy<
-    T extends reviewGroupByArgs,
+    T extends ReviewGroupByArgs,
     HasSelectOrTake extends Prisma.Or<
       Prisma.Extends<'skip', Prisma.Keys<T>>,
       Prisma.Extends<'take', Prisma.Keys<T>>
     >,
     OrderByArg extends Prisma.True extends HasSelectOrTake
-      ? { orderBy: reviewGroupByArgs['orderBy'] }
-      : { orderBy?: reviewGroupByArgs['orderBy'] },
+      ? { orderBy: ReviewGroupByArgs['orderBy'] }
+      : { orderBy?: ReviewGroupByArgs['orderBy'] },
     OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>,
     ByFields extends Prisma.MaybeTupleToUnion<T['by']>,
     ByValid extends Prisma.Has<ByFields, OrderFields>,
@@ -862,20 +862,20 @@ export interface reviewDelegate<ExtArgs extends runtime.Types.Extensions.Interna
           ? never
           : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
       }[OrderFields]
-  >(args: Prisma.SubsetIntersection<T, reviewGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReviewGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  >(args: Prisma.SubsetIntersection<T, ReviewGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReviewGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 /**
- * Fields of the review model
+ * Fields of the Review model
  */
-readonly fields: reviewFieldRefs;
+readonly fields: ReviewFieldRefs;
 }
 
 /**
- * The delegate class that acts as a "Promise-like" for review.
+ * The delegate class that acts as a "Promise-like" for Review.
  * Why is this prefixed with `Prisma__`?
  * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
-export interface Prisma__reviewClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+export interface Prisma__ReviewClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -903,378 +903,378 @@ export interface Prisma__reviewClient<T, Null = never, ExtArgs extends runtime.T
 
 
 /**
- * Fields of the review model
+ * Fields of the Review model
  */
-export interface reviewFieldRefs {
-  readonly id: Prisma.FieldRef<"review", 'String'>
-  readonly booking_id: Prisma.FieldRef<"review", 'String'>
-  readonly user_id: Prisma.FieldRef<"review", 'String'>
-  readonly tutor_id: Prisma.FieldRef<"review", 'String'>
-  readonly comment: Prisma.FieldRef<"review", 'String'>
-  readonly rating: Prisma.FieldRef<"review", 'Int'>
-  readonly created_at: Prisma.FieldRef<"review", 'DateTime'>
-  readonly updated_at: Prisma.FieldRef<"review", 'DateTime'>
+export interface ReviewFieldRefs {
+  readonly id: Prisma.FieldRef<"Review", 'String'>
+  readonly booking_id: Prisma.FieldRef<"Review", 'String'>
+  readonly user_id: Prisma.FieldRef<"Review", 'String'>
+  readonly tutor_id: Prisma.FieldRef<"Review", 'String'>
+  readonly comment: Prisma.FieldRef<"Review", 'String'>
+  readonly rating: Prisma.FieldRef<"Review", 'Int'>
+  readonly created_at: Prisma.FieldRef<"Review", 'DateTime'>
+  readonly updated_at: Prisma.FieldRef<"Review", 'DateTime'>
 }
     
 
 // Custom InputTypes
 /**
- * review findUnique
+ * Review findUnique
  */
-export type reviewFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ReviewFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the review
+   * Select specific fields to fetch from the Review
    */
-  select?: Prisma.reviewSelect<ExtArgs> | null
+  select?: Prisma.ReviewSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the review
+   * Omit specific fields from the Review
    */
-  omit?: Prisma.reviewOmit<ExtArgs> | null
+  omit?: Prisma.ReviewOmit<ExtArgs> | null
   /**
-   * Filter, which review to fetch.
+   * Filter, which Review to fetch.
    */
-  where: Prisma.reviewWhereUniqueInput
+  where: Prisma.ReviewWhereUniqueInput
 }
 
 /**
- * review findUniqueOrThrow
+ * Review findUniqueOrThrow
  */
-export type reviewFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ReviewFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the review
+   * Select specific fields to fetch from the Review
    */
-  select?: Prisma.reviewSelect<ExtArgs> | null
+  select?: Prisma.ReviewSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the review
+   * Omit specific fields from the Review
    */
-  omit?: Prisma.reviewOmit<ExtArgs> | null
+  omit?: Prisma.ReviewOmit<ExtArgs> | null
   /**
-   * Filter, which review to fetch.
+   * Filter, which Review to fetch.
    */
-  where: Prisma.reviewWhereUniqueInput
+  where: Prisma.ReviewWhereUniqueInput
 }
 
 /**
- * review findFirst
+ * Review findFirst
  */
-export type reviewFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ReviewFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the review
+   * Select specific fields to fetch from the Review
    */
-  select?: Prisma.reviewSelect<ExtArgs> | null
+  select?: Prisma.ReviewSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the review
+   * Omit specific fields from the Review
    */
-  omit?: Prisma.reviewOmit<ExtArgs> | null
+  omit?: Prisma.ReviewOmit<ExtArgs> | null
   /**
-   * Filter, which review to fetch.
+   * Filter, which Review to fetch.
    */
-  where?: Prisma.reviewWhereInput
+  where?: Prisma.ReviewWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of reviews to fetch.
+   * Determine the order of Reviews to fetch.
    */
-  orderBy?: Prisma.reviewOrderByWithRelationInput | Prisma.reviewOrderByWithRelationInput[]
+  orderBy?: Prisma.ReviewOrderByWithRelationInput | Prisma.ReviewOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for reviews.
+   * Sets the position for searching for Reviews.
    */
-  cursor?: Prisma.reviewWhereUniqueInput
+  cursor?: Prisma.ReviewWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` reviews from the position of the cursor.
+   * Take `±n` Reviews from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` reviews.
+   * Skip the first `n` Reviews.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of reviews.
+   * Filter by unique combinations of Reviews.
    */
   distinct?: Prisma.ReviewScalarFieldEnum | Prisma.ReviewScalarFieldEnum[]
 }
 
 /**
- * review findFirstOrThrow
+ * Review findFirstOrThrow
  */
-export type reviewFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ReviewFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the review
+   * Select specific fields to fetch from the Review
    */
-  select?: Prisma.reviewSelect<ExtArgs> | null
+  select?: Prisma.ReviewSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the review
+   * Omit specific fields from the Review
    */
-  omit?: Prisma.reviewOmit<ExtArgs> | null
+  omit?: Prisma.ReviewOmit<ExtArgs> | null
   /**
-   * Filter, which review to fetch.
+   * Filter, which Review to fetch.
    */
-  where?: Prisma.reviewWhereInput
+  where?: Prisma.ReviewWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of reviews to fetch.
+   * Determine the order of Reviews to fetch.
    */
-  orderBy?: Prisma.reviewOrderByWithRelationInput | Prisma.reviewOrderByWithRelationInput[]
+  orderBy?: Prisma.ReviewOrderByWithRelationInput | Prisma.ReviewOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for reviews.
+   * Sets the position for searching for Reviews.
    */
-  cursor?: Prisma.reviewWhereUniqueInput
+  cursor?: Prisma.ReviewWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` reviews from the position of the cursor.
+   * Take `±n` Reviews from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` reviews.
+   * Skip the first `n` Reviews.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of reviews.
+   * Filter by unique combinations of Reviews.
    */
   distinct?: Prisma.ReviewScalarFieldEnum | Prisma.ReviewScalarFieldEnum[]
 }
 
 /**
- * review findMany
+ * Review findMany
  */
-export type reviewFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ReviewFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the review
+   * Select specific fields to fetch from the Review
    */
-  select?: Prisma.reviewSelect<ExtArgs> | null
+  select?: Prisma.ReviewSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the review
+   * Omit specific fields from the Review
    */
-  omit?: Prisma.reviewOmit<ExtArgs> | null
+  omit?: Prisma.ReviewOmit<ExtArgs> | null
   /**
-   * Filter, which reviews to fetch.
+   * Filter, which Reviews to fetch.
    */
-  where?: Prisma.reviewWhereInput
+  where?: Prisma.ReviewWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of reviews to fetch.
+   * Determine the order of Reviews to fetch.
    */
-  orderBy?: Prisma.reviewOrderByWithRelationInput | Prisma.reviewOrderByWithRelationInput[]
+  orderBy?: Prisma.ReviewOrderByWithRelationInput | Prisma.ReviewOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for listing reviews.
+   * Sets the position for listing Reviews.
    */
-  cursor?: Prisma.reviewWhereUniqueInput
+  cursor?: Prisma.ReviewWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` reviews from the position of the cursor.
+   * Take `±n` Reviews from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` reviews.
+   * Skip the first `n` Reviews.
    */
   skip?: number
   distinct?: Prisma.ReviewScalarFieldEnum | Prisma.ReviewScalarFieldEnum[]
 }
 
 /**
- * review create
+ * Review create
  */
-export type reviewCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ReviewCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the review
+   * Select specific fields to fetch from the Review
    */
-  select?: Prisma.reviewSelect<ExtArgs> | null
+  select?: Prisma.ReviewSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the review
+   * Omit specific fields from the Review
    */
-  omit?: Prisma.reviewOmit<ExtArgs> | null
+  omit?: Prisma.ReviewOmit<ExtArgs> | null
   /**
-   * The data needed to create a review.
+   * The data needed to create a Review.
    */
-  data: Prisma.XOR<Prisma.reviewCreateInput, Prisma.reviewUncheckedCreateInput>
+  data: Prisma.XOR<Prisma.ReviewCreateInput, Prisma.ReviewUncheckedCreateInput>
 }
 
 /**
- * review createMany
+ * Review createMany
  */
-export type reviewCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ReviewCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to create many reviews.
+   * The data used to create many Reviews.
    */
-  data: Prisma.reviewCreateManyInput | Prisma.reviewCreateManyInput[]
+  data: Prisma.ReviewCreateManyInput | Prisma.ReviewCreateManyInput[]
   skipDuplicates?: boolean
 }
 
 /**
- * review createManyAndReturn
+ * Review createManyAndReturn
  */
-export type reviewCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ReviewCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the review
+   * Select specific fields to fetch from the Review
    */
-  select?: Prisma.reviewSelectCreateManyAndReturn<ExtArgs> | null
+  select?: Prisma.ReviewSelectCreateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the review
+   * Omit specific fields from the Review
    */
-  omit?: Prisma.reviewOmit<ExtArgs> | null
+  omit?: Prisma.ReviewOmit<ExtArgs> | null
   /**
-   * The data used to create many reviews.
+   * The data used to create many Reviews.
    */
-  data: Prisma.reviewCreateManyInput | Prisma.reviewCreateManyInput[]
+  data: Prisma.ReviewCreateManyInput | Prisma.ReviewCreateManyInput[]
   skipDuplicates?: boolean
 }
 
 /**
- * review update
+ * Review update
  */
-export type reviewUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ReviewUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the review
+   * Select specific fields to fetch from the Review
    */
-  select?: Prisma.reviewSelect<ExtArgs> | null
+  select?: Prisma.ReviewSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the review
+   * Omit specific fields from the Review
    */
-  omit?: Prisma.reviewOmit<ExtArgs> | null
+  omit?: Prisma.ReviewOmit<ExtArgs> | null
   /**
-   * The data needed to update a review.
+   * The data needed to update a Review.
    */
-  data: Prisma.XOR<Prisma.reviewUpdateInput, Prisma.reviewUncheckedUpdateInput>
+  data: Prisma.XOR<Prisma.ReviewUpdateInput, Prisma.ReviewUncheckedUpdateInput>
   /**
-   * Choose, which review to update.
+   * Choose, which Review to update.
    */
-  where: Prisma.reviewWhereUniqueInput
+  where: Prisma.ReviewWhereUniqueInput
 }
 
 /**
- * review updateMany
+ * Review updateMany
  */
-export type reviewUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ReviewUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to update reviews.
+   * The data used to update Reviews.
    */
-  data: Prisma.XOR<Prisma.reviewUpdateManyMutationInput, Prisma.reviewUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.ReviewUpdateManyMutationInput, Prisma.ReviewUncheckedUpdateManyInput>
   /**
-   * Filter which reviews to update
+   * Filter which Reviews to update
    */
-  where?: Prisma.reviewWhereInput
+  where?: Prisma.ReviewWhereInput
   /**
-   * Limit how many reviews to update.
+   * Limit how many Reviews to update.
    */
   limit?: number
 }
 
 /**
- * review updateManyAndReturn
+ * Review updateManyAndReturn
  */
-export type reviewUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ReviewUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the review
+   * Select specific fields to fetch from the Review
    */
-  select?: Prisma.reviewSelectUpdateManyAndReturn<ExtArgs> | null
+  select?: Prisma.ReviewSelectUpdateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the review
+   * Omit specific fields from the Review
    */
-  omit?: Prisma.reviewOmit<ExtArgs> | null
+  omit?: Prisma.ReviewOmit<ExtArgs> | null
   /**
-   * The data used to update reviews.
+   * The data used to update Reviews.
    */
-  data: Prisma.XOR<Prisma.reviewUpdateManyMutationInput, Prisma.reviewUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.ReviewUpdateManyMutationInput, Prisma.ReviewUncheckedUpdateManyInput>
   /**
-   * Filter which reviews to update
+   * Filter which Reviews to update
    */
-  where?: Prisma.reviewWhereInput
+  where?: Prisma.ReviewWhereInput
   /**
-   * Limit how many reviews to update.
+   * Limit how many Reviews to update.
    */
   limit?: number
 }
 
 /**
- * review upsert
+ * Review upsert
  */
-export type reviewUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ReviewUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the review
+   * Select specific fields to fetch from the Review
    */
-  select?: Prisma.reviewSelect<ExtArgs> | null
+  select?: Prisma.ReviewSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the review
+   * Omit specific fields from the Review
    */
-  omit?: Prisma.reviewOmit<ExtArgs> | null
+  omit?: Prisma.ReviewOmit<ExtArgs> | null
   /**
-   * The filter to search for the review to update in case it exists.
+   * The filter to search for the Review to update in case it exists.
    */
-  where: Prisma.reviewWhereUniqueInput
+  where: Prisma.ReviewWhereUniqueInput
   /**
-   * In case the review found by the `where` argument doesn't exist, create a new review with this data.
+   * In case the Review found by the `where` argument doesn't exist, create a new Review with this data.
    */
-  create: Prisma.XOR<Prisma.reviewCreateInput, Prisma.reviewUncheckedCreateInput>
+  create: Prisma.XOR<Prisma.ReviewCreateInput, Prisma.ReviewUncheckedCreateInput>
   /**
-   * In case the review was found with the provided `where` argument, update it with this data.
+   * In case the Review was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<Prisma.reviewUpdateInput, Prisma.reviewUncheckedUpdateInput>
+  update: Prisma.XOR<Prisma.ReviewUpdateInput, Prisma.ReviewUncheckedUpdateInput>
 }
 
 /**
- * review delete
+ * Review delete
  */
-export type reviewDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ReviewDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the review
+   * Select specific fields to fetch from the Review
    */
-  select?: Prisma.reviewSelect<ExtArgs> | null
+  select?: Prisma.ReviewSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the review
+   * Omit specific fields from the Review
    */
-  omit?: Prisma.reviewOmit<ExtArgs> | null
+  omit?: Prisma.ReviewOmit<ExtArgs> | null
   /**
-   * Filter which review to delete.
+   * Filter which Review to delete.
    */
-  where: Prisma.reviewWhereUniqueInput
+  where: Prisma.ReviewWhereUniqueInput
 }
 
 /**
- * review deleteMany
+ * Review deleteMany
  */
-export type reviewDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ReviewDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which reviews to delete
+   * Filter which Reviews to delete
    */
-  where?: Prisma.reviewWhereInput
+  where?: Prisma.ReviewWhereInput
   /**
-   * Limit how many reviews to delete.
+   * Limit how many Reviews to delete.
    */
   limit?: number
 }
 
 /**
- * review without action
+ * Review without action
  */
-export type reviewDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ReviewDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the review
+   * Select specific fields to fetch from the Review
    */
-  select?: Prisma.reviewSelect<ExtArgs> | null
+  select?: Prisma.ReviewSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the review
+   * Omit specific fields from the Review
    */
-  omit?: Prisma.reviewOmit<ExtArgs> | null
+  omit?: Prisma.ReviewOmit<ExtArgs> | null
 }

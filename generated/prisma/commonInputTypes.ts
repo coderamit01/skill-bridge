@@ -51,11 +51,11 @@ export type DecimalFilter<$PrismaModel = never> = {
   not?: Prisma.NestedDecimalFilter<$PrismaModel> | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
-export type EnumBookStatusFilter<$PrismaModel = never> = {
-  equals?: $Enums.BookStatus | Prisma.EnumBookStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.BookStatus[] | Prisma.ListEnumBookStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.BookStatus[] | Prisma.ListEnumBookStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumBookStatusFilter<$PrismaModel> | $Enums.BookStatus
+export type EnumBookingStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.BookingStatus | Prisma.EnumBookingStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.BookingStatus[] | Prisma.ListEnumBookingStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BookingStatus[] | Prisma.ListEnumBookingStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBookingStatusFilter<$PrismaModel> | $Enums.BookingStatus
 }
 
 export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -106,14 +106,14 @@ export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDecimalFilter<$PrismaModel>
 }
 
-export type EnumBookStatusWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.BookStatus | Prisma.EnumBookStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.BookStatus[] | Prisma.ListEnumBookStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.BookStatus[] | Prisma.ListEnumBookStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumBookStatusWithAggregatesFilter<$PrismaModel> | $Enums.BookStatus
+export type EnumBookingStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.BookingStatus | Prisma.EnumBookingStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.BookingStatus[] | Prisma.ListEnumBookingStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BookingStatus[] | Prisma.ListEnumBookingStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBookingStatusWithAggregatesFilter<$PrismaModel> | $Enums.BookingStatus
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumBookStatusFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumBookStatusFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumBookingStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumBookingStatusFilter<$PrismaModel>
 }
 
 export type IntFilter<$PrismaModel = never> = {
@@ -309,11 +309,11 @@ export type NestedDecimalFilter<$PrismaModel = never> = {
   not?: Prisma.NestedDecimalFilter<$PrismaModel> | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
-export type NestedEnumBookStatusFilter<$PrismaModel = never> = {
-  equals?: $Enums.BookStatus | Prisma.EnumBookStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.BookStatus[] | Prisma.ListEnumBookStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.BookStatus[] | Prisma.ListEnumBookStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumBookStatusFilter<$PrismaModel> | $Enums.BookStatus
+export type NestedEnumBookingStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.BookingStatus | Prisma.EnumBookingStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.BookingStatus[] | Prisma.ListEnumBookingStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BookingStatus[] | Prisma.ListEnumBookingStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBookingStatusFilter<$PrismaModel> | $Enums.BookingStatus
 }
 
 export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -374,14 +374,14 @@ export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDecimalFilter<$PrismaModel>
 }
 
-export type NestedEnumBookStatusWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.BookStatus | Prisma.EnumBookStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.BookStatus[] | Prisma.ListEnumBookStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.BookStatus[] | Prisma.ListEnumBookStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumBookStatusWithAggregatesFilter<$PrismaModel> | $Enums.BookStatus
+export type NestedEnumBookingStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.BookingStatus | Prisma.EnumBookingStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.BookingStatus[] | Prisma.ListEnumBookingStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BookingStatus[] | Prisma.ListEnumBookingStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBookingStatusWithAggregatesFilter<$PrismaModel> | $Enums.BookingStatus
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumBookStatusFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumBookStatusFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumBookingStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumBookingStatusFilter<$PrismaModel>
 }
 
 export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {

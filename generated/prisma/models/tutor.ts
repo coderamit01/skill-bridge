@@ -4,7 +4,7 @@
 // biome-ignore-all lint: generated file
 // @ts-nocheck 
 /*
- * This file exports the `tutor` model and its related types.
+ * This file exports the `Tutor` model and its related types.
  *
  * 🟢 You can import this file directly.
  */
@@ -13,10 +13,10 @@ import type * as $Enums from "../enums"
 import type * as Prisma from "../internal/prismaNamespace"
 
 /**
- * Model tutor
+ * Model Tutor
  * 
  */
-export type tutorModel = runtime.Types.Result.DefaultSelection<Prisma.$tutorPayload>
+export type TutorModel = runtime.Types.Result.DefaultSelection<Prisma.$TutorPayload>
 
 export type AggregateTutor = {
   _count: TutorCountAggregateOutputType | null
@@ -145,37 +145,37 @@ export type TutorCountAggregateInputType = {
 
 export type TutorAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which tutor to aggregate.
+   * Filter which Tutor to aggregate.
    */
-  where?: Prisma.tutorWhereInput
+  where?: Prisma.TutorWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of tutors to fetch.
+   * Determine the order of Tutors to fetch.
    */
-  orderBy?: Prisma.tutorOrderByWithRelationInput | Prisma.tutorOrderByWithRelationInput[]
+  orderBy?: Prisma.TutorOrderByWithRelationInput | Prisma.TutorOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
    * Sets the start position
    */
-  cursor?: Prisma.tutorWhereUniqueInput
+  cursor?: Prisma.TutorWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` tutors from the position of the cursor.
+   * Take `±n` Tutors from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` tutors.
+   * Skip the first `n` Tutors.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Count returned tutors
+   * Count returned Tutors
   **/
   _count?: true | TutorCountAggregateInputType
   /**
@@ -215,11 +215,11 @@ export type GetTutorAggregateType<T extends TutorAggregateArgs> = {
 
 
 
-export type tutorGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.tutorWhereInput
-  orderBy?: Prisma.tutorOrderByWithAggregationInput | Prisma.tutorOrderByWithAggregationInput[]
+export type TutorGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TutorWhereInput
+  orderBy?: Prisma.TutorOrderByWithAggregationInput | Prisma.TutorOrderByWithAggregationInput[]
   by: Prisma.TutorScalarFieldEnum[] | Prisma.TutorScalarFieldEnum
-  having?: Prisma.tutorScalarWhereWithAggregatesInput
+  having?: Prisma.TutorScalarWhereWithAggregatesInput
   take?: number
   skip?: number
   _count?: TutorCountAggregateInputType | true
@@ -249,7 +249,7 @@ export type TutorGroupByOutputType = {
   _max: TutorMaxAggregateOutputType | null
 }
 
-type GetTutorGroupByPayload<T extends tutorGroupByArgs> = Prisma.PrismaPromise<
+type GetTutorGroupByPayload<T extends TutorGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<TutorGroupByOutputType, T['by']> &
       {
@@ -264,25 +264,26 @@ type GetTutorGroupByPayload<T extends tutorGroupByArgs> = Prisma.PrismaPromise<
 
 
 
-export type tutorWhereInput = {
-  AND?: Prisma.tutorWhereInput | Prisma.tutorWhereInput[]
-  OR?: Prisma.tutorWhereInput[]
-  NOT?: Prisma.tutorWhereInput | Prisma.tutorWhereInput[]
-  id?: Prisma.StringFilter<"tutor"> | string
-  user_id?: Prisma.StringFilter<"tutor"> | string
-  bio?: Prisma.StringNullableFilter<"tutor"> | string | null
-  hourly_rate?: Prisma.DecimalNullableFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  experience_years?: Prisma.DecimalNullableFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  education?: Prisma.StringNullableFilter<"tutor"> | string | null
-  category_id?: Prisma.StringNullableFilter<"tutor"> | string | null
-  avg_rating?: Prisma.DecimalNullableFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  avilable_start_time?: Prisma.DateTimeFilter<"tutor"> | Date | string
-  avilable_end_time?: Prisma.DateTimeFilter<"tutor"> | Date | string
-  created_at?: Prisma.DateTimeFilter<"tutor"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"tutor"> | Date | string
+export type TutorWhereInput = {
+  AND?: Prisma.TutorWhereInput | Prisma.TutorWhereInput[]
+  OR?: Prisma.TutorWhereInput[]
+  NOT?: Prisma.TutorWhereInput | Prisma.TutorWhereInput[]
+  id?: Prisma.StringFilter<"Tutor"> | string
+  user_id?: Prisma.StringFilter<"Tutor"> | string
+  bio?: Prisma.StringNullableFilter<"Tutor"> | string | null
+  hourly_rate?: Prisma.DecimalNullableFilter<"Tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  experience_years?: Prisma.DecimalNullableFilter<"Tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  education?: Prisma.StringNullableFilter<"Tutor"> | string | null
+  category_id?: Prisma.StringNullableFilter<"Tutor"> | string | null
+  avg_rating?: Prisma.DecimalNullableFilter<"Tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time?: Prisma.DateTimeFilter<"Tutor"> | Date | string
+  avilable_end_time?: Prisma.DateTimeFilter<"Tutor"> | Date | string
+  created_at?: Prisma.DateTimeFilter<"Tutor"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Tutor"> | Date | string
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
-export type tutorOrderByWithRelationInput = {
+export type TutorOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -295,27 +296,29 @@ export type tutorOrderByWithRelationInput = {
   avilable_end_time?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  user?: Prisma.UserOrderByWithRelationInput
 }
 
-export type tutorWhereUniqueInput = Prisma.AtLeast<{
+export type TutorWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   user_id?: string
-  AND?: Prisma.tutorWhereInput | Prisma.tutorWhereInput[]
-  OR?: Prisma.tutorWhereInput[]
-  NOT?: Prisma.tutorWhereInput | Prisma.tutorWhereInput[]
-  bio?: Prisma.StringNullableFilter<"tutor"> | string | null
-  hourly_rate?: Prisma.DecimalNullableFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  experience_years?: Prisma.DecimalNullableFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  education?: Prisma.StringNullableFilter<"tutor"> | string | null
-  category_id?: Prisma.StringNullableFilter<"tutor"> | string | null
-  avg_rating?: Prisma.DecimalNullableFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  avilable_start_time?: Prisma.DateTimeFilter<"tutor"> | Date | string
-  avilable_end_time?: Prisma.DateTimeFilter<"tutor"> | Date | string
-  created_at?: Prisma.DateTimeFilter<"tutor"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"tutor"> | Date | string
+  AND?: Prisma.TutorWhereInput | Prisma.TutorWhereInput[]
+  OR?: Prisma.TutorWhereInput[]
+  NOT?: Prisma.TutorWhereInput | Prisma.TutorWhereInput[]
+  bio?: Prisma.StringNullableFilter<"Tutor"> | string | null
+  hourly_rate?: Prisma.DecimalNullableFilter<"Tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  experience_years?: Prisma.DecimalNullableFilter<"Tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  education?: Prisma.StringNullableFilter<"Tutor"> | string | null
+  category_id?: Prisma.StringNullableFilter<"Tutor"> | string | null
+  avg_rating?: Prisma.DecimalNullableFilter<"Tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time?: Prisma.DateTimeFilter<"Tutor"> | Date | string
+  avilable_end_time?: Prisma.DateTimeFilter<"Tutor"> | Date | string
+  created_at?: Prisma.DateTimeFilter<"Tutor"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Tutor"> | Date | string
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id" | "user_id">
 
-export type tutorOrderByWithAggregationInput = {
+export type TutorOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -328,32 +331,47 @@ export type tutorOrderByWithAggregationInput = {
   avilable_end_time?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  _count?: Prisma.tutorCountOrderByAggregateInput
-  _avg?: Prisma.tutorAvgOrderByAggregateInput
-  _max?: Prisma.tutorMaxOrderByAggregateInput
-  _min?: Prisma.tutorMinOrderByAggregateInput
-  _sum?: Prisma.tutorSumOrderByAggregateInput
+  _count?: Prisma.TutorCountOrderByAggregateInput
+  _avg?: Prisma.TutorAvgOrderByAggregateInput
+  _max?: Prisma.TutorMaxOrderByAggregateInput
+  _min?: Prisma.TutorMinOrderByAggregateInput
+  _sum?: Prisma.TutorSumOrderByAggregateInput
 }
 
-export type tutorScalarWhereWithAggregatesInput = {
-  AND?: Prisma.tutorScalarWhereWithAggregatesInput | Prisma.tutorScalarWhereWithAggregatesInput[]
-  OR?: Prisma.tutorScalarWhereWithAggregatesInput[]
-  NOT?: Prisma.tutorScalarWhereWithAggregatesInput | Prisma.tutorScalarWhereWithAggregatesInput[]
-  id?: Prisma.StringWithAggregatesFilter<"tutor"> | string
-  user_id?: Prisma.StringWithAggregatesFilter<"tutor"> | string
-  bio?: Prisma.StringNullableWithAggregatesFilter<"tutor"> | string | null
-  hourly_rate?: Prisma.DecimalNullableWithAggregatesFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  experience_years?: Prisma.DecimalNullableWithAggregatesFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  education?: Prisma.StringNullableWithAggregatesFilter<"tutor"> | string | null
-  category_id?: Prisma.StringNullableWithAggregatesFilter<"tutor"> | string | null
-  avg_rating?: Prisma.DecimalNullableWithAggregatesFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  avilable_start_time?: Prisma.DateTimeWithAggregatesFilter<"tutor"> | Date | string
-  avilable_end_time?: Prisma.DateTimeWithAggregatesFilter<"tutor"> | Date | string
-  created_at?: Prisma.DateTimeWithAggregatesFilter<"tutor"> | Date | string
-  updated_at?: Prisma.DateTimeWithAggregatesFilter<"tutor"> | Date | string
+export type TutorScalarWhereWithAggregatesInput = {
+  AND?: Prisma.TutorScalarWhereWithAggregatesInput | Prisma.TutorScalarWhereWithAggregatesInput[]
+  OR?: Prisma.TutorScalarWhereWithAggregatesInput[]
+  NOT?: Prisma.TutorScalarWhereWithAggregatesInput | Prisma.TutorScalarWhereWithAggregatesInput[]
+  id?: Prisma.StringWithAggregatesFilter<"Tutor"> | string
+  user_id?: Prisma.StringWithAggregatesFilter<"Tutor"> | string
+  bio?: Prisma.StringNullableWithAggregatesFilter<"Tutor"> | string | null
+  hourly_rate?: Prisma.DecimalNullableWithAggregatesFilter<"Tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  experience_years?: Prisma.DecimalNullableWithAggregatesFilter<"Tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  education?: Prisma.StringNullableWithAggregatesFilter<"Tutor"> | string | null
+  category_id?: Prisma.StringNullableWithAggregatesFilter<"Tutor"> | string | null
+  avg_rating?: Prisma.DecimalNullableWithAggregatesFilter<"Tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time?: Prisma.DateTimeWithAggregatesFilter<"Tutor"> | Date | string
+  avilable_end_time?: Prisma.DateTimeWithAggregatesFilter<"Tutor"> | Date | string
+  created_at?: Prisma.DateTimeWithAggregatesFilter<"Tutor"> | Date | string
+  updated_at?: Prisma.DateTimeWithAggregatesFilter<"Tutor"> | Date | string
 }
 
-export type tutorCreateInput = {
+export type TutorCreateInput = {
+  id?: string
+  bio?: string | null
+  hourly_rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  experience_years?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  education?: string | null
+  category_id?: string | null
+  avg_rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time: Date | string
+  avilable_end_time: Date | string
+  created_at?: Date | string
+  updated_at?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutTutorInput
+}
+
+export type TutorUncheckedCreateInput = {
   id?: string
   user_id: string
   bio?: string | null
@@ -368,7 +386,37 @@ export type tutorCreateInput = {
   updated_at?: Date | string
 }
 
-export type tutorUncheckedCreateInput = {
+export type TutorUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hourly_rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  experience_years?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avg_rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  avilable_end_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutTutorNestedInput
+}
+
+export type TutorUncheckedUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  user_id?: Prisma.StringFieldUpdateOperationsInput | string
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hourly_rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  experience_years?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avg_rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  avilable_end_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type TutorCreateManyInput = {
   id?: string
   user_id: string
   bio?: string | null
@@ -383,7 +431,21 @@ export type tutorUncheckedCreateInput = {
   updated_at?: Date | string
 }
 
-export type tutorUpdateInput = {
+export type TutorUpdateManyMutationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hourly_rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  experience_years?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avg_rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  avilable_end_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type TutorUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -398,67 +460,7 @@ export type tutorUpdateInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type tutorUncheckedUpdateInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  hourly_rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  experience_years?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avg_rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  avilable_start_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  avilable_end_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type tutorCreateManyInput = {
-  id?: string
-  user_id: string
-  bio?: string | null
-  hourly_rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  experience_years?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  education?: string | null
-  category_id?: string | null
-  avg_rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  avilable_start_time: Date | string
-  avilable_end_time: Date | string
-  created_at?: Date | string
-  updated_at?: Date | string
-}
-
-export type tutorUpdateManyMutationInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  hourly_rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  experience_years?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avg_rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  avilable_start_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  avilable_end_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type tutorUncheckedUpdateManyInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  hourly_rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  experience_years?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avg_rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  avilable_start_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  avilable_end_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type tutorCountOrderByAggregateInput = {
+export type TutorCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
   bio?: Prisma.SortOrder
@@ -473,13 +475,13 @@ export type tutorCountOrderByAggregateInput = {
   updated_at?: Prisma.SortOrder
 }
 
-export type tutorAvgOrderByAggregateInput = {
+export type TutorAvgOrderByAggregateInput = {
   hourly_rate?: Prisma.SortOrder
   experience_years?: Prisma.SortOrder
   avg_rating?: Prisma.SortOrder
 }
 
-export type tutorMaxOrderByAggregateInput = {
+export type TutorMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
   bio?: Prisma.SortOrder
@@ -494,7 +496,7 @@ export type tutorMaxOrderByAggregateInput = {
   updated_at?: Prisma.SortOrder
 }
 
-export type tutorMinOrderByAggregateInput = {
+export type TutorMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
   bio?: Prisma.SortOrder
@@ -509,10 +511,15 @@ export type tutorMinOrderByAggregateInput = {
   updated_at?: Prisma.SortOrder
 }
 
-export type tutorSumOrderByAggregateInput = {
+export type TutorSumOrderByAggregateInput = {
   hourly_rate?: Prisma.SortOrder
   experience_years?: Prisma.SortOrder
   avg_rating?: Prisma.SortOrder
+}
+
+export type TutorNullableScalarRelationFilter = {
+  is?: Prisma.TutorWhereInput | null
+  isNot?: Prisma.TutorWhereInput | null
 }
 
 export type NullableStringFieldUpdateOperationsInput = {
@@ -527,9 +534,113 @@ export type NullableDecimalFieldUpdateOperationsInput = {
   divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
+export type TutorCreateNestedOneWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.TutorCreateWithoutUserInput, Prisma.TutorUncheckedCreateWithoutUserInput>
+  connectOrCreate?: Prisma.TutorCreateOrConnectWithoutUserInput
+  connect?: Prisma.TutorWhereUniqueInput
+}
+
+export type TutorUncheckedCreateNestedOneWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.TutorCreateWithoutUserInput, Prisma.TutorUncheckedCreateWithoutUserInput>
+  connectOrCreate?: Prisma.TutorCreateOrConnectWithoutUserInput
+  connect?: Prisma.TutorWhereUniqueInput
+}
+
+export type TutorUpdateOneWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.TutorCreateWithoutUserInput, Prisma.TutorUncheckedCreateWithoutUserInput>
+  connectOrCreate?: Prisma.TutorCreateOrConnectWithoutUserInput
+  upsert?: Prisma.TutorUpsertWithoutUserInput
+  disconnect?: Prisma.TutorWhereInput | boolean
+  delete?: Prisma.TutorWhereInput | boolean
+  connect?: Prisma.TutorWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TutorUpdateToOneWithWhereWithoutUserInput, Prisma.TutorUpdateWithoutUserInput>, Prisma.TutorUncheckedUpdateWithoutUserInput>
+}
+
+export type TutorUncheckedUpdateOneWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.TutorCreateWithoutUserInput, Prisma.TutorUncheckedCreateWithoutUserInput>
+  connectOrCreate?: Prisma.TutorCreateOrConnectWithoutUserInput
+  upsert?: Prisma.TutorUpsertWithoutUserInput
+  disconnect?: Prisma.TutorWhereInput | boolean
+  delete?: Prisma.TutorWhereInput | boolean
+  connect?: Prisma.TutorWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TutorUpdateToOneWithWhereWithoutUserInput, Prisma.TutorUpdateWithoutUserInput>, Prisma.TutorUncheckedUpdateWithoutUserInput>
+}
+
+export type TutorCreateWithoutUserInput = {
+  id?: string
+  bio?: string | null
+  hourly_rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  experience_years?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  education?: string | null
+  category_id?: string | null
+  avg_rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time: Date | string
+  avilable_end_time: Date | string
+  created_at?: Date | string
+  updated_at?: Date | string
+}
+
+export type TutorUncheckedCreateWithoutUserInput = {
+  id?: string
+  bio?: string | null
+  hourly_rate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  experience_years?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  education?: string | null
+  category_id?: string | null
+  avg_rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time: Date | string
+  avilable_end_time: Date | string
+  created_at?: Date | string
+  updated_at?: Date | string
+}
+
+export type TutorCreateOrConnectWithoutUserInput = {
+  where: Prisma.TutorWhereUniqueInput
+  create: Prisma.XOR<Prisma.TutorCreateWithoutUserInput, Prisma.TutorUncheckedCreateWithoutUserInput>
+}
+
+export type TutorUpsertWithoutUserInput = {
+  update: Prisma.XOR<Prisma.TutorUpdateWithoutUserInput, Prisma.TutorUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.TutorCreateWithoutUserInput, Prisma.TutorUncheckedCreateWithoutUserInput>
+  where?: Prisma.TutorWhereInput
+}
+
+export type TutorUpdateToOneWithWhereWithoutUserInput = {
+  where?: Prisma.TutorWhereInput
+  data: Prisma.XOR<Prisma.TutorUpdateWithoutUserInput, Prisma.TutorUncheckedUpdateWithoutUserInput>
+}
+
+export type TutorUpdateWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hourly_rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  experience_years?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avg_rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  avilable_end_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type TutorUncheckedUpdateWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hourly_rate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  experience_years?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avg_rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  avilable_start_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  avilable_end_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
 
 
-export type tutorSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+
+export type TutorSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   user_id?: boolean
   bio?: boolean
@@ -542,9 +653,10 @@ export type tutorSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   avilable_end_time?: boolean
   created_at?: boolean
   updated_at?: boolean
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tutor"]>
 
-export type tutorSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type TutorSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   user_id?: boolean
   bio?: boolean
@@ -557,9 +669,10 @@ export type tutorSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   avilable_end_time?: boolean
   created_at?: boolean
   updated_at?: boolean
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tutor"]>
 
-export type tutorSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type TutorSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   user_id?: boolean
   bio?: boolean
@@ -572,9 +685,10 @@ export type tutorSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   avilable_end_time?: boolean
   created_at?: boolean
   updated_at?: boolean
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tutor"]>
 
-export type tutorSelectScalar = {
+export type TutorSelectScalar = {
   id?: boolean
   user_id?: boolean
   bio?: boolean
@@ -589,11 +703,22 @@ export type tutorSelectScalar = {
   updated_at?: boolean
 }
 
-export type tutorOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "user_id" | "bio" | "hourly_rate" | "experience_years" | "education" | "category_id" | "avg_rating" | "avilable_start_time" | "avilable_end_time" | "created_at" | "updated_at", ExtArgs["result"]["tutor"]>
+export type TutorOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "user_id" | "bio" | "hourly_rate" | "experience_years" | "education" | "category_id" | "avg_rating" | "avilable_start_time" | "avilable_end_time" | "created_at" | "updated_at", ExtArgs["result"]["tutor"]>
+export type TutorInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+}
+export type TutorIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+}
+export type TutorIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+}
 
-export type $tutorPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  name: "tutor"
-  objects: {}
+export type $TutorPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  name: "Tutor"
+  objects: {
+    user: Prisma.$UserPayload<ExtArgs>
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     user_id: string
@@ -611,18 +736,18 @@ export type $tutorPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   composites: {}
 }
 
-export type tutorGetPayload<S extends boolean | null | undefined | tutorDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$tutorPayload, S>
+export type TutorGetPayload<S extends boolean | null | undefined | TutorDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$TutorPayload, S>
 
-export type tutorCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
-  Omit<tutorFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+export type TutorCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
+  Omit<TutorFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
     select?: TutorCountAggregateInputType | true
   }
 
-export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['tutor'], meta: { name: 'tutor' } }
+export interface TutorDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Tutor'], meta: { name: 'Tutor' } }
   /**
    * Find zero or one Tutor that matches the filter.
-   * @param {tutorFindUniqueArgs} args - Arguments to find a Tutor
+   * @param {TutorFindUniqueArgs} args - Arguments to find a Tutor
    * @example
    * // Get one Tutor
    * const tutor = await prisma.tutor.findUnique({
@@ -631,12 +756,12 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    *   }
    * })
    */
-  findUnique<T extends tutorFindUniqueArgs>(args: Prisma.SelectSubset<T, tutorFindUniqueArgs<ExtArgs>>): Prisma.Prisma__tutorClient<runtime.Types.Result.GetResult<Prisma.$tutorPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findUnique<T extends TutorFindUniqueArgs>(args: Prisma.SelectSubset<T, TutorFindUniqueArgs<ExtArgs>>): Prisma.Prisma__TutorClient<runtime.Types.Result.GetResult<Prisma.$TutorPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find one Tutor that matches the filter or throw an error with `error.code='P2025'`
    * if no matches were found.
-   * @param {tutorFindUniqueOrThrowArgs} args - Arguments to find a Tutor
+   * @param {TutorFindUniqueOrThrowArgs} args - Arguments to find a Tutor
    * @example
    * // Get one Tutor
    * const tutor = await prisma.tutor.findUniqueOrThrow({
@@ -645,13 +770,13 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    *   }
    * })
    */
-  findUniqueOrThrow<T extends tutorFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, tutorFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__tutorClient<runtime.Types.Result.GetResult<Prisma.$tutorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findUniqueOrThrow<T extends TutorFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, TutorFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__TutorClient<runtime.Types.Result.GetResult<Prisma.$TutorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first Tutor that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {tutorFindFirstArgs} args - Arguments to find a Tutor
+   * @param {TutorFindFirstArgs} args - Arguments to find a Tutor
    * @example
    * // Get one Tutor
    * const tutor = await prisma.tutor.findFirst({
@@ -660,14 +785,14 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    *   }
    * })
    */
-  findFirst<T extends tutorFindFirstArgs>(args?: Prisma.SelectSubset<T, tutorFindFirstArgs<ExtArgs>>): Prisma.Prisma__tutorClient<runtime.Types.Result.GetResult<Prisma.$tutorPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findFirst<T extends TutorFindFirstArgs>(args?: Prisma.SelectSubset<T, TutorFindFirstArgs<ExtArgs>>): Prisma.Prisma__TutorClient<runtime.Types.Result.GetResult<Prisma.$TutorPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first Tutor that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {tutorFindFirstOrThrowArgs} args - Arguments to find a Tutor
+   * @param {TutorFindFirstOrThrowArgs} args - Arguments to find a Tutor
    * @example
    * // Get one Tutor
    * const tutor = await prisma.tutor.findFirstOrThrow({
@@ -676,13 +801,13 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    *   }
    * })
    */
-  findFirstOrThrow<T extends tutorFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, tutorFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__tutorClient<runtime.Types.Result.GetResult<Prisma.$tutorPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findFirstOrThrow<T extends TutorFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, TutorFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__TutorClient<runtime.Types.Result.GetResult<Prisma.$TutorPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find zero or more Tutors that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {tutorFindManyArgs} args - Arguments to filter and select certain fields only.
+   * @param {TutorFindManyArgs} args - Arguments to filter and select certain fields only.
    * @example
    * // Get all Tutors
    * const tutors = await prisma.tutor.findMany()
@@ -694,11 +819,11 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * const tutorWithIdOnly = await prisma.tutor.findMany({ select: { id: true } })
    * 
    */
-  findMany<T extends tutorFindManyArgs>(args?: Prisma.SelectSubset<T, tutorFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$tutorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+  findMany<T extends TutorFindManyArgs>(args?: Prisma.SelectSubset<T, TutorFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TutorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
   /**
    * Create a Tutor.
-   * @param {tutorCreateArgs} args - Arguments to create a Tutor.
+   * @param {TutorCreateArgs} args - Arguments to create a Tutor.
    * @example
    * // Create one Tutor
    * const Tutor = await prisma.tutor.create({
@@ -708,11 +833,11 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * })
    * 
    */
-  create<T extends tutorCreateArgs>(args: Prisma.SelectSubset<T, tutorCreateArgs<ExtArgs>>): Prisma.Prisma__tutorClient<runtime.Types.Result.GetResult<Prisma.$tutorPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  create<T extends TutorCreateArgs>(args: Prisma.SelectSubset<T, TutorCreateArgs<ExtArgs>>): Prisma.Prisma__TutorClient<runtime.Types.Result.GetResult<Prisma.$TutorPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Create many Tutors.
-   * @param {tutorCreateManyArgs} args - Arguments to create many Tutors.
+   * @param {TutorCreateManyArgs} args - Arguments to create many Tutors.
    * @example
    * // Create many Tutors
    * const tutor = await prisma.tutor.createMany({
@@ -722,11 +847,11 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * })
    *     
    */
-  createMany<T extends tutorCreateManyArgs>(args?: Prisma.SelectSubset<T, tutorCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  createMany<T extends TutorCreateManyArgs>(args?: Prisma.SelectSubset<T, TutorCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Create many Tutors and returns the data saved in the database.
-   * @param {tutorCreateManyAndReturnArgs} args - Arguments to create many Tutors.
+   * @param {TutorCreateManyAndReturnArgs} args - Arguments to create many Tutors.
    * @example
    * // Create many Tutors
    * const tutor = await prisma.tutor.createManyAndReturn({
@@ -746,11 +871,11 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  createManyAndReturn<T extends tutorCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, tutorCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$tutorPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+  createManyAndReturn<T extends TutorCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, TutorCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TutorPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
   /**
    * Delete a Tutor.
-   * @param {tutorDeleteArgs} args - Arguments to delete one Tutor.
+   * @param {TutorDeleteArgs} args - Arguments to delete one Tutor.
    * @example
    * // Delete one Tutor
    * const Tutor = await prisma.tutor.delete({
@@ -760,11 +885,11 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * })
    * 
    */
-  delete<T extends tutorDeleteArgs>(args: Prisma.SelectSubset<T, tutorDeleteArgs<ExtArgs>>): Prisma.Prisma__tutorClient<runtime.Types.Result.GetResult<Prisma.$tutorPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  delete<T extends TutorDeleteArgs>(args: Prisma.SelectSubset<T, TutorDeleteArgs<ExtArgs>>): Prisma.Prisma__TutorClient<runtime.Types.Result.GetResult<Prisma.$TutorPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Update one Tutor.
-   * @param {tutorUpdateArgs} args - Arguments to update one Tutor.
+   * @param {TutorUpdateArgs} args - Arguments to update one Tutor.
    * @example
    * // Update one Tutor
    * const tutor = await prisma.tutor.update({
@@ -777,11 +902,11 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * })
    * 
    */
-  update<T extends tutorUpdateArgs>(args: Prisma.SelectSubset<T, tutorUpdateArgs<ExtArgs>>): Prisma.Prisma__tutorClient<runtime.Types.Result.GetResult<Prisma.$tutorPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  update<T extends TutorUpdateArgs>(args: Prisma.SelectSubset<T, TutorUpdateArgs<ExtArgs>>): Prisma.Prisma__TutorClient<runtime.Types.Result.GetResult<Prisma.$TutorPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Delete zero or more Tutors.
-   * @param {tutorDeleteManyArgs} args - Arguments to filter Tutors to delete.
+   * @param {TutorDeleteManyArgs} args - Arguments to filter Tutors to delete.
    * @example
    * // Delete a few Tutors
    * const { count } = await prisma.tutor.deleteMany({
@@ -791,13 +916,13 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * })
    * 
    */
-  deleteMany<T extends tutorDeleteManyArgs>(args?: Prisma.SelectSubset<T, tutorDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  deleteMany<T extends TutorDeleteManyArgs>(args?: Prisma.SelectSubset<T, TutorDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Update zero or more Tutors.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {tutorUpdateManyArgs} args - Arguments to update one or more rows.
+   * @param {TutorUpdateManyArgs} args - Arguments to update one or more rows.
    * @example
    * // Update many Tutors
    * const tutor = await prisma.tutor.updateMany({
@@ -810,11 +935,11 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * })
    * 
    */
-  updateMany<T extends tutorUpdateManyArgs>(args: Prisma.SelectSubset<T, tutorUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  updateMany<T extends TutorUpdateManyArgs>(args: Prisma.SelectSubset<T, TutorUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Update zero or more Tutors and returns the data updated in the database.
-   * @param {tutorUpdateManyAndReturnArgs} args - Arguments to update many Tutors.
+   * @param {TutorUpdateManyAndReturnArgs} args - Arguments to update many Tutors.
    * @example
    * // Update many Tutors
    * const tutor = await prisma.tutor.updateManyAndReturn({
@@ -840,11 +965,11 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  updateManyAndReturn<T extends tutorUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, tutorUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$tutorPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+  updateManyAndReturn<T extends TutorUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, TutorUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TutorPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
   /**
    * Create or update one Tutor.
-   * @param {tutorUpsertArgs} args - Arguments to update or create a Tutor.
+   * @param {TutorUpsertArgs} args - Arguments to update or create a Tutor.
    * @example
    * // Update or create a Tutor
    * const tutor = await prisma.tutor.upsert({
@@ -859,14 +984,14 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    *   }
    * })
    */
-  upsert<T extends tutorUpsertArgs>(args: Prisma.SelectSubset<T, tutorUpsertArgs<ExtArgs>>): Prisma.Prisma__tutorClient<runtime.Types.Result.GetResult<Prisma.$tutorPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  upsert<T extends TutorUpsertArgs>(args: Prisma.SelectSubset<T, TutorUpsertArgs<ExtArgs>>): Prisma.Prisma__TutorClient<runtime.Types.Result.GetResult<Prisma.$TutorPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
   /**
    * Count the number of Tutors.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {tutorCountArgs} args - Arguments to filter Tutors to count.
+   * @param {TutorCountArgs} args - Arguments to filter Tutors to count.
    * @example
    * // Count the number of Tutors
    * const count = await prisma.tutor.count({
@@ -875,8 +1000,8 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    *   }
    * })
   **/
-  count<T extends tutorCountArgs>(
-    args?: Prisma.Subset<T, tutorCountArgs>,
+  count<T extends TutorCountArgs>(
+    args?: Prisma.Subset<T, TutorCountArgs>,
   ): Prisma.PrismaPromise<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
@@ -915,7 +1040,7 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * Group by Tutor.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {tutorGroupByArgs} args - Group by arguments.
+   * @param {TutorGroupByArgs} args - Group by arguments.
    * @example
    * // Group by city, order by createdAt, get count
    * const result = await prisma.user.groupBy({
@@ -930,14 +1055,14 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * 
   **/
   groupBy<
-    T extends tutorGroupByArgs,
+    T extends TutorGroupByArgs,
     HasSelectOrTake extends Prisma.Or<
       Prisma.Extends<'skip', Prisma.Keys<T>>,
       Prisma.Extends<'take', Prisma.Keys<T>>
     >,
     OrderByArg extends Prisma.True extends HasSelectOrTake
-      ? { orderBy: tutorGroupByArgs['orderBy'] }
-      : { orderBy?: tutorGroupByArgs['orderBy'] },
+      ? { orderBy: TutorGroupByArgs['orderBy'] }
+      : { orderBy?: TutorGroupByArgs['orderBy'] },
     OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>,
     ByFields extends Prisma.MaybeTupleToUnion<T['by']>,
     ByValid extends Prisma.Has<ByFields, OrderFields>,
@@ -986,21 +1111,22 @@ export interface tutorDelegate<ExtArgs extends runtime.Types.Extensions.Internal
           ? never
           : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
       }[OrderFields]
-  >(args: Prisma.SubsetIntersection<T, tutorGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTutorGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  >(args: Prisma.SubsetIntersection<T, TutorGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTutorGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 /**
- * Fields of the tutor model
+ * Fields of the Tutor model
  */
-readonly fields: tutorFieldRefs;
+readonly fields: TutorFieldRefs;
 }
 
 /**
- * The delegate class that acts as a "Promise-like" for tutor.
+ * The delegate class that acts as a "Promise-like" for Tutor.
  * Why is this prefixed with `Prisma__`?
  * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
-export interface Prisma__tutorClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+export interface Prisma__TutorClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1027,382 +1153,430 @@ export interface Prisma__tutorClient<T, Null = never, ExtArgs extends runtime.Ty
 
 
 /**
- * Fields of the tutor model
+ * Fields of the Tutor model
  */
-export interface tutorFieldRefs {
-  readonly id: Prisma.FieldRef<"tutor", 'String'>
-  readonly user_id: Prisma.FieldRef<"tutor", 'String'>
-  readonly bio: Prisma.FieldRef<"tutor", 'String'>
-  readonly hourly_rate: Prisma.FieldRef<"tutor", 'Decimal'>
-  readonly experience_years: Prisma.FieldRef<"tutor", 'Decimal'>
-  readonly education: Prisma.FieldRef<"tutor", 'String'>
-  readonly category_id: Prisma.FieldRef<"tutor", 'String'>
-  readonly avg_rating: Prisma.FieldRef<"tutor", 'Decimal'>
-  readonly avilable_start_time: Prisma.FieldRef<"tutor", 'DateTime'>
-  readonly avilable_end_time: Prisma.FieldRef<"tutor", 'DateTime'>
-  readonly created_at: Prisma.FieldRef<"tutor", 'DateTime'>
-  readonly updated_at: Prisma.FieldRef<"tutor", 'DateTime'>
+export interface TutorFieldRefs {
+  readonly id: Prisma.FieldRef<"Tutor", 'String'>
+  readonly user_id: Prisma.FieldRef<"Tutor", 'String'>
+  readonly bio: Prisma.FieldRef<"Tutor", 'String'>
+  readonly hourly_rate: Prisma.FieldRef<"Tutor", 'Decimal'>
+  readonly experience_years: Prisma.FieldRef<"Tutor", 'Decimal'>
+  readonly education: Prisma.FieldRef<"Tutor", 'String'>
+  readonly category_id: Prisma.FieldRef<"Tutor", 'String'>
+  readonly avg_rating: Prisma.FieldRef<"Tutor", 'Decimal'>
+  readonly avilable_start_time: Prisma.FieldRef<"Tutor", 'DateTime'>
+  readonly avilable_end_time: Prisma.FieldRef<"Tutor", 'DateTime'>
+  readonly created_at: Prisma.FieldRef<"Tutor", 'DateTime'>
+  readonly updated_at: Prisma.FieldRef<"Tutor", 'DateTime'>
 }
     
 
 // Custom InputTypes
 /**
- * tutor findUnique
+ * Tutor findUnique
  */
-export type tutorFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type TutorFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the tutor
+   * Select specific fields to fetch from the Tutor
    */
-  select?: Prisma.tutorSelect<ExtArgs> | null
+  select?: Prisma.TutorSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the tutor
+   * Omit specific fields from the Tutor
    */
-  omit?: Prisma.tutorOmit<ExtArgs> | null
+  omit?: Prisma.TutorOmit<ExtArgs> | null
   /**
-   * Filter, which tutor to fetch.
+   * Choose, which related nodes to fetch as well
    */
-  where: Prisma.tutorWhereUniqueInput
+  include?: Prisma.TutorInclude<ExtArgs> | null
+  /**
+   * Filter, which Tutor to fetch.
+   */
+  where: Prisma.TutorWhereUniqueInput
 }
 
 /**
- * tutor findUniqueOrThrow
+ * Tutor findUniqueOrThrow
  */
-export type tutorFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type TutorFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the tutor
+   * Select specific fields to fetch from the Tutor
    */
-  select?: Prisma.tutorSelect<ExtArgs> | null
+  select?: Prisma.TutorSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the tutor
+   * Omit specific fields from the Tutor
    */
-  omit?: Prisma.tutorOmit<ExtArgs> | null
+  omit?: Prisma.TutorOmit<ExtArgs> | null
   /**
-   * Filter, which tutor to fetch.
+   * Choose, which related nodes to fetch as well
    */
-  where: Prisma.tutorWhereUniqueInput
+  include?: Prisma.TutorInclude<ExtArgs> | null
+  /**
+   * Filter, which Tutor to fetch.
+   */
+  where: Prisma.TutorWhereUniqueInput
 }
 
 /**
- * tutor findFirst
+ * Tutor findFirst
  */
-export type tutorFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type TutorFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the tutor
+   * Select specific fields to fetch from the Tutor
    */
-  select?: Prisma.tutorSelect<ExtArgs> | null
+  select?: Prisma.TutorSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the tutor
+   * Omit specific fields from the Tutor
    */
-  omit?: Prisma.tutorOmit<ExtArgs> | null
+  omit?: Prisma.TutorOmit<ExtArgs> | null
   /**
-   * Filter, which tutor to fetch.
+   * Choose, which related nodes to fetch as well
    */
-  where?: Prisma.tutorWhereInput
+  include?: Prisma.TutorInclude<ExtArgs> | null
+  /**
+   * Filter, which Tutor to fetch.
+   */
+  where?: Prisma.TutorWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of tutors to fetch.
+   * Determine the order of Tutors to fetch.
    */
-  orderBy?: Prisma.tutorOrderByWithRelationInput | Prisma.tutorOrderByWithRelationInput[]
+  orderBy?: Prisma.TutorOrderByWithRelationInput | Prisma.TutorOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for tutors.
+   * Sets the position for searching for Tutors.
    */
-  cursor?: Prisma.tutorWhereUniqueInput
+  cursor?: Prisma.TutorWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` tutors from the position of the cursor.
+   * Take `±n` Tutors from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` tutors.
+   * Skip the first `n` Tutors.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of tutors.
+   * Filter by unique combinations of Tutors.
    */
   distinct?: Prisma.TutorScalarFieldEnum | Prisma.TutorScalarFieldEnum[]
 }
 
 /**
- * tutor findFirstOrThrow
+ * Tutor findFirstOrThrow
  */
-export type tutorFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type TutorFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the tutor
+   * Select specific fields to fetch from the Tutor
    */
-  select?: Prisma.tutorSelect<ExtArgs> | null
+  select?: Prisma.TutorSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the tutor
+   * Omit specific fields from the Tutor
    */
-  omit?: Prisma.tutorOmit<ExtArgs> | null
+  omit?: Prisma.TutorOmit<ExtArgs> | null
   /**
-   * Filter, which tutor to fetch.
+   * Choose, which related nodes to fetch as well
    */
-  where?: Prisma.tutorWhereInput
+  include?: Prisma.TutorInclude<ExtArgs> | null
+  /**
+   * Filter, which Tutor to fetch.
+   */
+  where?: Prisma.TutorWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of tutors to fetch.
+   * Determine the order of Tutors to fetch.
    */
-  orderBy?: Prisma.tutorOrderByWithRelationInput | Prisma.tutorOrderByWithRelationInput[]
+  orderBy?: Prisma.TutorOrderByWithRelationInput | Prisma.TutorOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for tutors.
+   * Sets the position for searching for Tutors.
    */
-  cursor?: Prisma.tutorWhereUniqueInput
+  cursor?: Prisma.TutorWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` tutors from the position of the cursor.
+   * Take `±n` Tutors from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` tutors.
+   * Skip the first `n` Tutors.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of tutors.
+   * Filter by unique combinations of Tutors.
    */
   distinct?: Prisma.TutorScalarFieldEnum | Prisma.TutorScalarFieldEnum[]
 }
 
 /**
- * tutor findMany
+ * Tutor findMany
  */
-export type tutorFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type TutorFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the tutor
+   * Select specific fields to fetch from the Tutor
    */
-  select?: Prisma.tutorSelect<ExtArgs> | null
+  select?: Prisma.TutorSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the tutor
+   * Omit specific fields from the Tutor
    */
-  omit?: Prisma.tutorOmit<ExtArgs> | null
+  omit?: Prisma.TutorOmit<ExtArgs> | null
   /**
-   * Filter, which tutors to fetch.
+   * Choose, which related nodes to fetch as well
    */
-  where?: Prisma.tutorWhereInput
+  include?: Prisma.TutorInclude<ExtArgs> | null
+  /**
+   * Filter, which Tutors to fetch.
+   */
+  where?: Prisma.TutorWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of tutors to fetch.
+   * Determine the order of Tutors to fetch.
    */
-  orderBy?: Prisma.tutorOrderByWithRelationInput | Prisma.tutorOrderByWithRelationInput[]
+  orderBy?: Prisma.TutorOrderByWithRelationInput | Prisma.TutorOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for listing tutors.
+   * Sets the position for listing Tutors.
    */
-  cursor?: Prisma.tutorWhereUniqueInput
+  cursor?: Prisma.TutorWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` tutors from the position of the cursor.
+   * Take `±n` Tutors from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` tutors.
+   * Skip the first `n` Tutors.
    */
   skip?: number
   distinct?: Prisma.TutorScalarFieldEnum | Prisma.TutorScalarFieldEnum[]
 }
 
 /**
- * tutor create
+ * Tutor create
  */
-export type tutorCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type TutorCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the tutor
+   * Select specific fields to fetch from the Tutor
    */
-  select?: Prisma.tutorSelect<ExtArgs> | null
+  select?: Prisma.TutorSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the tutor
+   * Omit specific fields from the Tutor
    */
-  omit?: Prisma.tutorOmit<ExtArgs> | null
+  omit?: Prisma.TutorOmit<ExtArgs> | null
   /**
-   * The data needed to create a tutor.
+   * Choose, which related nodes to fetch as well
    */
-  data: Prisma.XOR<Prisma.tutorCreateInput, Prisma.tutorUncheckedCreateInput>
+  include?: Prisma.TutorInclude<ExtArgs> | null
+  /**
+   * The data needed to create a Tutor.
+   */
+  data: Prisma.XOR<Prisma.TutorCreateInput, Prisma.TutorUncheckedCreateInput>
 }
 
 /**
- * tutor createMany
+ * Tutor createMany
  */
-export type tutorCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type TutorCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to create many tutors.
+   * The data used to create many Tutors.
    */
-  data: Prisma.tutorCreateManyInput | Prisma.tutorCreateManyInput[]
+  data: Prisma.TutorCreateManyInput | Prisma.TutorCreateManyInput[]
   skipDuplicates?: boolean
 }
 
 /**
- * tutor createManyAndReturn
+ * Tutor createManyAndReturn
  */
-export type tutorCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type TutorCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the tutor
+   * Select specific fields to fetch from the Tutor
    */
-  select?: Prisma.tutorSelectCreateManyAndReturn<ExtArgs> | null
+  select?: Prisma.TutorSelectCreateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the tutor
+   * Omit specific fields from the Tutor
    */
-  omit?: Prisma.tutorOmit<ExtArgs> | null
+  omit?: Prisma.TutorOmit<ExtArgs> | null
   /**
-   * The data used to create many tutors.
+   * The data used to create many Tutors.
    */
-  data: Prisma.tutorCreateManyInput | Prisma.tutorCreateManyInput[]
+  data: Prisma.TutorCreateManyInput | Prisma.TutorCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TutorIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
- * tutor update
+ * Tutor update
  */
-export type tutorUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type TutorUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the tutor
+   * Select specific fields to fetch from the Tutor
    */
-  select?: Prisma.tutorSelect<ExtArgs> | null
+  select?: Prisma.TutorSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the tutor
+   * Omit specific fields from the Tutor
    */
-  omit?: Prisma.tutorOmit<ExtArgs> | null
+  omit?: Prisma.TutorOmit<ExtArgs> | null
   /**
-   * The data needed to update a tutor.
+   * Choose, which related nodes to fetch as well
    */
-  data: Prisma.XOR<Prisma.tutorUpdateInput, Prisma.tutorUncheckedUpdateInput>
+  include?: Prisma.TutorInclude<ExtArgs> | null
   /**
-   * Choose, which tutor to update.
+   * The data needed to update a Tutor.
    */
-  where: Prisma.tutorWhereUniqueInput
+  data: Prisma.XOR<Prisma.TutorUpdateInput, Prisma.TutorUncheckedUpdateInput>
+  /**
+   * Choose, which Tutor to update.
+   */
+  where: Prisma.TutorWhereUniqueInput
 }
 
 /**
- * tutor updateMany
+ * Tutor updateMany
  */
-export type tutorUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type TutorUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to update tutors.
+   * The data used to update Tutors.
    */
-  data: Prisma.XOR<Prisma.tutorUpdateManyMutationInput, Prisma.tutorUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.TutorUpdateManyMutationInput, Prisma.TutorUncheckedUpdateManyInput>
   /**
-   * Filter which tutors to update
+   * Filter which Tutors to update
    */
-  where?: Prisma.tutorWhereInput
+  where?: Prisma.TutorWhereInput
   /**
-   * Limit how many tutors to update.
+   * Limit how many Tutors to update.
    */
   limit?: number
 }
 
 /**
- * tutor updateManyAndReturn
+ * Tutor updateManyAndReturn
  */
-export type tutorUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type TutorUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the tutor
+   * Select specific fields to fetch from the Tutor
    */
-  select?: Prisma.tutorSelectUpdateManyAndReturn<ExtArgs> | null
+  select?: Prisma.TutorSelectUpdateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the tutor
+   * Omit specific fields from the Tutor
    */
-  omit?: Prisma.tutorOmit<ExtArgs> | null
+  omit?: Prisma.TutorOmit<ExtArgs> | null
   /**
-   * The data used to update tutors.
+   * The data used to update Tutors.
    */
-  data: Prisma.XOR<Prisma.tutorUpdateManyMutationInput, Prisma.tutorUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.TutorUpdateManyMutationInput, Prisma.TutorUncheckedUpdateManyInput>
   /**
-   * Filter which tutors to update
+   * Filter which Tutors to update
    */
-  where?: Prisma.tutorWhereInput
+  where?: Prisma.TutorWhereInput
   /**
-   * Limit how many tutors to update.
+   * Limit how many Tutors to update.
+   */
+  limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TutorIncludeUpdateManyAndReturn<ExtArgs> | null
+}
+
+/**
+ * Tutor upsert
+ */
+export type TutorUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Tutor
+   */
+  select?: Prisma.TutorSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Tutor
+   */
+  omit?: Prisma.TutorOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TutorInclude<ExtArgs> | null
+  /**
+   * The filter to search for the Tutor to update in case it exists.
+   */
+  where: Prisma.TutorWhereUniqueInput
+  /**
+   * In case the Tutor found by the `where` argument doesn't exist, create a new Tutor with this data.
+   */
+  create: Prisma.XOR<Prisma.TutorCreateInput, Prisma.TutorUncheckedCreateInput>
+  /**
+   * In case the Tutor was found with the provided `where` argument, update it with this data.
+   */
+  update: Prisma.XOR<Prisma.TutorUpdateInput, Prisma.TutorUncheckedUpdateInput>
+}
+
+/**
+ * Tutor delete
+ */
+export type TutorDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Tutor
+   */
+  select?: Prisma.TutorSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Tutor
+   */
+  omit?: Prisma.TutorOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TutorInclude<ExtArgs> | null
+  /**
+   * Filter which Tutor to delete.
+   */
+  where: Prisma.TutorWhereUniqueInput
+}
+
+/**
+ * Tutor deleteMany
+ */
+export type TutorDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Filter which Tutors to delete
+   */
+  where?: Prisma.TutorWhereInput
+  /**
+   * Limit how many Tutors to delete.
    */
   limit?: number
 }
 
 /**
- * tutor upsert
+ * Tutor without action
  */
-export type tutorUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type TutorDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the tutor
+   * Select specific fields to fetch from the Tutor
    */
-  select?: Prisma.tutorSelect<ExtArgs> | null
+  select?: Prisma.TutorSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the tutor
+   * Omit specific fields from the Tutor
    */
-  omit?: Prisma.tutorOmit<ExtArgs> | null
+  omit?: Prisma.TutorOmit<ExtArgs> | null
   /**
-   * The filter to search for the tutor to update in case it exists.
+   * Choose, which related nodes to fetch as well
    */
-  where: Prisma.tutorWhereUniqueInput
-  /**
-   * In case the tutor found by the `where` argument doesn't exist, create a new tutor with this data.
-   */
-  create: Prisma.XOR<Prisma.tutorCreateInput, Prisma.tutorUncheckedCreateInput>
-  /**
-   * In case the tutor was found with the provided `where` argument, update it with this data.
-   */
-  update: Prisma.XOR<Prisma.tutorUpdateInput, Prisma.tutorUncheckedUpdateInput>
-}
-
-/**
- * tutor delete
- */
-export type tutorDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the tutor
-   */
-  select?: Prisma.tutorSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the tutor
-   */
-  omit?: Prisma.tutorOmit<ExtArgs> | null
-  /**
-   * Filter which tutor to delete.
-   */
-  where: Prisma.tutorWhereUniqueInput
-}
-
-/**
- * tutor deleteMany
- */
-export type tutorDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Filter which tutors to delete
-   */
-  where?: Prisma.tutorWhereInput
-  /**
-   * Limit how many tutors to delete.
-   */
-  limit?: number
-}
-
-/**
- * tutor without action
- */
-export type tutorDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the tutor
-   */
-  select?: Prisma.tutorSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the tutor
-   */
-  omit?: Prisma.tutorOmit<ExtArgs> | null
+  include?: Prisma.TutorInclude<ExtArgs> | null
 }

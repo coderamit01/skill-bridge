@@ -1,10 +1,11 @@
-enum BookStatus {
+enum BookingStatus {
+  PENDING
   CONFIRMED
   COMPLETED
   CANCELLED
 }
 
-model booking {
+model Booking {
   id           String     @id @default(uuid())
   user_id      String
   tutor_id     String
@@ -12,7 +13,7 @@ model booking {
   start_time   DateTime
   end_time     DateTime
   price        Decimal
-  status       BookStatus
+  status       BookingStatus @default(PENDING)
   created_at   DateTime   @default(now())
   updated_at   DateTime   @updatedAt
 }

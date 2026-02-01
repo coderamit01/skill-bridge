@@ -1,4 +1,4 @@
-model review {
+model Review {
   id         String   @id @default(uuid())
   booking_id String
   user_id    String
