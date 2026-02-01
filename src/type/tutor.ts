@@ -9,3 +9,14 @@ export interface TutorProfile {
   avilable_start_time: string;
   avilable_end_time: string;
 }
+export interface TutorUpdateProfile {
+  user_id: string;
+  bio?: string | null;
+  hourly_rate?: number | null;
+  experience_years?: number | null;
+  education?: string | null;
+  category_id?: string | null;
+  avg_rating?: number | null;
+  avilable_start_time: string;
+  avilable_end_time: string;
+}

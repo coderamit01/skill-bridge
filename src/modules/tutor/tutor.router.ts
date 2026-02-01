@@ -13,7 +13,7 @@ router.post(
   tutorController.createProfile,
 );
 router.put(
-  "/tutor/profile",
+  "/tutor/profile/:tutorId",
   authentication(UserRole.TUTOR, UserRole.ADMIN),
   tutorController.updateProfile,
 );

@@ -299,10 +299,10 @@ export type tutorOrderByWithRelationInput = {
 
 export type tutorWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  user_id?: string
   AND?: Prisma.tutorWhereInput | Prisma.tutorWhereInput[]
   OR?: Prisma.tutorWhereInput[]
   NOT?: Prisma.tutorWhereInput | Prisma.tutorWhereInput[]
-  user_id?: Prisma.StringFilter<"tutor"> | string
   bio?: Prisma.StringNullableFilter<"tutor"> | string | null
   hourly_rate?: Prisma.DecimalNullableFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   experience_years?: Prisma.DecimalNullableFilter<"tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
@@ -313,7 +313,7 @@ export type tutorWhereUniqueInput = Prisma.AtLeast<{
   avilable_end_time?: Prisma.DateTimeFilter<"tutor"> | Date | string
   created_at?: Prisma.DateTimeFilter<"tutor"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"tutor"> | Date | string
-}, "id">
+}, "id" | "user_id">
 
 export type tutorOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -513,6 +513,10 @@ export type tutorSumOrderByAggregateInput = {
   hourly_rate?: Prisma.SortOrder
   experience_years?: Prisma.SortOrder
   avg_rating?: Prisma.SortOrder
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type NullableDecimalFieldUpdateOperationsInput = {

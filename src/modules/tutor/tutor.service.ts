@@ -1,22 +1,23 @@
 import { User } from "../../../generated/prisma/client";
+import { AppError } from "../../helpers/appError";
 import { UserRole } from "../../lib/auth";
 import { prisma } from "../../lib/prisma";
-import { TutorProfile } from "../../type/tutor";
+import { TutorProfile, TutorUpdateProfile } from "../../type/tutor";
 
-const getTutors = async () => {};
+const getTutors = async () => { };
 const createProfile = async (user: User, data: TutorProfile) => {
   const { id, role } = user;
   if (!user) {
-    throw new Error("User not authenticated");
+    throw new AppError("User not authenticated", 401);
   }
   if (role !== UserRole.TUTOR) {
-    throw new Error("Access denied. Tutor only.");
+    throw new AppError("Access denied. Tutor only.", 403);
   }
-  const exists = await prisma.tutor.findFirst({
+  const exists = await prisma.tutor.findUnique({
     where: { user_id: id },
   });
   if (exists) {
-    throw new Error("Profile already exists");
+    throw new AppError("Profile already exists", 400);
   }
 
   return await prisma.tutor.create({
@@ -33,26 +34,23 @@ const createProfile = async (user: User, data: TutorProfile) => {
     },
   });
 };
-const updateProfile = async (user: User, data: TutorProfile) => {
+const updateProfile = async (user: User,tutorId:string, data: TutorUpdateProfile) => {
   const { id, role } = user;
-  if (!user) {
-    throw new Error("User not authenticated");
+
+  if (![UserRole.TUTOR, UserRole.ADMIN].includes(role as UserRole)) {
+    throw new AppError("Access denied.", 403);
   }
-  const tutorData = await prisma.tutor.findFirstOrThrow({
-    where: { user_id: id },
+
+  const tutor = await prisma.tutor.findUniqueOrThrow({
+    where: { id: tutorId },
   });
 
-  if (
-    [UserRole.TUTOR, UserRole.ADMIN].includes(role as UserRole) &&
-    tutorData.id !== id
-  ) {
-    throw new Error("Access denied.");
+  if (role === UserRole.TUTOR && tutor.user_id !== id) {
+    throw new AppError("Access denied.", 403);
   }
 
   return await prisma.tutor.update({
-    where: {
-      user_id: id,
-    },
+    where: { id: tutorId },
     data,
   });
 };

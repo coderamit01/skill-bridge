@@ -387,7 +387,6 @@ export const ModelName = {
   booking: 'booking',
   category: 'category',
   review: 'review',
-  student: 'student',
   tutor: 'tutor',
   User: 'User',
   Session: 'Session',
@@ -408,7 +407,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "booking" | "category" | "review" | "student" | "tutor" | "user" | "session" | "account" | "verification"
+    modelProps: "booking" | "category" | "review" | "tutor" | "user" | "session" | "account" | "verification"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -631,80 +630,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.reviewCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.ReviewCountAggregateOutputType> | number
-        }
-      }
-    }
-    student: {
-      payload: Prisma.$studentPayload<ExtArgs>
-      fields: Prisma.studentFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.studentFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.studentFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>
-        }
-        findFirst: {
-          args: Prisma.studentFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.studentFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>
-        }
-        findMany: {
-          args: Prisma.studentFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>[]
-        }
-        create: {
-          args: Prisma.studentCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>
-        }
-        createMany: {
-          args: Prisma.studentCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.studentCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>[]
-        }
-        delete: {
-          args: Prisma.studentDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>
-        }
-        update: {
-          args: Prisma.studentUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>
-        }
-        deleteMany: {
-          args: Prisma.studentDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.studentUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.studentUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>[]
-        }
-        upsert: {
-          args: Prisma.studentUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$studentPayload>
-        }
-        aggregate: {
-          args: Prisma.StudentAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateStudent>
-        }
-        groupBy: {
-          args: Prisma.studentGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.StudentGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.studentCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.StudentCountAggregateOutputType> | number
         }
       }
     }
@@ -1155,17 +1080,6 @@ export const ReviewScalarFieldEnum = {
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
 
 
-export const StudentScalarFieldEnum = {
-  id: 'id',
-  user_id: 'user_id',
-  school: 'school',
-  age: 'age',
-  address: 'address'
-} as const
-
-export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeof StudentScalarFieldEnum]
-
-
 export const TutorScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
@@ -1192,6 +1106,10 @@ export const UserScalarFieldEnum = {
   image: 'image',
   role: 'role',
   is_banned: 'is_banned',
+  school: 'school',
+  age: 'age',
+  address: 'address',
+  phone: 'phone',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -1462,7 +1380,6 @@ export type GlobalOmitConfig = {
   booking?: Prisma.bookingOmit
   category?: Prisma.categoryOmit
   review?: Prisma.reviewOmit
-  student?: Prisma.studentOmit
   tutor?: Prisma.tutorOmit
   user?: Prisma.UserOmit
   session?: Prisma.SessionOmit

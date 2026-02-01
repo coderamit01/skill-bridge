@@ -55,11 +55,6 @@ export type category = Prisma.categoryModel
  */
 export type review = Prisma.reviewModel
 /**
- * Model student
- * 
- */
-export type student = Prisma.studentModel
-/**
  * Model tutor
  * 
  */

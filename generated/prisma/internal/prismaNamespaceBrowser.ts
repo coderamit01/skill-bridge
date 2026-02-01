@@ -54,7 +54,6 @@ export const ModelName = {
   booking: 'booking',
   category: 'category',
   review: 'review',
-  student: 'student',
   tutor: 'tutor',
   User: 'User',
   Session: 'Session',
@@ -116,17 +115,6 @@ export const ReviewScalarFieldEnum = {
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
 
 
-export const StudentScalarFieldEnum = {
-  id: 'id',
-  user_id: 'user_id',
-  school: 'school',
-  age: 'age',
-  address: 'address'
-} as const
-
-export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeof StudentScalarFieldEnum]
-
-
 export const TutorScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
@@ -153,6 +141,10 @@ export const UserScalarFieldEnum = {
   image: 'image',
   role: 'role',
   is_banned: 'is_banned',
+  school: 'school',
+  age: 'age',
+  address: 'address',
+  phone: 'phone',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

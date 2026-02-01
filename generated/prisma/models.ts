@@ -11,7 +11,6 @@
 export type * from './models/booking'
 export type * from './models/category'
 export type * from './models/review'
-export type * from './models/student'
 export type * from './models/tutor'
 export type * from './models/User'
 export type * from './models/Session'
