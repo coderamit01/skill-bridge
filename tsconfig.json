@@ -2,7 +2,7 @@
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
     // File Layout
-    "rootDir": ".",
+    "rootDir": "./src",
     "outDir": "./dist",
 
     // Environment Settings
@@ -12,13 +12,6 @@
     "lib": ["esnext"],
     "types": ["node"],
     "moduleResolution": "bundler",
-
-    // Path Aliases
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"],
-      "@prisma/*": ["generated/prisma/*"]
-    },
 
     // Other Outputs
     "sourceMap": true,
@@ -45,6 +38,6 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
   },
-  "include": ["src/**/*", "generated/**/*"],
+  "include": ["src/**/*", "../generated/**/*"],
   "exclude": ["node_modules", "dist"]
 }
