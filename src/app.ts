@@ -8,6 +8,7 @@ import { categoryRouter } from "./modules/category/category.router";
 import { userRouter } from "./modules/user/user.router";
 import { bookingRouter } from "./modules/booking/booking.router";
 import authentication from "./middleware/authentication";
+import { reviewRouter } from "./modules/review/review.router";
 const app = express();
 
 app.use(
@@ -31,6 +32,8 @@ app.use("/api/v1/categories", categoryRouter);
 app.use("/api/v1", userRouter);
 
 app.use("/api/v1/bookings", authentication(), bookingRouter);
+
+app.use("/api/v1/reviews", reviewRouter);
 
 app.use("/", (req, res) => {
   res.send("Hello World!");
