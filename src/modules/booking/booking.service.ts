@@ -94,6 +94,16 @@ const updateBookingStatus = async (
   });
   if (!bookingData) throw new AppError("Booking not found", 404);
 
+  let tutorProfile;
+  if (user.role === UserRole.TUTOR) {
+    tutorProfile = await prisma.tutor.findUnique({
+      where: { user_id: user.id },
+      select: { id: true },
+    });
+
+    if (!tutorProfile) throw new AppError("Tutor profile not found", 404);
+  }
+
   if (user.role === UserRole.STUDENT) {
     if (bookingData?.user_id !== user.id) {
       throw new AppError("Not your booking", 403);
@@ -103,13 +113,13 @@ const updateBookingStatus = async (
       throw new AppError("Students can only cancel bookings", 403);
     }
   }
-  if (user.role === UserRole.ADMIN) {
-    if (bookingData?.user_id !== user.id) {
-      throw new AppError("Not your booking", 403);
+  if (user.role === UserRole.TUTOR) {
+    if (bookingData.tutor_id !== tutorProfile.id) {
+      throw new AppError("Not your session", 403);
     }
 
-    if (status !== BookingStatus.CANCELLED) {
-      throw new AppError("Students can only cancel bookings", 403);
+    if (status !== BookingStatus.COMPLETED) {
+      throw new AppError("Invalid action for tutor", 403);
     }
   }
 
