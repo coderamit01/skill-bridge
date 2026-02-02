@@ -12,5 +12,10 @@ router.get(
 );
 router.get("/:bookingId", authentication(), bookingController.getBookingById);
 router.post("/", bookingController.createBooking);
+router.put(
+  "/:bookingId",
+  authentication(UserRole.ADMIN, UserRole.TUTOR, UserRole.STUDENT),
+  bookingController.updateBookingStatus,
+);
 
 export const bookingRouter = router;

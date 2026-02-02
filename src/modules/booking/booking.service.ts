@@ -84,9 +84,43 @@ const createBooking = async (user: User, data: Booking) => {
     },
   });
 };
+const updateBookingStatus = async (
+  bookId: string,
+  user: User,
+  status: BookingStatus,
+) => {
+  const bookingData = await prisma.booking.findUnique({
+    where: { id: bookId },
+  });
+  if (!bookingData) throw new AppError("Booking not found", 404);
 
+  if (user.role === UserRole.STUDENT) {
+    if (bookingData?.user_id !== user.id) {
+      throw new AppError("Not your booking", 403);
+    }
+
+    if (status !== BookingStatus.CANCELLED) {
+      throw new AppError("Students can only cancel bookings", 403);
+    }
+  }
+  if (user.role === UserRole.ADMIN) {
+    if (bookingData?.user_id !== user.id) {
+      throw new AppError("Not your booking", 403);
+    }
+
+    if (status !== BookingStatus.CANCELLED) {
+      throw new AppError("Students can only cancel bookings", 403);
+    }
+  }
+
+  await prisma.booking.update({
+    where: { id: bookId },
+    data: { status: status },
+  });
+};
 export const bookingService = {
   createBooking,
   getAllBooking,
   getBookingById,
+  updateBookingStatus,
 };
