@@ -114,7 +114,7 @@ const updateBookingStatus = async (
     }
   }
   if (user.role === UserRole.TUTOR) {
-    if (bookingData.tutor_id !== tutorProfile.id) {
+    if (bookingData.tutor_id !== tutorProfile!.id) {
       throw new AppError("Not your session", 403);
     }
 
