@@ -2,11 +2,11 @@ model Tutor {
   id                  String   @id @default(uuid())
   user_id             String   @unique
   bio                 String?  @db.Text
-  hourly_rate         Decimal? @default(0)
-  experience_years    Decimal? @default(0)
+  hourly_rate         Decimal? @db.Decimal(10,2) @default(0)
+  experience_years    Decimal? @db.Decimal(10,2) @default(0)
   education           String?
   category_id         String?
-  avg_rating          Decimal? @default(0)
+  avg_rating          Decimal? @db.Decimal(10,2) @default(0)
   avilable_start_time DateTime
   avilable_end_time   DateTime
   user                User     @relation(fields: [user_id], references: [id])

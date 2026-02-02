@@ -6,14 +6,14 @@ enum BookingStatus {
 }
 
 model Booking {
-  id           String     @id @default(uuid())
-  user_id      String
-  tutor_id     String
+  id           String       @id @default(uuid())
+  user_id      String       
+  tutor_id     String       
   session_date DateTime
   start_time   DateTime
   end_time     DateTime
-  price        Decimal
+  price        Decimal @db.Decimal(10,2)
   status       BookingStatus @default(PENDING)
-  created_at   DateTime   @default(now())
-  updated_at   DateTime   @updatedAt
+  created_at   DateTime      @default(now())
+  updated_at   DateTime      @updatedAt
 }
