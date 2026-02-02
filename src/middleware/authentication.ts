@@ -3,16 +3,18 @@ import { auth, UserRole } from "../lib/auth";
 import { fromNodeHeaders } from "better-auth/node";
 import { AppError } from "../helpers/appError";
 
-
 const authentication = (...roles: UserRole[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       const session = await auth.api.getSession({
-        headers: fromNodeHeaders(req.headers)
-      })
+        headers: fromNodeHeaders(req.headers),
+      });
 
       if (!session || !session.user) {
-        throw new AppError("Authentication failed. Please log in to access this resource.",401)
+        throw new AppError(
+          "Authentication failed. Please log in to access this resource.",
+          401,
+        );
       }
 
       req.user = {
@@ -20,10 +22,13 @@ const authentication = (...roles: UserRole[]) => {
         name: session.user.name,
         email: session.user.email,
         role: session.user.role,
-      }
+      };
 
       if (roles.length && !roles.includes(req.user?.role as UserRole)) {
-        throw new AppError("Forbidden: You do not have the necessary permissions to access this resource.",403)
+        throw new AppError(
+          "Forbidden: You do not have the necessary permissions to access this resource.",
+          403,
+        );
       }
 
       next();
@@ -31,8 +36,8 @@ const authentication = (...roles: UserRole[]) => {
       if (error instanceof AppError) {
         res.status(error.statusCode).json({
           success: false,
-          message: error.message
-        })
+          message: error.message,
+        });
       } else {
         res.status(500).json({
           success: false,
@@ -40,8 +45,7 @@ const authentication = (...roles: UserRole[]) => {
         });
       }
     }
-  }
-}
-
+  };
+};
 
 export default authentication;

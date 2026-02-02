@@ -2,7 +2,7 @@
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
     // File Layout
-    "rootDir": "./src",
+    "rootDir": ".",
     "outDir": "./dist",
 
     // Environment Settings
@@ -12,7 +12,13 @@
     "lib": ["esnext"],
     "types": ["node"],
     "moduleResolution": "bundler",
-    // and npm install -D @types/node
+
+    // Path Aliases
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@prisma/*": ["generated/prisma/*"]
+    },
 
     // Other Outputs
     "sourceMap": true,
@@ -33,14 +39,12 @@
 
     // Recommended Options
     "strict": true,
-    "jsx": "react-jsx",
     "esModuleInterop": true,
     "ignoreDeprecations": "5.0",
-    // "verbatimModuleSyntax": true,
-    // "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "generated/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
