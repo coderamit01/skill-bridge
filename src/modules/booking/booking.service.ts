@@ -10,12 +10,73 @@ const getAllBooking = async (user: User) => {
       where: {
         user_id: user.id,
       },
+      select: {
+        id: true,
+        user_id: true,
+        tutor_id: true,
+        session_date: true,
+        start_time: true,
+        end_time: true,
+        price: true,
+        status: true,
+        created_at: true,
+        updated_at: true,
+        tutor: {
+          select: {
+            id: true,
+            bio: true,
+            experience_years: true,
+            education: true,
+            category_id: true,
+            avg_rating: true,
+            user: {
+              select: {
+                name: true,
+              },
+            },
+          },
+        },
+      },
     });
   }
   if (user.role === UserRole.ADMIN) {
-    return await prisma.booking.findMany({});
+    return await prisma.booking.findMany({
+      select: {
+        id: true,
+        user_id: true,
+        tutor_id: true,
+        session_date: true,
+        start_time: true,
+        end_time: true,
+        price: true,
+        status: true,
+        created_at: true,
+        updated_at: true,
+        tutor: {
+          select: {
+            id: true,
+            bio: true,
+            experience_years: true,
+            education: true,
+            category_id: true,
+            avg_rating: true,
+            user: {
+              select: {
+                name: true,
+              },
+            },
+          },
+        },
+        user: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
   }
 };
+
 const getBookingById = async (id: string) => {
   return await prisma.booking.findUnique({
     where: {

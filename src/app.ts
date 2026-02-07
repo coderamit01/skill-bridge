@@ -36,7 +36,7 @@ app.use("/api/v1/bookings", authentication(), bookingRouter);
 app.use("/api/v1/reviews", reviewRouter);
 
 app.use("/", (req, res) => {
-  res.send("Hello World!");
+  res.json({ message: "Hello World!" });
 });
 
 export default app;
