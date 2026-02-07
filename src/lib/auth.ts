@@ -12,13 +12,14 @@ export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
-  trustedOrigins: [process.env.APP_URL!],
+  trustedOrigins: [process.env.APP_URL as string],
   user: {
     additionalFields: {
       role: {
         type: "string",
         defaultValue: UserRole.STUDENT,
         required: true,
+        input: true
       },
       is_banned: {
         type: "boolean",
@@ -31,3 +32,5 @@ export const auth = betterAuth({
     enabled: true
   }
 });
+
+type Session = typeof auth.$Infer.Session;
