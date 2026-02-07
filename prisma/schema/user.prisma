@@ -10,11 +10,12 @@ model User {
   age           Int?
   address       String?
   phone         String?
-  tutor         Tutor?
+  tutor         Tutor[]
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   sessions      Session[]
   accounts      Account[]
+  bookings      Booking[]
 
   @@unique([email])
   @@map("user")
