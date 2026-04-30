@@ -1,14 +1,14 @@
 import express from "express";
 import cors from "cors";
-import { auth } from "./lib/auth";
+import { auth } from "./app/lib/auth";
+import { tutorRouter } from "./app/modules/tutor/tutor.router";
+import { currentUser } from "./app/modules/user/currentUser";
 import { toNodeHandler } from "better-auth/node";
-import { tutorRouter } from "./modules/tutor/tutor.router";
-import { currentUser } from "./modules/user/currentUser";
-import { categoryRouter } from "./modules/category/category.router";
-import { userRouter } from "./modules/user/user.router";
-import { bookingRouter } from "./modules/booking/booking.router";
-import authentication from "./middleware/authentication";
-import { reviewRouter } from "./modules/review/review.router";
+import { categoryRouter } from "./app/modules/category/category.router";
+import { userRouter } from "./app/modules/user/user.router";
+import { bookingRouter } from "./app/modules/booking/booking.router";
+import authentication from "./app/middleware/authentication";
+import { reviewRouter } from "./app/modules/review/review.router";
 const app = express();
 
 app.use(

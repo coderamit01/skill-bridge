@@ -1,21 +1,17 @@
-enum BookingStatus {
-  PENDING
-  CONFIRMED
-  COMPLETED
-  CANCELLED
-}
-
 model Booking {
   id           String        @id @default(uuid())
-  user_id      String
-  tutor_id     String
-  session_date DateTime
-  start_time   DateTime
-  end_time     DateTime
-  price        Decimal       @db.Decimal(10, 2)
-  status       BookingStatus @default(PENDING)
-  tutor        Tutor         @relation(fields: [tutor_id], references: [id])
-  user         User          @relation(fields: [user_id], references: [id])
-  created_at   DateTime      @default(now())
-  updated_at   DateTime      @updatedAt
+  studentId    String
+  tutorId      String
+  scheduleAt   DateTime
+  durationMins Int           @default(30)
+  status       BookingStatus @default(CONFIRMED)
+  totalPrice   Decimal       @db.Decimal(10, 2)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  tutor Tutor @relation("TutorBookings",fields: [tutorId], references: [id])
+  student  User  @relation("StudentBookings", fields: [studentId], references: [id])
+  review Review?
+
+  @@map("bookings")
 }

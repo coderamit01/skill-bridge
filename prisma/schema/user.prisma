@@ -1,24 +1,24 @@
 model User {
-  id            String    @id
+  id            String   @id
   name          String
   email         String
-  emailVerified Boolean   @default(false)
+  emailVerified Boolean  @default(false)
   image         String?
-  role          String    @default("student")
-  is_banned     Boolean   @default(false)
-  school        String?
-  age           Int?
-  address       String?
-  phone         String?
-  tutor         Tutor[]
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  sessions      Session[]
-  accounts      Account[]
-  bookings      Booking[]
+  bio           String?
+  role          Role     @default(STUDENT)
+  isBanned      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  tutor    Tutor?
+  bookingsAsStudent Booking[] @relation("StudentBookings")
+  reviews  Review[] @relation("StudentReviews")
+
+  sessions Session[]
+  accounts Account[]
 
   @@unique([email])
-  @@map("user")
+  @@map("users")
 }
 
 model Session {
