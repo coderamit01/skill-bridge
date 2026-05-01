@@ -1,16 +1,17 @@
-import { error } from "node:console";
 import { User } from "../../../generated/prisma/client";
 import { AppError } from "../../helpers/appError";
 import { UserRole } from "../../lib/auth";
 import { prisma } from "../../lib/prisma";
 
-const getAllUser = async (user:User) => {
-  if(UserRole.ADMIN !== user.role){
+
+
+const getAllUser = async (user: User) => {
+  if (user.role !== UserRole.ADMIN) {
     throw new AppError("Access Denied!", 403)
   }
   return await prisma.user.findMany({});
 };
-const updateUser = async (id:string,user:User,data: User,isAdmin:boolean) => {
+const updateUser = async (id: string, user: User, data: User, isAdmin: boolean) => {
 
   const exists = await prisma.user.findUniqueOrThrow({
     where: {
@@ -18,11 +19,11 @@ const updateUser = async (id:string,user:User,data: User,isAdmin:boolean) => {
     }
   })
 
-  if(!isAdmin && (exists.id !== id)){
-    throw new AppError("Access Denied!",403)
+  if (!isAdmin && (exists.id !== id)) {
+    throw new AppError("Access Denied!", 403)
   }
 
-  if(!isAdmin){
+  if (!isAdmin) {
     delete (data as any).isBanned;
   }
 
@@ -33,8 +34,8 @@ const updateUser = async (id:string,user:User,data: User,isAdmin:boolean) => {
     data
   });
 };
-const updateUserStatus = async (id:string,user:User,data: User) => {
-  if(UserRole.ADMIN !== user.role){
+const updateUserStatus = async (id: string, user: User, data: User) => {
+  if (UserRole.ADMIN !== user.role) {
     throw new AppError("Access Denied!", 403)
   }
 
@@ -49,5 +50,7 @@ const updateUserStatus = async (id:string,user:User,data: User) => {
 };
 
 export const userService = {
-  getAllUser,updateUserStatus,updateUser,
+  getAllUser,
+  updateUserStatus,
+  updateUser
 }

@@ -10,7 +10,11 @@ interface EnvConfig {
   BETTER_AUTH_SECRET: string,
   BETTER_AUTH_URL: string,
   ADMIN_EMAIL: string,
-  ADMIN_PASSWORD: string
+  ADMIN_PASSWORD: string,
+  ACCESS_TOKEN_SECRET: string,
+  REFRESH_TOKEN_SECRET: string,
+  ACCESS_TOKEN_EXPIRES_IN: string,
+  REFRESH_TOKEN_EXPIRES_IN: string
 }
 
 const loadEnvVariables = ():EnvConfig => {
@@ -22,7 +26,11 @@ const loadEnvVariables = ():EnvConfig => {
     "BETTER_AUTH_SECRET",
     "BETTER_AUTH_URL",
     "ADMIN_EMAIL",
-    "ADMIN_PASSWORD"
+    "ADMIN_PASSWORD",
+    "ACCESS_TOKEN_SECRET",
+    "REFRESH_TOKEN_SECRET",
+    "ACCESS_TOKEN_EXPIRES_IN",
+    "REFRESH_TOKEN_EXPIRES_IN"
   ];
 
   requitedEnvVars.forEach((ev) =>{ 
@@ -38,7 +46,11 @@ const loadEnvVariables = ():EnvConfig => {
     BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET as string,
     BETTER_AUTH_URL: process.env.BETTER_AUTH_URL as string,
     ADMIN_EMAIL: process.env.ADMIN_EMAIL as string,
-    ADMIN_PASSWORD: process.env.ADMIN_PASSWORD as string
+    ADMIN_PASSWORD: process.env.ADMIN_PASSWORD as string,
+    ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET as string,
+    REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET as string,
+    ACCESS_TOKEN_EXPIRES_IN: process.env.ACCESS_TOKEN_EXPIRES_IN as string,
+    REFRESH_TOKEN_EXPIRES_IN: process.env.REFRESH_TOKEN_EXPIRES_IN as string
   }
 }
 

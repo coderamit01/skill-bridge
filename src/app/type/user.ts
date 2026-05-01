@@ -1,14 +1,9 @@
-export interface MinimalUser {
-  id: string;
-  name: string;
-  email: string;
-  role: string;
-}
+import { IRequestUser } from "../interface/requestUser.interface";
 
 declare global {
   namespace Express {
     interface Request {
-      user?: MinimalUser;
+      user?: IRequestUser;
     }
   }
 }

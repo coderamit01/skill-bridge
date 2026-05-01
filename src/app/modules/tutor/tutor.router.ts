@@ -5,24 +5,24 @@ import { UserRole } from "../../lib/auth";
 
 const router = express.Router();
 
-router.get("/tutors", tutorController.getAllTutors);
-router.get("/tutors/:tutorId", tutorController.getTutorById);
+router.get("/", tutorController.getAllTutors);
+router.get("/:tutorId", tutorController.getTutorById);
 
 router.post(
-  "/tutor/profile",
+  "/profile",
   authentication(UserRole.TUTOR),
   tutorController.createProfile,
 );
 router.put(
-  "/tutor/profile",
+  "/profile",
   authentication(UserRole.TUTOR),
   tutorController.updateProfile,
 );
 
 router.put(
-  "/tutor/availability",
+  "/availability",
   authentication(UserRole.TUTOR),
   tutorController.updateAvialablity,
 );
 
-export const tutorRouter = router;
+export const tutorRoutes = router;

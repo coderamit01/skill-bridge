@@ -12,4 +12,4 @@ router.put('/:categoryId', authentication(UserRole.ADMIN), categoryController.up
 router.delete('/:categoryId', authentication(UserRole.ADMIN), categoryController.deleteCategory);
 
 
-export const categoryRouter = router;
+export const categoryRoutes = router;

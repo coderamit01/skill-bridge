@@ -18,4 +18,4 @@ router.put(
   bookingController.updateBookingStatus,
 );
 
-export const bookingRouter = router;
+export const bookingRoutes = router;

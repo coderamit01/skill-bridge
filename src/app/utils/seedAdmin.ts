@@ -1,5 +1,5 @@
 import { prisma } from "../lib/prisma";
-import { UserRole } from "../lib/auth";
+import { auth, UserRole } from "../lib/auth";
 import { AppError } from "../helpers/appError";
 import { Role } from "../../generated/prisma/enums";
 import { envVars } from "../config/env";
@@ -28,26 +28,19 @@ export async function seedAdmin() {
 
     if (existUser) { throw new AppError('Admin Already exists', 403) };
 
-    const response = await fetch(`${envVars.BETTER_AUTH_URL}/api/auth/sign-up/email`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Origin": envVars.APP_URL ?? ""
-      },
-      credentials: "include",
-      body: JSON.stringify(adminData)
-    });
+    const adminUser = await auth.api.signUpEmail({
+      body: adminData
+    })
 
-    if (!response.ok) {
-      const text = await response.text();
-      throw new AppError(`Admin seed request failed: ${response.status} ${response.statusText} - ${text}`, response.status || 500);
-    }
     await prisma.user.update({
       where: { email: adminData.email },
       data: {
         emailVerified: true
       }
     })
+    console.log(adminUser);
+
+
     console.log("Admin created Successfuly");
   } catch (error) {
     if (error instanceof AppError) throw error;

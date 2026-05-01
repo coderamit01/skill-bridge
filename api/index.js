@@ -392,7 +392,7 @@ router.put(
   authentication_default("tutor" /* TUTOR */),
   tutorController.updateAvialablity
 );
-var tutorRouter = router;
+var tutorRoutes = router;
 
 // src/modules/user/currentUser.ts
 import express2 from "express";
@@ -578,7 +578,7 @@ router3.get("/", categoryController.getAllCategory);
 router3.get("/:categoryId", categoryController.getSingleCategory);
 router3.put("/:categoryId", authentication_default("admin" /* ADMIN */), categoryController.updateCategory);
 router3.delete("/:categoryId", authentication_default("admin" /* ADMIN */), categoryController.deleteCategory);
-var categoryRouter = router3;
+var categoryRoutes = router3;
 
 // src/modules/user/user.router.ts
 import express4 from "express";
@@ -715,7 +715,7 @@ var router4 = express4.Router();
 router4.get("/admin/users", authentication_default("admin" /* ADMIN */), userController.getAllUser);
 router4.put("/users/:userId", authentication_default("admin" /* ADMIN */, "student" /* STUDENT */, "tutor" /* TUTOR */), userController.updateUser);
 router4.put("/admin/users/:userId", authentication_default("admin" /* ADMIN */), userController.updateUserStatus);
-var userRouter = router4;
+var userRoutes = router4;
 
 // src/modules/booking/booking.router.ts
 import express5 from "express";
@@ -955,7 +955,7 @@ router5.put(
   authentication_default("admin" /* ADMIN */, "tutor" /* TUTOR */, "student" /* STUDENT */),
   bookingController.updateBookingStatus
 );
-var bookingRouter = router5;
+var bookingRoutes = router5;
 
 // src/modules/review/review.router.ts
 import express6 from "express";
@@ -1057,7 +1057,7 @@ router6.post(
   authentication_default("student" /* STUDENT */),
   reviewController.createReview
 );
-var reviewRouter = router6;
+var reviewRoutes = router6;
 
 // src/app.ts
 var app = express7();
@@ -1070,12 +1070,12 @@ app.use(
 );
 app.use(express7.json());
 app.all("/api/auth/*splat", toNodeHandler(auth));
-app.use("/api/v1", tutorRouter);
+app.use("/api/v1", tutorRoutes);
 app.use("/api", currentUser);
-app.use("/api/v1/categories", categoryRouter);
-app.use("/api/v1", userRouter);
-app.use("/api/v1/bookings", authentication_default(), bookingRouter);
-app.use("/api/v1/reviews", reviewRouter);
+app.use("/api/v1/categories", categoryRoutes);
+app.use("/api/v1", userRoutes);
+app.use("/api/v1/bookings", authentication_default(), bookingRoutes);
+app.use("/api/v1/reviews", reviewRoutes);
 app.use("/", (req, res) => {
   res.send("Hello World!");
 });
