@@ -23,8 +23,6 @@ const createUser = async (payload: IRegisterPayload) => {
     throw new AppError("Failed to create user", 500);
   }
 
-  console.log("🔍 createUser response from better-auth:", JSON.stringify(data, null, 2));
-
   const accessToken = tokenUtils.getAccessToken({
     userId: data.user.id,
     role: data.user.role,
@@ -56,8 +54,6 @@ const loginUser = async (payload: ILoginPayload) => {
     },
     headers: new Headers()
   })
-
-  console.log("🔍 loginUser response from better-auth:", JSON.stringify(data, null, 2));
 
   const accessToken = tokenUtils.getAccessToken({
     userId: data.user.id,

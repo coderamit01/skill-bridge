@@ -8,8 +8,8 @@ const router = express.Router();
 router.post('/', categoryController.createCategory);
 router.get('/', categoryController.getAllCategory);
 router.get('/:categoryId', categoryController.getSingleCategory);
-router.put('/:categoryId', authentication(UserRole.ADMIN), categoryController.updateCategory);
-router.delete('/:categoryId', authentication(UserRole.ADMIN), categoryController.deleteCategory);
+router.put('/:categoryId', categoryController.updateCategory);
+router.delete('/:categoryId', categoryController.deleteCategory);
 
 
 export const categoryRoutes = router;

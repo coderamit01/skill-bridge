@@ -1,7 +1,9 @@
 import { Request, Response } from "express";
 import { subjectService } from "./subject.service";
-import { typeSubject } from "../../type/subject";
+import { ISubjectPayload } from "./subject.interface";
 import { AppError } from "../../helpers/appError";
+import { catchAsync } from "../../shared/catchAsync";
+import { sendResponse } from "../../shared/sendResponse";
 
 const getAllSubject = async (req: Request, res: Response) => {
   try {
@@ -51,29 +53,18 @@ const getSingleSubject = async (req: Request, res: Response) => {
 };
 
 
-const createSubject = async (req: Request, res: Response) => {
-  try {
-    const data: typeSubject = req.body;
-    const result = await subjectService.createSubject(data);
-    res.status(201).json({
+const createSubject = catchAsync(
+  async (req: Request, res: Response) => {
+    const payload: ISubjectPayload = req.body;
+    const result = await subjectService.createSubject(payload);
+    sendResponse(res, {
+      statusCode: 201,
       success: true,
       message: "Subject created successfully",
       data: result,
     });
-  } catch (error) {
-    if (error instanceof AppError) {
-      res.status(error.statusCode).json({
-        success: false,
-        message: error.message,
-      });
-    } else {
-      res.status(500).json({
-        success: false,
-        message: "Internal Server Error",
-      });
-    }
   }
-};
+)
 
 const updateSubject = async (req: Request, res: Response) => {
   try {

@@ -3,9 +3,7 @@ import { typeCategory } from "../../type/category";
 
 const getAllCategory = async() => {
   return await prisma.category.findMany({
-   include: {
-    subject: true
-   }
+    include: {subjects: true}
   });  
 }
 const getSingleCategory = async(id:string) => {
@@ -16,18 +14,26 @@ const getSingleCategory = async(id:string) => {
   });  
 }
 
-const createCategory = async(data:typeCategory) => {
+const createCategory = async(payload:typeCategory) => {
+   const categorySlug = payload.name.toLocaleLowerCase().replace(" ", "-").trim();
   return await prisma.category.create({
-    data
+    data: {
+      ...payload,
+      slug: categorySlug
+    }
   });  
 }
 
-const updateCategory = async(id:string,data:typeCategory) => {
+const updateCategory = async(id:string,payload:typeCategory) => {
+  const categorySlug = payload.name.toLocaleLowerCase().replace(" ", "-").trim();
   return await prisma.category.update({
     where: {
       id:id
     },
-    data
+    data: {
+      ...payload,
+      slug: categorySlug
+    }
   });  
 }
 const deleteCategory = async(id:string) => {

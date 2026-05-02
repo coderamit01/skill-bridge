@@ -1,5 +1,5 @@
 import { prisma } from "../../lib/prisma";
-import { typeSubject } from "../../type/subject";
+import { ISubjectPayload } from "./subject.interface";
 
 const getAllSubject = async () => {
   return await prisma.subject.findMany({
@@ -20,11 +20,12 @@ const getSingleSubject = async (id: string) => {
   });
 };
 
-const createSubject = async (data: typeSubject) => {
-  return await prisma.subject.create({
-    data,
+const createSubject = async (payload: ISubjectPayload) => {
+  return await prisma.tutorSubject.create({
+    data: payload,
     include: {
-      category: true,
+      tutor: true,
+      category: true
     },
   });
 };

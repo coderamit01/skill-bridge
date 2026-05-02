@@ -38,6 +38,11 @@ export type TutorSumAggregateOutputType = {
 
 export type TutorMinAggregateOutputType = {
   id: string | null
+  name: string | null
+  email: string | null
+  image: string | null
+  contactNumber: string | null
+  gender: $Enums.Gender | null
   userId: string | null
   hourlyRate: runtime.Decimal | null
   yearsExperience: runtime.Decimal | null
@@ -48,6 +53,11 @@ export type TutorMinAggregateOutputType = {
 
 export type TutorMaxAggregateOutputType = {
   id: string | null
+  name: string | null
+  email: string | null
+  image: string | null
+  contactNumber: string | null
+  gender: $Enums.Gender | null
   userId: string | null
   hourlyRate: runtime.Decimal | null
   yearsExperience: runtime.Decimal | null
@@ -58,6 +68,11 @@ export type TutorMaxAggregateOutputType = {
 
 export type TutorCountAggregateOutputType = {
   id: number
+  name: number
+  email: number
+  image: number
+  contactNumber: number
+  gender: number
   userId: number
   hourlyRate: number
   yearsExperience: number
@@ -80,6 +95,11 @@ export type TutorSumAggregateInputType = {
 
 export type TutorMinAggregateInputType = {
   id?: true
+  name?: true
+  email?: true
+  image?: true
+  contactNumber?: true
+  gender?: true
   userId?: true
   hourlyRate?: true
   yearsExperience?: true
@@ -90,6 +110,11 @@ export type TutorMinAggregateInputType = {
 
 export type TutorMaxAggregateInputType = {
   id?: true
+  name?: true
+  email?: true
+  image?: true
+  contactNumber?: true
+  gender?: true
   userId?: true
   hourlyRate?: true
   yearsExperience?: true
@@ -100,6 +125,11 @@ export type TutorMaxAggregateInputType = {
 
 export type TutorCountAggregateInputType = {
   id?: true
+  name?: true
+  email?: true
+  image?: true
+  contactNumber?: true
+  gender?: true
   userId?: true
   hourlyRate?: true
   yearsExperience?: true
@@ -197,6 +227,11 @@ export type TutorGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 
 export type TutorGroupByOutputType = {
   id: string
+  name: string
+  email: string
+  image: string | null
+  contactNumber: string | null
+  gender: $Enums.Gender
   userId: string
   hourlyRate: runtime.Decimal | null
   yearsExperience: runtime.Decimal | null
@@ -230,6 +265,11 @@ export type TutorWhereInput = {
   OR?: Prisma.TutorWhereInput[]
   NOT?: Prisma.TutorWhereInput | Prisma.TutorWhereInput[]
   id?: Prisma.StringFilter<"Tutor"> | string
+  name?: Prisma.StringFilter<"Tutor"> | string
+  email?: Prisma.StringFilter<"Tutor"> | string
+  image?: Prisma.StringNullableFilter<"Tutor"> | string | null
+  contactNumber?: Prisma.StringNullableFilter<"Tutor"> | string | null
+  gender?: Prisma.EnumGenderFilter<"Tutor"> | $Enums.Gender
   userId?: Prisma.StringFilter<"Tutor"> | string
   hourlyRate?: Prisma.DecimalNullableFilter<"Tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: Prisma.DecimalNullableFilter<"Tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
@@ -245,6 +285,11 @@ export type TutorWhereInput = {
 
 export type TutorOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  image?: Prisma.SortOrderInput | Prisma.SortOrder
+  contactNumber?: Prisma.SortOrderInput | Prisma.SortOrder
+  gender?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   hourlyRate?: Prisma.SortOrderInput | Prisma.SortOrder
   yearsExperience?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -260,10 +305,15 @@ export type TutorOrderByWithRelationInput = {
 
 export type TutorWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  email?: string
   userId?: string
   AND?: Prisma.TutorWhereInput | Prisma.TutorWhereInput[]
   OR?: Prisma.TutorWhereInput[]
   NOT?: Prisma.TutorWhereInput | Prisma.TutorWhereInput[]
+  name?: Prisma.StringFilter<"Tutor"> | string
+  image?: Prisma.StringNullableFilter<"Tutor"> | string | null
+  contactNumber?: Prisma.StringNullableFilter<"Tutor"> | string | null
+  gender?: Prisma.EnumGenderFilter<"Tutor"> | $Enums.Gender
   hourlyRate?: Prisma.DecimalNullableFilter<"Tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: Prisma.DecimalNullableFilter<"Tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isAvailable?: Prisma.BoolFilter<"Tutor"> | boolean
@@ -274,10 +324,15 @@ export type TutorWhereUniqueInput = Prisma.AtLeast<{
   bookings?: Prisma.BookingListRelationFilter
   availablity?: Prisma.AvailablityListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
-}, "id" | "userId">
+}, "id" | "email" | "userId">
 
 export type TutorOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  image?: Prisma.SortOrderInput | Prisma.SortOrder
+  contactNumber?: Prisma.SortOrderInput | Prisma.SortOrder
+  gender?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   hourlyRate?: Prisma.SortOrderInput | Prisma.SortOrder
   yearsExperience?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -296,6 +351,11 @@ export type TutorScalarWhereWithAggregatesInput = {
   OR?: Prisma.TutorScalarWhereWithAggregatesInput[]
   NOT?: Prisma.TutorScalarWhereWithAggregatesInput | Prisma.TutorScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Tutor"> | string
+  name?: Prisma.StringWithAggregatesFilter<"Tutor"> | string
+  email?: Prisma.StringWithAggregatesFilter<"Tutor"> | string
+  image?: Prisma.StringNullableWithAggregatesFilter<"Tutor"> | string | null
+  contactNumber?: Prisma.StringNullableWithAggregatesFilter<"Tutor"> | string | null
+  gender?: Prisma.EnumGenderWithAggregatesFilter<"Tutor"> | $Enums.Gender
   userId?: Prisma.StringWithAggregatesFilter<"Tutor"> | string
   hourlyRate?: Prisma.DecimalNullableWithAggregatesFilter<"Tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: Prisma.DecimalNullableWithAggregatesFilter<"Tutor"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
@@ -306,6 +366,11 @@ export type TutorScalarWhereWithAggregatesInput = {
 
 export type TutorCreateInput = {
   id?: string
+  name: string
+  email: string
+  image?: string | null
+  contactNumber?: string | null
+  gender: $Enums.Gender
   hourlyRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isAvailable?: boolean
@@ -320,6 +385,11 @@ export type TutorCreateInput = {
 
 export type TutorUncheckedCreateInput = {
   id?: string
+  name: string
+  email: string
+  image?: string | null
+  contactNumber?: string | null
+  gender: $Enums.Gender
   userId: string
   hourlyRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
@@ -334,6 +404,11 @@ export type TutorUncheckedCreateInput = {
 
 export type TutorUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
   hourlyRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -348,6 +423,11 @@ export type TutorUpdateInput = {
 
 export type TutorUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   hourlyRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
@@ -362,6 +442,11 @@ export type TutorUncheckedUpdateInput = {
 
 export type TutorCreateManyInput = {
   id?: string
+  name: string
+  email: string
+  image?: string | null
+  contactNumber?: string | null
+  gender: $Enums.Gender
   userId: string
   hourlyRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
@@ -372,6 +457,11 @@ export type TutorCreateManyInput = {
 
 export type TutorUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
   hourlyRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -381,6 +471,11 @@ export type TutorUpdateManyMutationInput = {
 
 export type TutorUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   hourlyRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
@@ -396,6 +491,11 @@ export type TutorScalarRelationFilter = {
 
 export type TutorCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  image?: Prisma.SortOrder
+  contactNumber?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   hourlyRate?: Prisma.SortOrder
   yearsExperience?: Prisma.SortOrder
@@ -411,6 +511,11 @@ export type TutorAvgOrderByAggregateInput = {
 
 export type TutorMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  image?: Prisma.SortOrder
+  contactNumber?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   hourlyRate?: Prisma.SortOrder
   yearsExperience?: Prisma.SortOrder
@@ -421,6 +526,11 @@ export type TutorMaxOrderByAggregateInput = {
 
 export type TutorMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  image?: Prisma.SortOrder
+  contactNumber?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   hourlyRate?: Prisma.SortOrder
   yearsExperience?: Prisma.SortOrder
@@ -479,6 +589,10 @@ export type TutorUpdateOneRequiredWithoutReviewsNestedInput = {
   upsert?: Prisma.TutorUpsertWithoutReviewsInput
   connect?: Prisma.TutorWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.TutorUpdateToOneWithWhereWithoutReviewsInput, Prisma.TutorUpdateWithoutReviewsInput>, Prisma.TutorUncheckedUpdateWithoutReviewsInput>
+}
+
+export type EnumGenderFieldUpdateOperationsInput = {
+  set?: $Enums.Gender
 }
 
 export type NullableDecimalFieldUpdateOperationsInput = {
@@ -541,6 +655,11 @@ export type TutorUncheckedUpdateOneWithoutUserNestedInput = {
 
 export type TutorCreateWithoutAvailablityInput = {
   id?: string
+  name: string
+  email: string
+  image?: string | null
+  contactNumber?: string | null
+  gender: $Enums.Gender
   hourlyRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isAvailable?: boolean
@@ -554,6 +673,11 @@ export type TutorCreateWithoutAvailablityInput = {
 
 export type TutorUncheckedCreateWithoutAvailablityInput = {
   id?: string
+  name: string
+  email: string
+  image?: string | null
+  contactNumber?: string | null
+  gender: $Enums.Gender
   userId: string
   hourlyRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
@@ -583,6 +707,11 @@ export type TutorUpdateToOneWithWhereWithoutAvailablityInput = {
 
 export type TutorUpdateWithoutAvailablityInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
   hourlyRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -596,6 +725,11 @@ export type TutorUpdateWithoutAvailablityInput = {
 
 export type TutorUncheckedUpdateWithoutAvailablityInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   hourlyRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
@@ -609,6 +743,11 @@ export type TutorUncheckedUpdateWithoutAvailablityInput = {
 
 export type TutorCreateWithoutBookingsInput = {
   id?: string
+  name: string
+  email: string
+  image?: string | null
+  contactNumber?: string | null
+  gender: $Enums.Gender
   hourlyRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isAvailable?: boolean
@@ -622,6 +761,11 @@ export type TutorCreateWithoutBookingsInput = {
 
 export type TutorUncheckedCreateWithoutBookingsInput = {
   id?: string
+  name: string
+  email: string
+  image?: string | null
+  contactNumber?: string | null
+  gender: $Enums.Gender
   userId: string
   hourlyRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
@@ -651,6 +795,11 @@ export type TutorUpdateToOneWithWhereWithoutBookingsInput = {
 
 export type TutorUpdateWithoutBookingsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
   hourlyRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -664,6 +813,11 @@ export type TutorUpdateWithoutBookingsInput = {
 
 export type TutorUncheckedUpdateWithoutBookingsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   hourlyRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
@@ -677,6 +831,11 @@ export type TutorUncheckedUpdateWithoutBookingsInput = {
 
 export type TutorCreateWithoutReviewsInput = {
   id?: string
+  name: string
+  email: string
+  image?: string | null
+  contactNumber?: string | null
+  gender: $Enums.Gender
   hourlyRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isAvailable?: boolean
@@ -690,6 +849,11 @@ export type TutorCreateWithoutReviewsInput = {
 
 export type TutorUncheckedCreateWithoutReviewsInput = {
   id?: string
+  name: string
+  email: string
+  image?: string | null
+  contactNumber?: string | null
+  gender: $Enums.Gender
   userId: string
   hourlyRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
@@ -719,6 +883,11 @@ export type TutorUpdateToOneWithWhereWithoutReviewsInput = {
 
 export type TutorUpdateWithoutReviewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
   hourlyRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -732,6 +901,11 @@ export type TutorUpdateWithoutReviewsInput = {
 
 export type TutorUncheckedUpdateWithoutReviewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   hourlyRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
@@ -745,6 +919,11 @@ export type TutorUncheckedUpdateWithoutReviewsInput = {
 
 export type TutorCreateWithoutSubjectsInput = {
   id?: string
+  name: string
+  email: string
+  image?: string | null
+  contactNumber?: string | null
+  gender: $Enums.Gender
   hourlyRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isAvailable?: boolean
@@ -758,6 +937,11 @@ export type TutorCreateWithoutSubjectsInput = {
 
 export type TutorUncheckedCreateWithoutSubjectsInput = {
   id?: string
+  name: string
+  email: string
+  image?: string | null
+  contactNumber?: string | null
+  gender: $Enums.Gender
   userId: string
   hourlyRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
@@ -787,6 +971,11 @@ export type TutorUpdateToOneWithWhereWithoutSubjectsInput = {
 
 export type TutorUpdateWithoutSubjectsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
   hourlyRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -800,6 +989,11 @@ export type TutorUpdateWithoutSubjectsInput = {
 
 export type TutorUncheckedUpdateWithoutSubjectsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   hourlyRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
@@ -813,6 +1007,11 @@ export type TutorUncheckedUpdateWithoutSubjectsInput = {
 
 export type TutorCreateWithoutUserInput = {
   id?: string
+  name: string
+  email: string
+  image?: string | null
+  contactNumber?: string | null
+  gender: $Enums.Gender
   hourlyRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isAvailable?: boolean
@@ -826,6 +1025,11 @@ export type TutorCreateWithoutUserInput = {
 
 export type TutorUncheckedCreateWithoutUserInput = {
   id?: string
+  name: string
+  email: string
+  image?: string | null
+  contactNumber?: string | null
+  gender: $Enums.Gender
   hourlyRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isAvailable?: boolean
@@ -855,6 +1059,11 @@ export type TutorUpdateToOneWithWhereWithoutUserInput = {
 
 export type TutorUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
   hourlyRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -868,6 +1077,11 @@ export type TutorUpdateWithoutUserInput = {
 
 export type TutorUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
   hourlyRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   yearsExperience?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -939,6 +1153,11 @@ export type TutorCountOutputTypeCountReviewsArgs<ExtArgs extends runtime.Types.E
 
 export type TutorSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  name?: boolean
+  email?: boolean
+  image?: boolean
+  contactNumber?: boolean
+  gender?: boolean
   userId?: boolean
   hourlyRate?: boolean
   yearsExperience?: boolean
@@ -955,6 +1174,11 @@ export type TutorSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 
 export type TutorSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  name?: boolean
+  email?: boolean
+  image?: boolean
+  contactNumber?: boolean
+  gender?: boolean
   userId?: boolean
   hourlyRate?: boolean
   yearsExperience?: boolean
@@ -966,6 +1190,11 @@ export type TutorSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 
 export type TutorSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  name?: boolean
+  email?: boolean
+  image?: boolean
+  contactNumber?: boolean
+  gender?: boolean
   userId?: boolean
   hourlyRate?: boolean
   yearsExperience?: boolean
@@ -977,6 +1206,11 @@ export type TutorSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 
 export type TutorSelectScalar = {
   id?: boolean
+  name?: boolean
+  email?: boolean
+  image?: boolean
+  contactNumber?: boolean
+  gender?: boolean
   userId?: boolean
   hourlyRate?: boolean
   yearsExperience?: boolean
@@ -985,7 +1219,7 @@ export type TutorSelectScalar = {
   updatedAt?: boolean
 }
 
-export type TutorOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "hourlyRate" | "yearsExperience" | "isAvailable" | "createdAt" | "updatedAt", ExtArgs["result"]["tutor"]>
+export type TutorOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "image" | "contactNumber" | "gender" | "userId" | "hourlyRate" | "yearsExperience" | "isAvailable" | "createdAt" | "updatedAt", ExtArgs["result"]["tutor"]>
 export type TutorInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   subjects?: boolean | Prisma.Tutor$subjectsArgs<ExtArgs>
@@ -1012,6 +1246,11 @@ export type $TutorPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    name: string
+    email: string
+    image: string | null
+    contactNumber: string | null
+    gender: $Enums.Gender
     userId: string
     hourlyRate: runtime.Decimal | null
     yearsExperience: runtime.Decimal | null
@@ -1447,6 +1686,11 @@ export interface Prisma__TutorClient<T, Null = never, ExtArgs extends runtime.Ty
  */
 export interface TutorFieldRefs {
   readonly id: Prisma.FieldRef<"Tutor", 'String'>
+  readonly name: Prisma.FieldRef<"Tutor", 'String'>
+  readonly email: Prisma.FieldRef<"Tutor", 'String'>
+  readonly image: Prisma.FieldRef<"Tutor", 'String'>
+  readonly contactNumber: Prisma.FieldRef<"Tutor", 'String'>
+  readonly gender: Prisma.FieldRef<"Tutor", 'Gender'>
   readonly userId: Prisma.FieldRef<"Tutor", 'String'>
   readonly hourlyRate: Prisma.FieldRef<"Tutor", 'Decimal'>
   readonly yearsExperience: Prisma.FieldRef<"Tutor", 'Decimal'>

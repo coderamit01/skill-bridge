@@ -1,17 +1,54 @@
 import { User } from "../../../generated/prisma/client";
 import { AppError } from "../../helpers/appError";
-import { UserRole } from "../../lib/auth";
+import { IRequestUser } from "../../interface/requestUser.interface";
+import { auth, UserRole } from "../../lib/auth";
 import { prisma } from "../../lib/prisma";
+import { IRegisterPayload } from "./user.interface";
 
 
+const creatTutor = async(payload: IRegisterPayload) => {
+    const existUser = await prisma.user.findUnique({
+      where: { email: payload.tutor.email }
+    });
+    if (existUser) {
+      throw new AppError("User already exists", 400);
+    }
+  
+    const userData = await auth.api.signUpEmail({
+      body: {
+        name: payload.tutor.name,
+        email: payload.tutor.email,
+        password: payload.password,
+        role: UserRole.TUTOR,
+      }
+    });
 
-const getAllUser = async (user: User) => {
-  if (user.role !== UserRole.ADMIN) {
-    throw new AppError("Access Denied!", 403)
-  }
+    try {
+      const result = await prisma.$transaction(async(tx) => {
+        const tutorData = await tx.tutor.create({
+          data: {
+            userId: userData.user.id,
+            ...payload.tutor
+          }
+        })
+        return tutorData;
+      })
+      return result;
+    } catch (error) {
+      await prisma.user.delete({
+          where: {id: userData.user.id}
+      })
+    }
+
+}
+
+const getAllUser = async (user: IRequestUser) => {
+  // if (user.role !== UserRole.ADMIN) {
+  //   throw new AppError("Access Denied!", 403)
+  // }
   return await prisma.user.findMany({});
 };
-const updateUser = async (id: string, user: User, data: User, isAdmin: boolean) => {
+const updateUser = async (id: string, user: IRequestUser, data: User, isAdmin: boolean) => {
 
   const exists = await prisma.user.findUniqueOrThrow({
     where: {
@@ -34,7 +71,7 @@ const updateUser = async (id: string, user: User, data: User, isAdmin: boolean) 
     data
   });
 };
-const updateUserStatus = async (id: string, user: User, data: User) => {
+const updateUserStatus = async (id: string, user: IRequestUser, data: User) => {
   if (UserRole.ADMIN !== user.role) {
     throw new AppError("Access Denied!", 403)
   }
@@ -50,6 +87,7 @@ const updateUserStatus = async (id: string, user: User, data: User) => {
 };
 
 export const userService = {
+  creatTutor,
   getAllUser,
   updateUserStatus,
   updateUser

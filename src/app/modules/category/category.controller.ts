@@ -2,124 +2,75 @@ import { Request, Response } from "express";
 import { categoryService } from "./category.service";
 import { typeCategory } from "../../type/category";
 import { AppError } from "../../helpers/appError";
+import { catchAsync } from "../../shared/catchAsync";
+import { sendResponse } from "../../shared/sendResponse";
 
-const getAllCategory = async (req: Request, res: Response) => {
-  try {
+const getAllCategory = catchAsync(
+  async (req: Request, res: Response) => {
     const result = await categoryService.getAllCategory();
-    res.status(200).json({
+    sendResponse(res, {
+      statusCode: 200,
       success: true,
       message: "Retrive categories successfully",
       data: result
     })
-  } catch (error) {
-    if (error instanceof AppError) {
-      res.status(error.statusCode).json({
-        success: false,
-        message: error.message
-      })
-    } else {
-      res.status(500).json({
-        success: false,
-        message: "Internal Server Error",
-      });
-    }
-  }
-
 }
-const getSingleCategory = async (req: Request, res: Response) => {
-  try {
+)
+
+const getSingleCategory = catchAsync(
+  async (req: Request, res: Response) => {
     const { categoryId } = req.params as { categoryId: string };
     const result = await categoryService.getSingleCategory(categoryId);
-    res.status(200).json({
+    sendResponse(res,{
+      statusCode: 200,
       success: true,
       message: "Retrive category successfully",
       data: result
     })
-  } catch (error) {
-    if (error instanceof AppError) {
-      res.status(error.statusCode).json({
-        success: false,
-        message: error.message
-      })
-    } else {
-      res.status(500).json({
-        success: false,
-        message: "Internal Server Error",
-      });
-    }
-  }
 }
+)
 
-const createCategory = async (req: Request, res: Response) => {
-  try {
+const createCategory = catchAsync(
+  async (req: Request, res: Response) => {
     const payload: typeCategory = req.body;
     const result = await categoryService.createCategory(payload);
-    res.status(201).json({
+    sendResponse(res,{
+      statusCode: 201,
       success: true,
       message: "Category created Successfully",
       data: result
     })
-  } catch (error) {
-    if (error instanceof AppError) {
-      res.status(error.statusCode).json({
-        success: false,
-        message: error.message
-      })
-    } else {
-      res.status(500).json({
-        success: false,
-        message: "Internal Server Error",
-      });
-    }
   }
-}
+)
 
-const updateCategory = async (req: Request, res: Response) => {
-  try {
+const updateCategory = catchAsync(
+  async (req: Request, res: Response) => {
     const { categoryId } = req.params as { categoryId: string };
     const payload = req.body
     const result = await categoryService.updateCategory(categoryId, payload);
-    res.status(200).json({
+    sendResponse(res, {
+      statusCode: 200,
       success: true,
       message: "Update category successfully",
       data: result
     })
-  } catch (error) {
-    if (error instanceof AppError) {
-      res.status(error.statusCode).json({
-        success: false,
-        message: error.message
-      })
-    } else {
-      res.status(500).json({
-        success: false,
-        message: "Internal Server Error",
-      });
-    }
-  }
+
 }
-const deleteCategory = async (req: Request, res: Response) => {
-  try {
+)
+
+const deleteCategory = catchAsync(
+  async (req: Request, res: Response) => {
+
     const { categoryId } = req.params as { categoryId: string };
     const result = await categoryService.deleteCategory(categoryId);
-    res.status(200).json({
+    sendResponse(res,{
+      statusCode: 201,
       success: true,
       message: "Delete category successfully",
     })
-  } catch (error) {
-    if (error instanceof AppError) {
-      res.status(error.statusCode).json({
-        success: false,
-        message: error.message
-      })
-    } else {
-      res.status(500).json({
-        success: false,
-        message: "Internal Server Error",
-      });
-    }
-  }
+ 
 }
+)
 
 export const categoryController = {
   createCategory, getAllCategory, getSingleCategory, updateCategory, deleteCategory,
