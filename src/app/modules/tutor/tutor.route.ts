@@ -8,10 +8,12 @@ const router = express.Router();
 router.get("/", tutorController.getAllTutors);
 router.get("/:tutorId", tutorController.getTutorById);
 
-router.post("/availability", tutorController.createAvailablity)
+router.post("/availability", authentication(UserRole.TUTOR), tutorController.createAvailablity)
 
-router.put("/profile/:tutorId", tutorController.updateProfile);
+router.put("/profile", authentication(UserRole.TUTOR), tutorController.updateProfile);
 
-router.put("/availability", tutorController.updateAvialablity);
+router.put("/availability/:availableId", authentication(UserRole.TUTOR), tutorController.updateAvialablity);
+
+router.delete("/availability/:availableId", authentication(UserRole.TUTOR), tutorController.deleteAvialablity);
 
 export const tutorRoutes = router;

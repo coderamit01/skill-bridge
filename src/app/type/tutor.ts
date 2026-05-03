@@ -1,22 +1,23 @@
+import { Gender } from "../../generated/prisma/enums";
+
 export interface TutorProfile {
+  name: string;
+  email: string;
+  image?: string;
+  contactNumber?: string;
+  gender: Gender;
   userId: string;
-  bio?: string | undefined;
-  hourlyRate?: number | undefined;
-  yearsExperience?: number | undefined;
-  education?: string | undefined;
-  categoryId?: string | undefined;
-  avg_rating?: number | undefined;
-  avilable_start_time: string;
-  avilable_end_time: string;
+  hourlyRate?: number;
+  yearsExperience?: number;
 }
 export interface TutorUpdateProfile {
+  name: string;
+  email: string;
+  image?: string;
+  contactNumber?: string;
+  gender: Gender;
   userId: string;
-  bio?: string | null;
-  hourlyRate?: number | null;
-  yearsExperience?: number | null;
-  education?: string | null;
-  categoryId?: string | null;
-  avg_rating?: number | null;
-  avilable_start_time: string;
-  avilable_end_time: string;
+  hourlyRate?: number;
+  yearsExperience?: number;
+
 }

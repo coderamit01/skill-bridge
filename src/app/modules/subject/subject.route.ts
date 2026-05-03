@@ -5,14 +5,16 @@ import { UserRole } from "../../lib/auth";
 
 const router = express.Router();
 
-router.post("/",  subjectController.createSubject);
-router.get("/", subjectController.getAllSubject);
+router.post("/", authentication(UserRole.TUTOR),  subjectController.createSubject);
+router.get("/", authentication(UserRole.ADMIN, UserRole.TUTOR), subjectController.getAllSubject);
 router.put(
   "/:subjectId",
+  authentication(UserRole.TUTOR),
   subjectController.updateSubject
 );
 router.delete(
   "/:subjectId",
+  authentication(UserRole.TUTOR),
   subjectController.deleteSubject
 );
 

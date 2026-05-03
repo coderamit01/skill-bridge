@@ -103,8 +103,7 @@ const logOut = async (sessionToken: string) => {
       Authorization: `Bearer ${sessionToken}`
     })
   })
-
-
+  return result;
 }
 
 

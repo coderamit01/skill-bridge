@@ -20,6 +20,7 @@ const createTutor = catchAsync(
     });
   }
 )
+
 const getAllUser = catchAsync(
   async (req: Request, res: Response) => {
     const user = req.user;
@@ -32,6 +33,7 @@ const getAllUser = catchAsync(
     });
   }
 )
+
 const updateUser = catchAsync(
   async (req: Request, res: Response) => {
     const { userId } = req.params as { userId: string };
@@ -48,24 +50,26 @@ const updateUser = catchAsync(
     
   }
 )
+
 const updateUserStatus = catchAsync(
-  async (req: Request, res: Response) => {
-    const { userId } = req.params as { userId: string };
-    const user = req?.user as IRequestUser;
-    const payload: User = req.body;
-    const result = await userService.updateUserStatus(userId, user, payload);
-    sendResponse(res,{
+  async(req: Request, res: Response) => {
+    const user = req?.user;
+    const {user_id} = req.params as {user_id: string}
+    const {isBanned} = req.body as {isBanned: boolean};
+    const result = await userService.updateUserStatus(user as IRequestUser, user_id, isBanned)
+     sendResponse(res, {
       statusCode: 200,
       success: true,
-      message: "Update User succussfully",
+      message: "User status update succussfully",
       data: result,
     });
-}
+  }
 )
+
 
 export const userController = {
   createTutor,
   getAllUser,
-  updateUserStatus,
   updateUser,
+  updateUserStatus
 }

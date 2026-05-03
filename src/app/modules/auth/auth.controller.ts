@@ -4,6 +4,7 @@ import { sendResponse } from "../../shared/sendResponse";
 import { authService } from "./auth.service";
 import { tokenUtils } from "../../utils/token";
 import { IRequestUser } from "../../interface/requestUser.interface";
+import { CookieUtils } from "../../utils/cookies";
 
 
 const createUser = catchAsync(
@@ -72,11 +73,30 @@ const logOut = catchAsync(
   async (req: Request, res: Response) => {
     const betterAuthSessionToken = req.cookies["better-auth.session_token"]
     const result = await authService.logOut(betterAuthSessionToken);
+
+    CookieUtils.clearCookie(res, "accessToken", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    })
+
+    CookieUtils.clearCookie(res, "refreshToken", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    })
+
+    CookieUtils.clearCookie(res, "better-auth.session_token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    })
+
+
     sendResponse(res, {
       statusCode: 200,
       success: true,
-      message: "Logout successfully",
-      data: result
+      message: "Logout successfully"
     })
   }
 )

@@ -9,7 +9,6 @@ export interface IRequestUser {
 }
 
 export interface ITutorAvailability {
-  tutorId: string;
   startTime: Date;
   endTime: Date;
 }
