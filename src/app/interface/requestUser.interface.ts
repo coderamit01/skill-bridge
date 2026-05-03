@@ -7,3 +7,14 @@ export interface IRequestUser {
   email: string,
   role: Role
 }
+
+export interface ITutorAvailability {
+  tutorId: string;
+  startTime: Date;
+  endTime: Date;
+}
+
+export interface IUpdateTutorAvailability {
+  startTime?: Date;
+  endTime?: Date;
+}

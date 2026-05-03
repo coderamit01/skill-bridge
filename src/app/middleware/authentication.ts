@@ -45,19 +45,19 @@ const authentication = (...roles: UserRole[]) => {
             throw new AppError("Your account has been banned. Please contact support for more information.", 403);
           }
 
-          if (roles.length && !roles.includes(req.user?.role as UserRole)) {
-            throw new AppError(
-              "Forbidden: You do not have the necessary permissions to access this resource.",
-              403,
-            );
-          }
-
           req.user = {
             userId: user.id,
             name: user.name,
             email: user.email,
             role: user.role as UserRole,
           };
+
+          if (roles.length && !roles.includes(req.user.role as UserRole)) {
+            throw new AppError(
+              "Forbidden: You do not have the necessary permissions to access this resource.",
+              403,
+            );
+          }
 
         }
         const accessToken = CookieUtils.getCookie(req, 'accessToken');
@@ -88,10 +88,7 @@ const authentication = (...roles: UserRole[]) => {
 
       next();
     } catch (error: any) {
-      res.status(500).json({
-        success: false,
-        message: "Internal Server Error",
-      });
+      next(error);
     }
   };
 };

@@ -82,7 +82,6 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const AvailablityScalarFieldEnum = {
   id: 'id',
   tutorId: 'tutorId',
-  dayOfWeek: 'dayOfWeek',
   startTime: 'startTime',
   endTime: 'endTime',
   createdAt: 'createdAt',

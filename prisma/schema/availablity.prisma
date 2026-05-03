@@ -1,7 +1,6 @@
 model Availablity {
   id        String   @id @default(uuid())
   tutorId   String
-  dayOfWeek Int
   startTime DateTime
   endTime   DateTime
   createdAt DateTime @default(now())
@@ -9,5 +8,5 @@ model Availablity {
 
   tutor Tutor @relation(fields: [tutorId], references: [id], onDelete: Cascade)
 
-  @@map("availablity")
+  @@map("availabilities")
 }

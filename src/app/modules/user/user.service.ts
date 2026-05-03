@@ -46,7 +46,7 @@ const getAllUser = async (user: IRequestUser) => {
   // if (user.role !== UserRole.ADMIN) {
   //   throw new AppError("Access Denied!", 403)
   // }
-  return await prisma.user.findMany({});
+  return await prisma.user.findMany();
 };
 const updateUser = async (id: string, user: IRequestUser, data: User, isAdmin: boolean) => {
 

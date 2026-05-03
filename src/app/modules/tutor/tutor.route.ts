@@ -8,21 +8,10 @@ const router = express.Router();
 router.get("/", tutorController.getAllTutors);
 router.get("/:tutorId", tutorController.getTutorById);
 
-router.post(
-  "/profile",
-  authentication(UserRole.TUTOR),
-  tutorController.createProfile,
-);
-router.put(
-  "/profile",
-  authentication(UserRole.TUTOR),
-  tutorController.updateProfile,
-);
+router.post("/availability", tutorController.createAvailablity)
 
-router.put(
-  "/availability",
-  authentication(UserRole.TUTOR),
-  tutorController.updateAvialablity,
-);
+router.put("/profile/:tutorId", tutorController.updateProfile);
+
+router.put("/availability", tutorController.updateAvialablity);
 
 export const tutorRoutes = router;

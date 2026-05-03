@@ -1,5 +1,6 @@
 import { User } from "../../../generated/prisma/client";
 import { AppError } from "../../helpers/appError";
+import { ITutorAvailability, IUpdateTutorAvailability } from "../../interface/requestUser.interface";
 import { UserRole } from "../../lib/auth";
 import { prisma } from "../../lib/prisma";
 import { TutorProfile, TutorUpdateProfile } from "../../type/tutor";
@@ -7,89 +8,98 @@ import { TutorProfile, TutorUpdateProfile } from "../../type/tutor";
 const getAllTutors = async () => {
   return await prisma.tutor.findMany({
     include: {
-      user: true
+      user: true,
+      subjects: {
+        select: {category: true}
+      },
+      bookings: true,
+      reviews: true,
+      availablity: true
     }
   });
 };
+
+
 const getTutorById = async (id: string) => {
   return await prisma.tutor.findUnique({
     where: {
       id
     },
     include: {
-      user: true
+     user: true,
+     subjects: {
+        select: {category: true}
+      },
+      bookings: true,
+      reviews: true,
+      availablity: true
     }
   });
 };
-const createProfile = async (user: User, data: TutorProfile) => {
-  const { id, role } = user;
-  if (!user) {
-    throw new AppError("User not authenticated", 401);
-  }
-  if (role !== UserRole.TUTOR) {
-    throw new AppError("Access denied. Tutor only.", 403);
-  }
-  const exists = await prisma.tutor.findUnique({
-    where: { userId: id },
-  });
-  if (exists) {
-    throw new AppError("Profile already exists", 400);
-  }
 
-  return await prisma.tutor.create({
-    data: {
-      userId: id,
-      bio: data.bio ?? null,
-      hourlyRate: data.hourlyRate ?? null,
-      yearsExperience: data.yearsExperience ?? null,
-      education: data.education ?? null,
-      categoryId: data.categoryId ?? null,
-      avg_rating: data.avg_rating ?? null,
-      avilable_start_time: data.avilable_start_time,
-      avilable_end_time: data.avilable_end_time,
-    },
-  });
-};
-const updateProfile = async (user: User, data: TutorUpdateProfile) => {
-  const { id, role } = user;
+
+const updateProfile = async (id: string, data: TutorUpdateProfile) => {
 
   const tutor = await prisma.tutor.findUniqueOrThrow({
-    where: { userId: id },
+    where: { userId: id }
   });
 
-  if (role === UserRole.TUTOR && tutor.userId !== id) {
-    throw new AppError("Access denied.", 403);
-  }
+  // if (role === UserRole.TUTOR && tutor.userId !== id) {
+  //   throw new AppError("Access denied.", 403);
+  // }
 
   return await prisma.tutor.update({
     where: { userId: id },
     data,
   });
 };
-const updateAvialablity = async (user: User, data: TutorUpdateProfile) => {
-  const { id, role } = user;
 
-  const tutor = await prisma.tutor.findUniqueOrThrow({
-    where: { userId: id },
+const createAvailablity = async(id: string, payload:ITutorAvailability) => {
+  const {startTime, endTime} = payload;
+
+  const start = new Date(startTime).getTime();
+  const end = new Date(endTime).getTime();
+
+  if(start >= end) {throw new AppError("Ensuring the start time is less than the end time", 400)}
+
+  if(start < Date.now()) { throw new AppError("Availability cannot be in the past", 400)}
+
+  const existAvailablity = await prisma.availablity.findFirst({
+    where: {
+      id,
+      startTime: {lt: new Date(endTime)},
+      endTime: {gt: new Date(startTime)}
+    }
   });
 
-  if (role === UserRole.TUTOR && tutor.userId !== id) {
-    throw new AppError("Access denied.", 403);
-  }
+  if(existAvailablity) {throw new AppError("Availability overlaps with an existing slot", 409)}
 
-  return await prisma.tutor.update({
-    where: { userId: id },
-    data: {
-      avilable_start_time: data.avilable_start_time,
-      avilable_end_time: data.avilable_end_time,
-    }
+  const result = await prisma.availablity.create({
+    data: payload
+  })
+  return result;
+}
+
+const updateAvialablity = async (id: string, payload: IUpdateTutorAvailability) => {
+
+  // const tutor = await prisma.tutor.findUniqueOrThrow({
+  //   where: { userId: id },
+  // });
+
+  // if (role === UserRole.TUTOR && tutor.userId !== id) {
+  //   throw new AppError("Access denied.", 403);
+  // }
+
+  return await prisma.availablity.update({
+    where: { tutorId: id },
+    data: payload
   });
 };
 
 export const tutorService = {
   getAllTutors,
-  createProfile,
   updateProfile,
+  createAvailablity,
   updateAvialablity,
   getTutorById,
 };

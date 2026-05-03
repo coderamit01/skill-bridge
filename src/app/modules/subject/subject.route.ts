@@ -7,7 +7,6 @@ const router = express.Router();
 
 router.post("/",  subjectController.createSubject);
 router.get("/", subjectController.getAllSubject);
-router.get("/:subjectId", subjectController.getSingleSubject);
 router.put(
   "/:subjectId",
   subjectController.updateSubject

@@ -2,23 +2,14 @@ import { prisma } from "../../lib/prisma";
 import { ISubjectPayload } from "./subject.interface";
 
 const getAllSubject = async () => {
-  return await prisma.subject.findMany({
+  return await prisma.tutorSubject.findMany({
     include: {
       category: true,
+      tutor: true
     },
   });
 };
 
-const getSingleSubject = async (id: string) => {
-  return await prisma.subject.findUnique({
-    where: {
-      id,
-    },
-    include: {
-      category: true,
-    },
-  });
-};
 
 const createSubject = async (payload: ISubjectPayload) => {
   return await prisma.tutorSubject.create({
@@ -30,8 +21,8 @@ const createSubject = async (payload: ISubjectPayload) => {
   });
 };
 
-const updateSubject = async (id: string, data: typeSubject) => {
-  return await prisma.subject.update({
+const updateSubject = async (id: string, data: ISubjectPayload) => {
+  return await prisma.tutorSubject.update({
     where: {
       id,
     },
@@ -43,7 +34,7 @@ const updateSubject = async (id: string, data: typeSubject) => {
 };
 
 const deleteSubject = async (id: string) => {
-  return await prisma.subject.delete({
+  return await prisma.tutorSubject.delete({
     where: {
       id,
     },
@@ -52,7 +43,6 @@ const deleteSubject = async (id: string) => {
 
 export const subjectService = {
   getAllSubject,
-  getSingleSubject,
   createSubject,
   updateSubject,
   deleteSubject,
