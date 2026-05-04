@@ -1,38 +1,38 @@
 import { BookingStatus, User } from "../../../generated/prisma/client";
 import { AppError } from "../../helpers/appError";
+import { IRequestUser } from "../../interface/requestUser.interface";
 import { UserRole } from "../../lib/auth";
 import { prisma } from "../../lib/prisma";
 import { Review } from "../../type/review";
 
-const createReview = async (user: User, data: Review) => {
+const createReview = async (user: IRequestUser, payload: Review) => {
+
   if (user.role !== UserRole.STUDENT) {
-    throw new AppError("Only students can review", 403);
+    throw new AppError("Only students can leave reviews", 403);
   }
+
   const booking = await prisma.booking.findUnique({
     where: {
-      id: data.bookingId,
-    },
-    select: {
-      userId: true,
-      status: true,
-      tutorId: true,
-    },
+      id: payload.bookingId,
+    }
   });
   if (!booking) {
     throw new AppError("Booking not found", 404);
   }
-  if (booking.userId !== user.id) {
+  if (booking.studentId !== user.userId) {
     throw new AppError("You cannot review this session", 403);
   }
+
   if (booking.status !== BookingStatus.COMPLETED) {
     throw new AppError(
       "You can review only after the session is completed",
       403,
     );
   }
+
   const alreadyReview = await prisma.review.findFirst({
     where: {
-      bookingId: data.bookingId,
+      bookingId: payload.bookingId,
     },
   });
   if (alreadyReview) {
@@ -41,11 +41,11 @@ const createReview = async (user: User, data: Review) => {
 
   const review = await prisma.review.create({
     data: {
-      bookingId: data.bookingId,
-      userId: user.id,
+      bookingId: payload.bookingId,
+      studentId: user.userId,
       tutorId: booking.tutorId,
-      rating: data.rating,
-      comment: data.comment,
+      rating: payload.rating,
+      comment: payload.comment
     },
   });
 
@@ -58,7 +58,7 @@ const createReview = async (user: User, data: Review) => {
   await prisma.tutor.update({
     where: { id: booking.tutorId },
     data: {
-      avg_rating: stats._avg.rating ?? 0,
+      averageRating: stats._avg.rating ?? 0,
     },
   });
 

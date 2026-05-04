@@ -1,7 +1,7 @@
 export interface Review {
   bookingId: string;
-  userId: string;
+  studentId: string;
   tutorId: string;
-  comment: string;
   rating: number;
+  comment: string;
 }

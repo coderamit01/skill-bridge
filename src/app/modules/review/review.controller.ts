@@ -3,30 +3,19 @@ import { AppError } from "../../helpers/appError";
 import { reviewService } from "./review.service";
 import { User } from "../../../generated/prisma/client";
 import { Review } from "../../type/review";
+import { IRequestUser } from "../../interface/requestUser.interface";
+import { sendResponse } from "../../shared/sendResponse";
 
 const createReview = async (req: Request, res: Response) => {
-  try {
-    const user = req?.user as User;
+    const user = req.user as IRequestUser;
     const payload: Review = req.body;
     const result = await reviewService.createReview(user, payload);
-    res.status(201).json({
+    sendResponse(res, {
+      statusCode: 201,
       success: true,
       message: "Review Create successfully",
       data: result,
     });
-  } catch (error) {
-    if (error instanceof AppError) {
-      res.status(error.statusCode).json({
-        success: false,
-        message: error.message,
-      });
-    } else {
-      res.status(500).json({
-        success: false,
-        message: "Internal Server Error",
-      });
-    }
-  }
 };
 
 export const reviewController = {
