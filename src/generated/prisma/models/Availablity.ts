@@ -205,16 +205,16 @@ export type AvailablityOrderByWithRelationInput = {
 
 export type AvailablityWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  tutorId?: string
   AND?: Prisma.AvailablityWhereInput | Prisma.AvailablityWhereInput[]
   OR?: Prisma.AvailablityWhereInput[]
   NOT?: Prisma.AvailablityWhereInput | Prisma.AvailablityWhereInput[]
+  tutorId?: Prisma.StringFilter<"Availablity"> | string
   startTime?: Prisma.DateTimeFilter<"Availablity"> | Date | string
   endTime?: Prisma.DateTimeFilter<"Availablity"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"Availablity"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Availablity"> | Date | string
   tutor?: Prisma.XOR<Prisma.TutorScalarRelationFilter, Prisma.TutorWhereInput>
-}, "id" | "tutorId">
+}, "id">
 
 export type AvailablityOrderByWithAggregationInput = {
   id?: Prisma.SortOrder

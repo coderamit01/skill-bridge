@@ -27,6 +27,7 @@ const getAllBooking = async (req: Request, res: Response) => {
     }
   }
 };
+
 const getBookingById = async (req: Request, res: Response) => {
   try {
     const { bookingId } = req?.params as { bookingId: string };
@@ -50,6 +51,7 @@ const getBookingById = async (req: Request, res: Response) => {
     }
   }
 };
+
 const createBooking = async (req: Request, res: Response) => {
   try {
     const user = req?.user as User;
@@ -75,6 +77,7 @@ const createBooking = async (req: Request, res: Response) => {
     }
   }
 };
+
 const updateBookingStatus = async (req: Request, res: Response) => {
   try {
     const user = req?.user as User;

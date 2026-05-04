@@ -5,17 +5,12 @@ import { UserRole } from "../../lib/auth";
 
 const router = express.Router();
 
-router.get(
-  "/",
-  authentication(UserRole.ADMIN, UserRole.STUDENT),
-  bookingController.getAllBooking,
-);
-router.get("/:bookingId", authentication(), bookingController.getBookingById);
-router.post("/", bookingController.createBooking);
-router.put(
-  "/:bookingId",
-  authentication(UserRole.ADMIN, UserRole.TUTOR, UserRole.STUDENT),
-  bookingController.updateBookingStatus,
-);
+router.get(  "/",  authentication(UserRole.ADMIN, UserRole.STUDENT),  bookingController.getAllBooking);
+
+router.get("/:bookingId", authentication(UserRole.ADMIN,UserRole.STUDENT), bookingController.getBookingById);
+
+router.post("/", authentication(UserRole.STUDENT), bookingController.createBooking);
+
+router.put("/:bookingId", authentication(UserRole.ADMIN, UserRole.TUTOR, UserRole.STUDENT), bookingController.updateBookingStatus);
 
 export const bookingRoutes = router;

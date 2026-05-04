@@ -22,7 +22,7 @@ router.use("/tutor-subjects", tutorSubjectRoutes);
 
 router.use("/users", userRoutes);
 
-router.use("/bookings", authentication(), bookingRoutes);
+router.use("/bookings", bookingRoutes);
 
 router.use("/reviews", reviewRoutes);
 

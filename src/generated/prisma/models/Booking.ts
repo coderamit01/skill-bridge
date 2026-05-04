@@ -27,12 +27,10 @@ export type AggregateBooking = {
 }
 
 export type BookingAvgAggregateOutputType = {
-  durationMins: number | null
   totalPrice: runtime.Decimal | null
 }
 
 export type BookingSumAggregateOutputType = {
-  durationMins: number | null
   totalPrice: runtime.Decimal | null
 }
 
@@ -41,7 +39,6 @@ export type BookingMinAggregateOutputType = {
   studentId: string | null
   tutorId: string | null
   scheduleAt: Date | null
-  durationMins: number | null
   status: $Enums.BookingStatus | null
   totalPrice: runtime.Decimal | null
   createdAt: Date | null
@@ -53,7 +50,6 @@ export type BookingMaxAggregateOutputType = {
   studentId: string | null
   tutorId: string | null
   scheduleAt: Date | null
-  durationMins: number | null
   status: $Enums.BookingStatus | null
   totalPrice: runtime.Decimal | null
   createdAt: Date | null
@@ -65,7 +61,6 @@ export type BookingCountAggregateOutputType = {
   studentId: number
   tutorId: number
   scheduleAt: number
-  durationMins: number
   status: number
   totalPrice: number
   createdAt: number
@@ -75,12 +70,10 @@ export type BookingCountAggregateOutputType = {
 
 
 export type BookingAvgAggregateInputType = {
-  durationMins?: true
   totalPrice?: true
 }
 
 export type BookingSumAggregateInputType = {
-  durationMins?: true
   totalPrice?: true
 }
 
@@ -89,7 +82,6 @@ export type BookingMinAggregateInputType = {
   studentId?: true
   tutorId?: true
   scheduleAt?: true
-  durationMins?: true
   status?: true
   totalPrice?: true
   createdAt?: true
@@ -101,7 +93,6 @@ export type BookingMaxAggregateInputType = {
   studentId?: true
   tutorId?: true
   scheduleAt?: true
-  durationMins?: true
   status?: true
   totalPrice?: true
   createdAt?: true
@@ -113,7 +104,6 @@ export type BookingCountAggregateInputType = {
   studentId?: true
   tutorId?: true
   scheduleAt?: true
-  durationMins?: true
   status?: true
   totalPrice?: true
   createdAt?: true
@@ -212,7 +202,6 @@ export type BookingGroupByOutputType = {
   studentId: string
   tutorId: string
   scheduleAt: Date
-  durationMins: number
   status: $Enums.BookingStatus
   totalPrice: runtime.Decimal
   createdAt: Date
@@ -247,7 +236,6 @@ export type BookingWhereInput = {
   studentId?: Prisma.StringFilter<"Booking"> | string
   tutorId?: Prisma.StringFilter<"Booking"> | string
   scheduleAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
-  durationMins?: Prisma.IntFilter<"Booking"> | number
   status?: Prisma.EnumBookingStatusFilter<"Booking"> | $Enums.BookingStatus
   totalPrice?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
@@ -262,7 +250,6 @@ export type BookingOrderByWithRelationInput = {
   studentId?: Prisma.SortOrder
   tutorId?: Prisma.SortOrder
   scheduleAt?: Prisma.SortOrder
-  durationMins?: Prisma.SortOrder
   status?: Prisma.SortOrder
   totalPrice?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -280,7 +267,6 @@ export type BookingWhereUniqueInput = Prisma.AtLeast<{
   studentId?: Prisma.StringFilter<"Booking"> | string
   tutorId?: Prisma.StringFilter<"Booking"> | string
   scheduleAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
-  durationMins?: Prisma.IntFilter<"Booking"> | number
   status?: Prisma.EnumBookingStatusFilter<"Booking"> | $Enums.BookingStatus
   totalPrice?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
@@ -295,7 +281,6 @@ export type BookingOrderByWithAggregationInput = {
   studentId?: Prisma.SortOrder
   tutorId?: Prisma.SortOrder
   scheduleAt?: Prisma.SortOrder
-  durationMins?: Prisma.SortOrder
   status?: Prisma.SortOrder
   totalPrice?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -315,7 +300,6 @@ export type BookingScalarWhereWithAggregatesInput = {
   studentId?: Prisma.StringWithAggregatesFilter<"Booking"> | string
   tutorId?: Prisma.StringWithAggregatesFilter<"Booking"> | string
   scheduleAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
-  durationMins?: Prisma.IntWithAggregatesFilter<"Booking"> | number
   status?: Prisma.EnumBookingStatusWithAggregatesFilter<"Booking"> | $Enums.BookingStatus
   totalPrice?: Prisma.DecimalWithAggregatesFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
@@ -325,7 +309,6 @@ export type BookingScalarWhereWithAggregatesInput = {
 export type BookingCreateInput = {
   id?: string
   scheduleAt: Date | string
-  durationMins?: number
   status?: $Enums.BookingStatus
   totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
@@ -340,7 +323,6 @@ export type BookingUncheckedCreateInput = {
   studentId: string
   tutorId: string
   scheduleAt: Date | string
-  durationMins?: number
   status?: $Enums.BookingStatus
   totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
@@ -351,7 +333,6 @@ export type BookingUncheckedCreateInput = {
 export type BookingUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationMins?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -366,7 +347,6 @@ export type BookingUncheckedUpdateInput = {
   studentId?: Prisma.StringFieldUpdateOperationsInput | string
   tutorId?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationMins?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -379,7 +359,6 @@ export type BookingCreateManyInput = {
   studentId: string
   tutorId: string
   scheduleAt: Date | string
-  durationMins?: number
   status?: $Enums.BookingStatus
   totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
@@ -389,7 +368,6 @@ export type BookingCreateManyInput = {
 export type BookingUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationMins?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -401,7 +379,6 @@ export type BookingUncheckedUpdateManyInput = {
   studentId?: Prisma.StringFieldUpdateOperationsInput | string
   tutorId?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationMins?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -413,7 +390,6 @@ export type BookingCountOrderByAggregateInput = {
   studentId?: Prisma.SortOrder
   tutorId?: Prisma.SortOrder
   scheduleAt?: Prisma.SortOrder
-  durationMins?: Prisma.SortOrder
   status?: Prisma.SortOrder
   totalPrice?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -421,7 +397,6 @@ export type BookingCountOrderByAggregateInput = {
 }
 
 export type BookingAvgOrderByAggregateInput = {
-  durationMins?: Prisma.SortOrder
   totalPrice?: Prisma.SortOrder
 }
 
@@ -430,7 +405,6 @@ export type BookingMaxOrderByAggregateInput = {
   studentId?: Prisma.SortOrder
   tutorId?: Prisma.SortOrder
   scheduleAt?: Prisma.SortOrder
-  durationMins?: Prisma.SortOrder
   status?: Prisma.SortOrder
   totalPrice?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -442,7 +416,6 @@ export type BookingMinOrderByAggregateInput = {
   studentId?: Prisma.SortOrder
   tutorId?: Prisma.SortOrder
   scheduleAt?: Prisma.SortOrder
-  durationMins?: Prisma.SortOrder
   status?: Prisma.SortOrder
   totalPrice?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -450,7 +423,6 @@ export type BookingMinOrderByAggregateInput = {
 }
 
 export type BookingSumOrderByAggregateInput = {
-  durationMins?: Prisma.SortOrder
   totalPrice?: Prisma.SortOrder
 }
 
@@ -467,14 +439,6 @@ export type BookingListRelationFilter = {
 
 export type BookingOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
-}
-
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
 }
 
 export type EnumBookingStatusFieldUpdateOperationsInput = {
@@ -590,7 +554,6 @@ export type BookingUncheckedUpdateManyWithoutStudentNestedInput = {
 export type BookingCreateWithoutReviewInput = {
   id?: string
   scheduleAt: Date | string
-  durationMins?: number
   status?: $Enums.BookingStatus
   totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
@@ -604,7 +567,6 @@ export type BookingUncheckedCreateWithoutReviewInput = {
   studentId: string
   tutorId: string
   scheduleAt: Date | string
-  durationMins?: number
   status?: $Enums.BookingStatus
   totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
@@ -630,7 +592,6 @@ export type BookingUpdateToOneWithWhereWithoutReviewInput = {
 export type BookingUpdateWithoutReviewInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationMins?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -644,7 +605,6 @@ export type BookingUncheckedUpdateWithoutReviewInput = {
   studentId?: Prisma.StringFieldUpdateOperationsInput | string
   tutorId?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationMins?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -654,7 +614,6 @@ export type BookingUncheckedUpdateWithoutReviewInput = {
 export type BookingCreateWithoutTutorInput = {
   id?: string
   scheduleAt: Date | string
-  durationMins?: number
   status?: $Enums.BookingStatus
   totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
@@ -667,7 +626,6 @@ export type BookingUncheckedCreateWithoutTutorInput = {
   id?: string
   studentId: string
   scheduleAt: Date | string
-  durationMins?: number
   status?: $Enums.BookingStatus
   totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
@@ -709,7 +667,6 @@ export type BookingScalarWhereInput = {
   studentId?: Prisma.StringFilter<"Booking"> | string
   tutorId?: Prisma.StringFilter<"Booking"> | string
   scheduleAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
-  durationMins?: Prisma.IntFilter<"Booking"> | number
   status?: Prisma.EnumBookingStatusFilter<"Booking"> | $Enums.BookingStatus
   totalPrice?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
@@ -719,7 +676,6 @@ export type BookingScalarWhereInput = {
 export type BookingCreateWithoutStudentInput = {
   id?: string
   scheduleAt: Date | string
-  durationMins?: number
   status?: $Enums.BookingStatus
   totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
@@ -732,7 +688,6 @@ export type BookingUncheckedCreateWithoutStudentInput = {
   id?: string
   tutorId: string
   scheduleAt: Date | string
-  durationMins?: number
   status?: $Enums.BookingStatus
   totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
@@ -770,7 +725,6 @@ export type BookingCreateManyTutorInput = {
   id?: string
   studentId: string
   scheduleAt: Date | string
-  durationMins?: number
   status?: $Enums.BookingStatus
   totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
@@ -780,7 +734,6 @@ export type BookingCreateManyTutorInput = {
 export type BookingUpdateWithoutTutorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationMins?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -793,7 +746,6 @@ export type BookingUncheckedUpdateWithoutTutorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   studentId?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationMins?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -805,7 +757,6 @@ export type BookingUncheckedUpdateManyWithoutTutorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   studentId?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationMins?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -816,7 +767,6 @@ export type BookingCreateManyStudentInput = {
   id?: string
   tutorId: string
   scheduleAt: Date | string
-  durationMins?: number
   status?: $Enums.BookingStatus
   totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
@@ -826,7 +776,6 @@ export type BookingCreateManyStudentInput = {
 export type BookingUpdateWithoutStudentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationMins?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -839,7 +788,6 @@ export type BookingUncheckedUpdateWithoutStudentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tutorId?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationMins?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -851,7 +799,6 @@ export type BookingUncheckedUpdateManyWithoutStudentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tutorId?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationMins?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -865,7 +812,6 @@ export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   studentId?: boolean
   tutorId?: boolean
   scheduleAt?: boolean
-  durationMins?: boolean
   status?: boolean
   totalPrice?: boolean
   createdAt?: boolean
@@ -880,7 +826,6 @@ export type BookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   studentId?: boolean
   tutorId?: boolean
   scheduleAt?: boolean
-  durationMins?: boolean
   status?: boolean
   totalPrice?: boolean
   createdAt?: boolean
@@ -894,7 +839,6 @@ export type BookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   studentId?: boolean
   tutorId?: boolean
   scheduleAt?: boolean
-  durationMins?: boolean
   status?: boolean
   totalPrice?: boolean
   createdAt?: boolean
@@ -908,14 +852,13 @@ export type BookingSelectScalar = {
   studentId?: boolean
   tutorId?: boolean
   scheduleAt?: boolean
-  durationMins?: boolean
   status?: boolean
   totalPrice?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "studentId" | "tutorId" | "scheduleAt" | "durationMins" | "status" | "totalPrice" | "createdAt" | "updatedAt", ExtArgs["result"]["booking"]>
+export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "studentId" | "tutorId" | "scheduleAt" | "status" | "totalPrice" | "createdAt" | "updatedAt", ExtArgs["result"]["booking"]>
 export type BookingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   tutor?: boolean | Prisma.TutorDefaultArgs<ExtArgs>
   student?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -942,7 +885,6 @@ export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     studentId: string
     tutorId: string
     scheduleAt: Date
-    durationMins: number
     status: $Enums.BookingStatus
     totalPrice: runtime.Decimal
     createdAt: Date
@@ -1377,7 +1319,6 @@ export interface BookingFieldRefs {
   readonly studentId: Prisma.FieldRef<"Booking", 'String'>
   readonly tutorId: Prisma.FieldRef<"Booking", 'String'>
   readonly scheduleAt: Prisma.FieldRef<"Booking", 'DateTime'>
-  readonly durationMins: Prisma.FieldRef<"Booking", 'Int'>
   readonly status: Prisma.FieldRef<"Booking", 'BookingStatus'>
   readonly totalPrice: Prisma.FieldRef<"Booking", 'Decimal'>
   readonly createdAt: Prisma.FieldRef<"Booking", 'DateTime'>
