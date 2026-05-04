@@ -1,9 +1,7 @@
-export interface Booking {
-  userId: string;
+export interface IBooking {
+  studentId: string;
   tutorId: string;
-  session_date: string;
-  start_time: string;
-  end_time: string;
-  price: number;
-  status: string;
+  availabilityId: string;
+  scheduleAt: Date;
+  totalPrice: number;
 }

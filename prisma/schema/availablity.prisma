@@ -3,10 +3,12 @@ model Availablity {
   tutorId   String
   startTime DateTime
   endTime   DateTime
+  isBooked  Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  tutor Tutor @relation(fields: [tutorId], references: [id], onDelete: Cascade)
+  tutor     Tutor    @relation(fields: [tutorId], references: [id], onDelete: Cascade)
+  bookingId Booking?
 
   @@map("availabilities")
 }

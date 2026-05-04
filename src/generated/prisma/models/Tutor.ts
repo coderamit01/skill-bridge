@@ -603,10 +603,6 @@ export type NullableDecimalFieldUpdateOperationsInput = {
   divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
 export type TutorCreateNestedOneWithoutSubjectsInput = {
   create?: Prisma.XOR<Prisma.TutorCreateWithoutSubjectsInput, Prisma.TutorUncheckedCreateWithoutSubjectsInput>
   connectOrCreate?: Prisma.TutorCreateOrConnectWithoutSubjectsInput

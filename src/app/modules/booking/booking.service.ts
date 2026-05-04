@@ -1,194 +1,279 @@
 import { BookingStatus, User } from "../../../generated/prisma/client";
 import { AppError } from "../../helpers/appError";
+import { IRequestUser } from "../../interface/requestUser.interface";
 import { UserRole } from "../../lib/auth";
 import { prisma } from "../../lib/prisma";
-import { Booking } from "../../type/booking";
+import { IBooking } from "../../type/booking";
 
-const getAllBooking = async (user: User) => {
+const getAllBooking = async (user: IRequestUser) => {
+
+  let whereClause = {};
+
   if (user.role === UserRole.STUDENT) {
-    return await prisma.booking.findMany({
-      where: {
-        userId: user.id,
-      },
-      select: {
-        id: true,
-        userId: true,
-        tutorId: true,
-        session_date: true,
-        start_time: true,
-        end_time: true,
-        price: true,
-        status: true,
-        created_at: true,
-        updated_at: true,
-        tutor: {
-          select: {
-            id: true,
-            bio: true,
-            yearsExperience: true,
-            education: true,
-            categoryId: true,
-            avg_rating: true,
-            user: {
-              select: {
-                name: true,
-              },
-            },
-          },
-        },
-      },
-    });
+    whereClause = { studentId: user.userId };
   }
-  if (user.role === UserRole.ADMIN) {
-    return await prisma.booking.findMany({
-      select: {
-        id: true,
-        userId: true,
-        tutorId: true,
-        session_date: true,
-        start_time: true,
-        end_time: true,
-        price: true,
-        status: true,
-        created_at: true,
-        updated_at: true,
-        tutor: {
-          select: {
-            id: true,
-            bio: true,
-            yearsExperience: true,
-            education: true,
-            categoryId: true,
-            avg_rating: true,
-            user: {
-              select: {
-                name: true,
-              },
-            },
-          },
-        },
-        user: {
-          select: {
-            name: true,
-          },
+  else if (user.role === UserRole.TUTOR) {
+
+    const tutor = await prisma.tutor.findUnique({
+      where: { userId: user.userId }
+    })
+
+    if (!tutor) {
+      throw new AppError("Tutor profile not found", 404);
+    }
+    whereClause = { tutorId: tutor.id }
+  }
+  else if (user.role === UserRole.ADMIN) {
+    whereClause = {}
+  }
+  else {
+    throw new AppError("Unauthorized", 403);
+  }
+
+
+  const result = await prisma.booking.findMany({
+    where: whereClause,
+    orderBy: {
+      createdAt: "desc"
+    },
+    include: {
+      tutor: {
+        select: {
+          name: true,
+          email: true,
+          gender: true,
+          image: true
         },
       },
-    });
-  }
+      student: {
+        select: {
+          name: true,
+          email: true,
+          image: true
+        }
+      },
+      availability: {
+        select: {
+          startTime: true,
+          endTime: true
+        }
+      },
+      review: {
+        select: {
+          bookingId: true,
+          studentId: true,
+          tutorId: true,
+          rating: true,
+          comment: true
+        }
+      }
+    }
+  })
+  return result;
+
 };
 
-const getBookingById = async (id: string) => {
-  return await prisma.booking.findUnique({
-    where: {
-      id,
-    },
-  });
-};
-const createBooking = async (user: User, data: Booking) => {
-  if (!user) {
-    throw new AppError("Login required.", 401);
+const getBookingById = async (user: IRequestUser, bookingId: string) => {
+
+  const booking = await prisma.booking.findUnique({
+    where: { id: bookingId },
+    include: {
+      tutor: {
+        select: {
+          name: true,
+          email: true,
+          gender: true,
+          image: true
+        },
+      },
+      student: {
+        select: {
+          name: true,
+          email: true,
+          image: true
+        }
+      },
+      availability: {
+        select: {
+          startTime: true,
+          endTime: true
+        }
+      },
+      review: {
+        select: {
+          bookingId: true,
+          studentId: true,
+          tutorId: true,
+          rating: true,
+          comment: true
+        }
+      }
+    }
+  })
+
+  if (!booking) {
+    throw new AppError("Booking not found", 404);
   }
+
+  if (user.role === UserRole.ADMIN) {
+    return booking;
+  }
+
+  if (user.role === UserRole.STUDENT) {
+    if (booking.studentId !== user.userId) {
+      throw new AppError("You are not authorized to view this booking", 403);
+    }
+    return booking;
+  }
+
+  if (user.role === UserRole.TUTOR) {
+    const tutor = await prisma.tutor.findUnique({
+      where: { userId: user.userId }
+    })
+
+    if (!tutor) {
+      throw new AppError("Tutor profile not found", 404);
+    }
+
+    if (booking.tutorId !== tutor?.id) {
+      throw new AppError("You are not authorized to view this booking", 403);
+    }
+    return booking;
+  }
+  throw new AppError("Unauthorized", 403);
+
+};
+
+const createBooking = async (user: IRequestUser, payload: IBooking) => {
+
   if (user.role !== UserRole.STUDENT) {
     throw new AppError("Only students can book", 403);
   }
+
   const tutor = await prisma.tutor.findUnique({
     where: {
-      id: data.tutorId,
-    },
-    select: {
-      hourlyRate: true,
-      avilable_start_time: true,
-      avilable_end_time: true,
-    },
+      id: payload.tutorId,
+    }
   });
   if (!tutor) {
     throw new AppError("Tutor not found", 404);
   }
 
-  const start = new Date(data.start_time);
-  const end = new Date(data.end_time);
-  const sessionDate = new Date(data.session_date);
-
-  const startHours = start.getHours();
-  const endHours = end.getHours();
-
-  if (
-    startHours < new Date(tutor.avilable_start_time).getHours() ||
-    endHours > new Date(tutor.avilable_end_time).getHours()
-  ) {
-    throw new AppError("Outside tutor working hours", 400);
+  if (!tutor.isAvailable) {
+    throw new AppError("Tutor is not currently accepting bookings", 400);
   }
-  const durationHours = (end.getTime() - start.getTime()) / (1000 * 60 * 60);
-  const price = tutor.hourlyRate?.toNumber()! * durationHours;
 
-  const checkavialable = await prisma.booking.findFirst({
+  if (tutor.userId === user.userId) {
+    throw new AppError("You cannot book your own session", 400);
+  }
+
+  const availablity = await prisma.availablity.findFirst({
     where: {
-      tutorId: data.tutorId,
-      session_date: sessionDate,
-      status: { not: BookingStatus.CANCELLED },
-      AND: [{ start_time: { lt: end } }, { end_time: { gt: start } }],
-    },
-  });
-  if (checkavialable) {
-    throw new AppError("This time slot is already booked", 400);
+      id: payload.availabilityId
+    }
+  })
+
+  if (!availablity) {
+    throw new AppError("Tutor not available at this time", 400);
   }
 
-  return await prisma.booking.create({
+  if (availablity.isBooked) {
+    throw new AppError("This slot is already booked", 400);
+  }
+
+  if (availablity.tutorId !== payload.tutorId) {
+    throw new AppError("This slot does not belong to the selected tutor", 400);
+  }
+
+  const diffHours = (availablity.endTime.getTime() - availablity.startTime.getTime()) / (1000 * 60 * 60);
+  const totalPrice = Number(tutor.hourlyRate) * diffHours;
+
+  const result = await prisma.booking.create({
     data: {
-      userId: user.id,
-      tutorId: data.tutorId,
-      session_date: sessionDate,
-      start_time: start,
-      end_time: end,
-      price,
-      status: BookingStatus.CONFIRMED,
+      studentId: user.userId,
+      tutorId: payload.tutorId,
+      availabilityId: payload.availabilityId,
+      scheduleAt: availablity.startTime,
+      totalPrice,
     },
   });
+
+  await prisma.availablity.update({
+    where: { id: payload.availabilityId },
+    data: { isBooked: true }
+  })
+
+  return result;
+
 };
-const updateBookingStatus = async (
-  bookId: string,
-  user: User,
-  status: BookingStatus,
-) => {
-  const bookingData = await prisma.booking.findUnique({
-    where: { id: bookId },
+
+const updateBookingStatus = async (user: IRequestUser, bookId: string, status: BookingStatus) => {
+
+  const booking = await prisma.booking.findUnique({
+    where: { id: bookId, studentId: user.userId },
   });
-  if (!bookingData) throw new AppError("Booking not found", 404);
 
-  let tutorProfile;
-  if (user.role === UserRole.TUTOR) {
-    tutorProfile = await prisma.tutor.findUnique({
-      where: { userId: user.id },
-      select: { id: true },
-    });
+  if (!booking) throw new AppError("Booking not found", 404);
 
-    if (!tutorProfile) throw new AppError("Tutor profile not found", 404);
+  if (booking.status === BookingStatus.CANCELLED || booking.status === BookingStatus.COMPLETED) {
+    throw new AppError("This booking is already closed and cannot be changed", 400);
   }
 
   if (user.role === UserRole.STUDENT) {
-    if (bookingData?.userId !== user.id) {
-      throw new AppError("Not your booking", 403);
+    if (booking.studentId !== user.userId) {
+      throw new AppError("You are not authorized to update this booking", 403);
     }
 
     if (status !== BookingStatus.CANCELLED) {
-      throw new AppError("Students can only cancel bookings", 403);
+      throw new AppError("Students can only cancel the booking", 403);
     }
   }
-  if (user.role === UserRole.TUTOR) {
-    if (bookingData.tutorId !== tutorProfile!.id) {
-      throw new AppError("Not your session", 403);
+  else if (user.role === UserRole.TUTOR) {
+
+    const tutor = await prisma.tutor.findUnique({
+      where: { userId: user.userId }
+    })
+    if (!tutor) {
+      throw new AppError("Tutor profile not found", 404);
     }
 
+    if (booking.tutorId !== tutor.id) {
+      throw new AppError("You are not authorized to update this booking", 403);
+    }
     if (status !== BookingStatus.COMPLETED) {
-      throw new AppError("Invalid action for tutor", 403);
+      throw new AppError("Tutors can only confirm or complete the booking", 403);
     }
   }
-
-  await prisma.booking.update({
+  else if (user.role === UserRole.ADMIN) {
+    if (![BookingStatus.CONFIRMED, BookingStatus.CANCELLED, BookingStatus.COMPLETED].includes(status)) {
+      throw new AppError("Invalid status update", 400);
+    }
+  }
+  else {
+    throw new AppError("Unauthorized", 403);
+  }
+  const result = await prisma.booking.update({
     where: { id: bookId },
-    data: { status: status },
+    data: { status }
   });
+
+  if(status === BookingStatus.CANCELLED){
+    await prisma.availablity.update({
+      where: { id: booking.availabilityId },
+      data: { isBooked: false }
+    })
+  }
+
+  if(status === BookingStatus.COMPLETED){
+    await prisma.availablity.update({
+      where: { id: booking.availabilityId },
+      data: { isBooked: false }
+    })
+  }
+
+  return result;
 };
+
 export const bookingService = {
   createBooking,
   getAllBooking,

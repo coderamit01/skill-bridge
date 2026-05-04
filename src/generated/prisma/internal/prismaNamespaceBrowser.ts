@@ -84,6 +84,7 @@ export const AvailablityScalarFieldEnum = {
   tutorId: 'tutorId',
   startTime: 'startTime',
   endTime: 'endTime',
+  isBooked: 'isBooked',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -95,6 +96,7 @@ export const BookingScalarFieldEnum = {
   id: 'id',
   studentId: 'studentId',
   tutorId: 'tutorId',
+  availabilityId: 'availabilityId',
   scheduleAt: 'scheduleAt',
   status: 'status',
   totalPrice: 'totalPrice',
