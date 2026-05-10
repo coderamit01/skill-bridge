@@ -11,7 +11,6 @@ const createTutor = catchAsync(
   async(req: Request, res: Response) => {
     const payload = req.body;
     const result = await userService.creatTutor(payload);
-    console.log(result);
     sendResponse(res, {
       statusCode: 201,
       success: true,

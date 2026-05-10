@@ -10,7 +10,7 @@ const getAllTutors = catchAsync(
     const result = await tutorService.getAllTutors();
     sendResponse(res, {
       statusCode: 200,
-      success: false,
+      success: true,
       message: "Retrive all Tutors succussfully",
       data: result,
     });
@@ -23,7 +23,7 @@ const getTutorById = catchAsync(
     const result = await tutorService.getTutorById(tutorId);
     sendResponse(res,{
       statusCode: 200,
-      success: false,
+      success: true,
       message: "Retrive Tutor successfully",
       data: result,
     });
@@ -39,7 +39,7 @@ const updateProfile = catchAsync(
     const result = await tutorService.updateProfile(user, payload);
     sendResponse(res, {
       statusCode: 200,
-      success: false,
+      success: true,
       message: "Profile update succussfully",
       data: result,
     });
@@ -53,7 +53,7 @@ const createAvailablity = catchAsync(
     const result = await tutorService.createAvailablity(user,payload);
     sendResponse(res, {
       statusCode: 201,
-      success: false,
+      success: true,
       message: "Availablity create succussfully",
       data: result,
     });
@@ -67,7 +67,7 @@ const updateAvialablity = catchAsync(
     const result = await tutorService.updateAvialablity(user,availableId, payload);
     sendResponse(res, {
       statusCode: 201,
-      success: false,
+      success: true,
       message: "Availablity updated succussfully",
       data: result,
     });
@@ -81,7 +81,7 @@ const deleteAvialablity = catchAsync(
     const result = await tutorService.deleteAvialablity(user,availableId);
     sendResponse(res, {
       statusCode: 200,
-      success: false,
+      success: true,
       message: "Availablity deleted succussfully",
       data: result,
     });

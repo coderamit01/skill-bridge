@@ -38,8 +38,6 @@ export async function seedAdmin() {
         emailVerified: true
       }
     })
-    console.log(adminUser);
-
 
     console.log("Admin created Successfuly");
   } catch (error) {

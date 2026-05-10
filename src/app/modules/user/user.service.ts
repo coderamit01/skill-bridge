@@ -8,16 +8,17 @@ import { IRegisterPayload, IUpdateStatus } from "./user.interface";
 
 const creatTutor = async (payload: IRegisterPayload) => {
   const existUser = await prisma.user.findUnique({
-    where: { email: payload.tutor.email }
+    where: { email: payload.email }
   });
+
   if (existUser) {
     throw new AppError("User already exists", 400);
   }
 
   const userData = await auth.api.signUpEmail({
     body: {
-      name: payload.tutor.name,
-      email: payload.tutor.email,
+      name: payload.name,
+      email: payload.email,
       password: payload.password,
       role: UserRole.TUTOR,
     }
@@ -28,7 +29,9 @@ const creatTutor = async (payload: IRegisterPayload) => {
       const tutorData = await tx.tutor.create({
         data: {
           userId: userData.user.id,
-          ...payload.tutor
+          email: payload.email,
+          name:  payload.name,
+          gender:  payload.gender,
         }
       })
       return tutorData;

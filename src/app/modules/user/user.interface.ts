@@ -1,9 +1,11 @@
+import { Gender, Role } from "../../../generated/prisma/enums"
+
 export interface IRegisterPayload {
-  [x: string]: any
   name: string,
   email: string,
   password: string,
-  role?: string
+  role: Role,
+  gender: Gender
 }
 export interface ILoginPayload {
   email: string,

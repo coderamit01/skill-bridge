@@ -12,22 +12,11 @@ const createUser = catchAsync(
 
     const payload = req.body;
     const result = await authService.createUser(payload);
-    const { accessToken, refreshToken, token, ...rest } = result;
-
-    tokenUtils.setAccessTokenCookie(res, accessToken);
-    tokenUtils.setRefreshTokenCookie(res, refreshToken);
-    tokenUtils.setBetterAuthSessionCooke(res, token as string);
-
     sendResponse(res, {
       statusCode: 201,
       success: true,
       message: "Register successfully",
-      data: {
-        token,
-        accessToken,
-        refreshToken,
-        ...rest
-      }
+      data: result
     })
   }
 )
@@ -37,7 +26,7 @@ const loginUser = catchAsync(
 
     const payload = req.body;
     const result = await authService.loginUser(payload);
-    const { accessToken, refreshToken, token, ...rest } = result;
+    const { accessToken, refreshToken, token, ...userInfo } = result;
 
     tokenUtils.setAccessTokenCookie(res, accessToken);
     tokenUtils.setRefreshTokenCookie(res, refreshToken);
@@ -47,10 +36,7 @@ const loginUser = catchAsync(
       success: true,
       message: "Login successfully",
       data: {
-        token,
-        accessToken,
-        refreshToken,
-        ...rest
+        userInfo
       }
     })
   }
@@ -59,7 +45,6 @@ const loginUser = catchAsync(
 const getMe = catchAsync(
   async (req: Request, res: Response) => {
     const user = req.user;
-    console.log({ user });
     const result = await authService.getMe(user as IRequestUser);
     sendResponse(res, {
       statusCode: 200,

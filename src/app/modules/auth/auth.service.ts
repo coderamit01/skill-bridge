@@ -23,26 +23,24 @@ const createUser = async (payload: IRegisterPayload) => {
     throw new AppError("Failed to create user", 500);
   }
 
-  const accessToken = tokenUtils.getAccessToken({
-    userId: data.user.id,
-    role: data.user.role,
-    name: data.user.name,
-    email: data.user.email,
-    isBanned: data.user.isBanned
-  });
+  // const accessToken = tokenUtils.getAccessToken({
+  //   userId: data.user.id,
+  //   role: data.user.role,
+  //   name: data.user.name,
+  //   email: data.user.email,
+  //   isBanned: data.user.isBanned
+  // });
 
-  const refreshToken = tokenUtils.getRefreshToken({
-    userId: data.user.id,
-    role: data.user.role,
-    name: data.user.name,
-    email: data.user.email,
-    isBanned: data.user.isBanned
-  });
+  // const refreshToken = tokenUtils.getRefreshToken({
+  //   userId: data.user.id,
+  //   role: data.user.role,
+  //   name: data.user.name,
+  //   email: data.user.email,
+  //   isBanned: data.user.isBanned
+  // });
 
   return {
-    ...data,
-    accessToken,
-    refreshToken
+    data
   };
 }
 const loginUser = async (payload: ILoginPayload) => {
