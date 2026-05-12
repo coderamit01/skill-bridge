@@ -26,7 +26,7 @@ const loginUser = catchAsync(
 
     const payload = req.body;
     const result = await authService.loginUser(payload);
-    const { accessToken, refreshToken, token, ...userInfo } = result;
+    const { accessToken, refreshToken, token, ...rest } = result;
 
     tokenUtils.setAccessTokenCookie(res, accessToken);
     tokenUtils.setRefreshTokenCookie(res, refreshToken);
@@ -36,7 +36,7 @@ const loginUser = catchAsync(
       success: true,
       message: "Login successfully",
       data: {
-        userInfo
+        ...rest
       }
     })
   }
