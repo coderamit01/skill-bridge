@@ -21,15 +21,29 @@ const getTutorById = catchAsync(
   async (req: Request, res: Response) => {
     const { tutorId } = req.params as { tutorId: string };
     const result = await tutorService.getTutorById(tutorId);
-    sendResponse(res,{
+    sendResponse(res, {
       statusCode: 200,
       success: true,
       message: "Retrive Tutor successfully",
       data: result,
     });
-  
-}
+
+  }
 )
+
+const getAllAvailability = catchAsync(
+  async (req: Request, res: Response) => {
+    const user = req?.user as IRequestUser;
+    const result = await tutorService.getAllAvailability(user);
+    sendResponse(res, {
+      statusCode: 200,
+      success: true,
+      message: "Retrive Tutors Availability succussfully",
+      data: result,
+    });
+  }
+)
+
 
 
 const updateProfile = catchAsync(
@@ -44,27 +58,27 @@ const updateProfile = catchAsync(
       data: result,
     });
 
-})
+  })
 
 const createAvailablity = catchAsync(
   async (req: Request, res: Response) => {
     const user = req?.user as IRequestUser;
     const payload: ITutorAvailability = req.body;
-    const result = await tutorService.createAvailablity(user,payload);
+    const result = await tutorService.createAvailablity(user, payload);
     sendResponse(res, {
       statusCode: 201,
       success: true,
       message: "Availablity create succussfully",
       data: result,
     });
-})
+  })
 
 const updateAvialablity = catchAsync(
   async (req: Request, res: Response) => {
     const user = req?.user as IRequestUser;
-    const {availableId} = req.params as {availableId: string};
+    const { availableId } = req.params as { availableId: string };
     const payload: ITutorAvailability = req.body;
-    const result = await tutorService.updateAvialablity(user,availableId, payload);
+    const result = await tutorService.updateAvialablity(user, availableId, payload);
     sendResponse(res, {
       statusCode: 201,
       success: true,
@@ -77,8 +91,8 @@ const updateAvialablity = catchAsync(
 const deleteAvialablity = catchAsync(
   async (req: Request, res: Response) => {
     const user = req?.user as IRequestUser;
-    const {availableId} = req.params as {availableId: string};
-    const result = await tutorService.deleteAvialablity(user,availableId);
+    const { availableId } = req.params as { availableId: string };
+    const result = await tutorService.deleteAvialablity(user, availableId);
     sendResponse(res, {
       statusCode: 200,
       success: true,
@@ -91,6 +105,7 @@ const deleteAvialablity = catchAsync(
 export const tutorController = {
   getAllTutors,
   updateProfile,
+  getAllAvailability,
   createAvailablity,
   updateAvialablity,
   getTutorById,
