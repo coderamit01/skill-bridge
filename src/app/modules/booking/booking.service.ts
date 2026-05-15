@@ -210,7 +210,7 @@ const createBooking = async (user: IRequestUser, payload: IBooking) => {
 const updateBookingStatus = async (user: IRequestUser, bookId: string, status: BookingStatus) => {
 
   const booking = await prisma.booking.findUnique({
-    where: { id: bookId, studentId: user.userId },
+    where: { id: bookId},
   });
 
   if (!booking) throw new AppError("Booking not found", 404);

@@ -83,7 +83,14 @@ const getMe = async (userData: IRequestUser) => {
       id: userData.userId
     },
     include: {
-      tutor: true,
+      tutor: {
+        include: {
+          availablity: true,
+          bookings: true,
+          reviews: true,
+          subjects: true,
+        }
+      },
       bookingsAsStudent: true,
       reviews: true
     }

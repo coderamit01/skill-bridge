@@ -30,7 +30,8 @@ const getAllAvailability = async (user: IRequestUser) => {
   if (!tutor) { throw new AppError("Tutor not found", 404) }
 
   const result = await prisma.availablity.findMany({
-    where: { tutorId: tutor.id }
+    where: { tutorId: tutor.id },
+    orderBy: { createdAt: "asc" }
   });
   return result;
 };
@@ -129,6 +130,7 @@ const updateAvialablity = async (user: IRequestUser, availableId: string, payloa
   const existAvailablity = await prisma.availablity.findFirst({
     where: {
       tutorId: tutor.id,
+      id: { not: availableId },
       startTime: { lte: new Date(endTime!) },
       endTime: { gte: new Date(startTime!) }
     }
