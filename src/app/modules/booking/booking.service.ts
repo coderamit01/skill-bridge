@@ -210,16 +210,16 @@ const createBooking = async (user: IRequestUser, payload: IBooking) => {
 const updateBookingStatus = async (user: IRequestUser, bookId: string, status: BookingStatus) => {
 
   const booking = await prisma.booking.findUnique({
-    where: { id: bookId},
+    where: { id: bookId },
   });
 
   if (!booking) throw new AppError("Booking not found", 404);
 
-  if (booking.status === BookingStatus.CANCELLED || booking.status === BookingStatus.COMPLETED) {
-    throw new AppError("This booking is already closed and cannot be changed", 400);
-  }
 
   if (user.role === UserRole.STUDENT) {
+    if (booking.status === BookingStatus.CANCELLED || booking.status === BookingStatus.COMPLETED) {
+      throw new AppError("This booking is already closed and cannot be changed", 400);
+    }
     if (booking.studentId !== user.userId) {
       throw new AppError("You are not authorized to update this booking", 403);
     }
@@ -229,6 +229,9 @@ const updateBookingStatus = async (user: IRequestUser, bookId: string, status: B
     }
   }
   else if (user.role === UserRole.TUTOR) {
+    if (booking.status === BookingStatus.CANCELLED || booking.status === BookingStatus.COMPLETED) {
+      throw new AppError("This booking is already closed and cannot be changed", 400);
+    }
 
     const tutor = await prisma.tutor.findUnique({
       where: { userId: user.userId }
@@ -257,14 +260,14 @@ const updateBookingStatus = async (user: IRequestUser, bookId: string, status: B
     data: { status }
   });
 
-  if(status === BookingStatus.CANCELLED){
+  if (status === BookingStatus.CANCELLED) {
     await prisma.availablity.update({
       where: { id: booking.availabilityId },
       data: { isBooked: false }
     })
   }
 
-  if(status === BookingStatus.COMPLETED){
+  if (status === BookingStatus.COMPLETED) {
     await prisma.availablity.update({
       where: { id: booking.availabilityId },
       data: { isBooked: false }

@@ -30,8 +30,8 @@ const creatTutor = async (payload: IRegisterPayload) => {
         data: {
           userId: userData.user.id,
           email: payload.email,
-          name:  payload.name,
-          gender:  payload.gender,
+          name: payload.name,
+          gender: payload.gender,
         }
       })
       return tutorData;
@@ -50,7 +50,7 @@ const getAllUser = async (user: IRequestUser) => {
     throw new AppError("Access Denied!", 403)
   }
   return await prisma.user.findMany({
-    where: { isBanned: false }
+    orderBy: { createdAt: "asc" }
   });
 };
 
