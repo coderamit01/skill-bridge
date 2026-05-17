@@ -42,8 +42,9 @@ const getAllBooking = async (user: IRequestUser) => {
           name: true,
           email: true,
           gender: true,
-          image: true
-        },
+          image: true,
+          subjects: { include: { category: true } }
+        }
       },
       student: {
         select: {
