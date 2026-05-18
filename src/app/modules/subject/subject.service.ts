@@ -1,15 +1,38 @@
 import { AppError } from "../../helpers/appError";
 import { IRequestUser } from "../../interface/requestUser.interface";
+import { UserRole } from "../../lib/auth";
 import { prisma } from "../../lib/prisma";
 import { ISubjectPayload } from "./subject.interface";
 
-const getAllSubject = async () => {
-  return await prisma.tutorSubject.findMany({
-    include: {
-      category: true,
-      tutor: true
-    },
-  });
+const getAllSubject = async (user: IRequestUser) => {
+
+
+  if (user.role === UserRole.ADMIN) {
+    return await prisma.tutorSubject.findMany({
+      include: {
+        category: true,
+        tutor: true
+      },
+    });
+  }
+
+  const tutor = await prisma.tutor.findUnique({
+    where: { userId: user.userId }
+  })
+
+  if (!tutor) {
+    throw new AppError("Tutor not found", 404);
+  }
+
+  if (user.role === UserRole.TUTOR) {
+    return await prisma.tutorSubject.findMany({
+      where: { tutorId: tutor.id },
+      include: {
+        category: true,
+        tutor: true
+      },
+    });
+  }
 };
 
 
@@ -39,7 +62,6 @@ const updateSubject = async (user: IRequestUser, id: string, payload: ISubjectPa
   const tutor = await prisma.tutor.findUnique({
     where: { userId: user.userId }
   });
-
   if (!tutor) {
     throw new AppError("Tutor not found", 404);
   }
@@ -58,7 +80,7 @@ const updateSubject = async (user: IRequestUser, id: string, payload: ISubjectPa
 };
 
 const deleteSubject = async (user: IRequestUser, id: string) => {
-  if(user.role !== "TUTOR") {throw new AppError("Only tutors can delete subject", 403)}
+  if (user.role !== "TUTOR") { throw new AppError("Only tutors can delete subject", 403) }
 
   const tutor = await prisma.tutor.findUnique({
     where: { userId: user.userId }
@@ -73,12 +95,12 @@ const deleteSubject = async (user: IRequestUser, id: string) => {
       id
     }
   })
-  if(!subject) {throw new AppError("Subject not found", 404)}
+  if (!subject) { throw new AppError("Subject not found", 404) }
 
-  if(subject.tutorId !== tutor.id) {
+  if (subject.tutorId !== tutor.id) {
     throw new AppError("You can only delete your own subjects", 403)
   }
-  
+
   return await prisma.tutorSubject.delete({
     where: {
       id,
