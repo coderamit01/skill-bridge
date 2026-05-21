@@ -70,15 +70,15 @@ const updateUserStatus = async (user: IRequestUser, userId: string, userStatus: 
   });
 };
 
-const updateUser = async (id: string, user: IRequestUser, data: User, isAdmin: boolean) => {
+const updateUser = async (user: IRequestUser, data: User, isAdmin: boolean) => {
 
   const exists = await prisma.user.findUniqueOrThrow({
     where: {
-      id
+      id: user.userId
     }
   })
 
-  if (!isAdmin && (exists.id !== id)) {
+  if (!isAdmin && (exists.id !== user.userId)) {
     throw new AppError("Access Denied!", 403)
   }
 
@@ -88,7 +88,7 @@ const updateUser = async (id: string, user: IRequestUser, data: User, isAdmin: b
 
   return await prisma.user.update({
     where: {
-      id
+      id: user.userId
     },
     data
   });
