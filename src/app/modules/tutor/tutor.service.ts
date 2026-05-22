@@ -48,7 +48,11 @@ const getTutorById = async (id: string) => {
         select: { category: true }
       },
       bookings: true,
-      reviews: true,
+      reviews: {
+        include: {
+          student: true
+        }
+      },
       availablity: true
     }
   });

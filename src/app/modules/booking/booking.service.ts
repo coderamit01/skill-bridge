@@ -65,9 +65,10 @@ const getAllBooking = async (user: IRequestUser) => {
           studentId: true,
           tutorId: true,
           rating: true,
-          comment: true
+          comment: true,
+          student: true
         }
-      }
+      },
     }
   })
   return result;
