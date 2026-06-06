@@ -21,3 +21,11 @@ export interface TutorUpdateProfile {
   yearsExperience?: number;
 
 }
+
+export interface TutorFilters {
+  category?: string | string[];
+  minPrice?: string;
+  maxPrice?: string;
+  minRating?: string;
+  search?: string;
+}

@@ -5,6 +5,10 @@ import { UserRole } from "../../lib/auth";
 
 const router = express.Router();
 
+router.get(
+  "/",
+  reviewController.getAllReviews,
+);
 router.post(
   "/",
   authentication(UserRole.STUDENT),

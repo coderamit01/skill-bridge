@@ -5,6 +5,16 @@ import { UserRole } from "../../lib/auth";
 import { prisma } from "../../lib/prisma";
 import { Review } from "../../type/review";
 
+
+const getAllReviews = async () => {
+  return await prisma.review.findMany({
+    include: {
+      student: true
+    }
+  })
+}
+
+
 const createReview = async (user: IRequestUser, payload: Review) => {
 
   if (user.role !== UserRole.STUDENT) {
@@ -66,5 +76,5 @@ const createReview = async (user: IRequestUser, payload: Review) => {
 };
 
 export const reviewService = {
-  createReview,
+  createReview, getAllReviews
 };

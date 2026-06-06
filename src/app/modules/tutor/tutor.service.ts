@@ -1,22 +1,91 @@
-import { User } from "../../../generated/prisma/client";
+import { Prisma, User } from "../../../generated/prisma/client";
 import { AppError } from "../../helpers/appError";
 import { IRequestUser, ITutorAvailability, IUpdateTutorAvailability } from "../../interface/requestUser.interface";
 import { UserRole } from "../../lib/auth";
 import { prisma } from "../../lib/prisma";
-import { TutorProfile, TutorUpdateProfile } from "../../type/tutor";
+import { TutorFilters, TutorProfile, TutorUpdateProfile } from "../../type/tutor";
 
-const getAllTutors = async () => {
-  return await prisma.tutor.findMany({
+const getAllTutors = async (filters: TutorFilters = {}, page: number = 1, limit: number = 12) => {
+
+  const { category, minPrice, maxPrice, minRating, search } = filters;
+
+  const categories = category ? Array.isArray(category) ? category : [category] : []
+
+
+  const addFilter: Prisma.TutorWhereInput[] = [];
+  if (search) {
+    addFilter.push({
+      OR: [
+        { name: { contains: search, mode: "insensitive" } },
+        { user: { bio: { contains: search, mode: "insensitive" } } },
+      ]
+    })
+  }
+
+  if (categories.length > 0) {
+    addFilter.push(
+      {
+        subjects: {
+          some: {
+            category: {
+              OR: categories.map((cat) => ({
+                name: {
+                  equals: cat,
+                  mode: "insensitive"
+                }
+              }))
+            }
+          }
+        }
+      }
+    )
+  }
+
+  if (minPrice) {
+    addFilter.push({
+      hourlyRate: { gte: minPrice }
+    })
+  }
+
+  if (maxPrice) {
+    addFilter.push({
+      hourlyRate: { lte: maxPrice }
+    })
+  }
+  if (minRating) {
+    addFilter.push({
+      averageRating: { gte: minRating }
+    })
+  }
+
+  const where: Prisma.TutorWhereInput = {
+    AND: addFilter
+  }
+  const skip = (page - 1) * limit;
+
+  const tutors = await prisma.tutor.findMany({
+    where,
+    skip,
+    take: limit,
     include: {
       user: true,
-      subjects: {
-        select: { category: true }
-      },
+      subjects: { select: { category: true } },
       bookings: true,
       reviews: true,
       availablity: true
     }
   });
+
+  const total = await prisma.tutor.count({ where })
+  return {
+    tutors,
+    meta: {
+      total,
+      page,
+      limit,
+      totalPages: Math.ceil(total / limit),
+    }
+  }
 };
 
 const getAllAvailability = async (user: IRequestUser) => {

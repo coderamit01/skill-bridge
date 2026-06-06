@@ -1,21 +1,31 @@
 import { Request, Response } from "express";
 import { tutorService } from "./tutor.service";
-import { TutorUpdateProfile } from "../../type/tutor";
+import { TutorFilters, TutorUpdateProfile } from "../../type/tutor";
 import { catchAsync } from "../../shared/catchAsync";
 import { sendResponse } from "../../shared/sendResponse";
 import { IRequestUser, ITutorAvailability } from "../../interface/requestUser.interface";
 
-const getAllTutors = catchAsync(
-  async (req: Request, res: Response) => {
-    const result = await tutorService.getAllTutors();
-    sendResponse(res, {
-      statusCode: 200,
-      success: true,
-      message: "Retrive all Tutors succussfully",
-      data: result,
-    });
+const getAllTutors = catchAsync(async (req: Request, res: Response) => {
+  const filters: TutorFilters = {
+    search:    req.query.search    as string,
+    category:  req.query.category  as string | string[],
+    minPrice:  req.query.minPrice  as string,
+    maxPrice:  req.query.maxPrice  as string,
+    minRating: req.query.minRating as string,
   }
-)
+
+  const page  = Number(req.query.page)  || 1
+  const limit = Number(req.query.limit) || 12
+
+  const result = await tutorService.getAllTutors(filters, page, limit)
+
+  sendResponse(res, {
+    statusCode: 200,
+    success:    true,
+    message:    "Retrieved all tutors successfully",
+    data:       result,
+  })
+})
 
 const getTutorById = catchAsync(
   async (req: Request, res: Response) => {
