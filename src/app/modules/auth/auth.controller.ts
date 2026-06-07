@@ -56,7 +56,7 @@ const getMe = catchAsync(
 )
 const logOut = catchAsync(
   async (req: Request, res: Response) => {
-    const betterAuthSessionToken = req.cookies["better-auth.session_token"]
+    const betterAuthSessionToken = req.cookies["session_token"]
     const result = await authService.logOut(betterAuthSessionToken);
 
     CookieUtils.clearCookie(res, "accessToken", {
@@ -71,7 +71,7 @@ const logOut = catchAsync(
       sameSite: "none",
     })
 
-    CookieUtils.clearCookie(res, "better-auth.session_token", {
+    CookieUtils.clearCookie(res, "session_token", {
       httpOnly: true,
       secure: true,
       sameSite: "none",

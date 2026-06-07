@@ -7,18 +7,8 @@ import { IndexRoutes } from "./app/routes";
 import { envVars } from "./app/config/env";
 const app = express();
 
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://frontend-skill-bridge.onrender.com"
-].filter(Boolean)
 const corsOptions = {
-  origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true)
-    } else {
-      callback(new Error(`CORS blocked: ${origin}`))
-    }
-  },
+  origin: envVars.APP_URL,
   credentials: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
@@ -39,3 +29,4 @@ app.use("/", (req, res) => {
 });
 
 export default app;
+

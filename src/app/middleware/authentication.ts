@@ -9,7 +9,7 @@ import { prisma } from "../lib/prisma";
 const authentication = (...roles: UserRole[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const sessionToken = CookieUtils.getCookie(req, "better-auth.session_token");
+      const sessionToken = CookieUtils.getCookie(req, "session_token");
       if (!sessionToken) {
         throw new AppError("Unauthorized: No session token provided.", 401);
       }
