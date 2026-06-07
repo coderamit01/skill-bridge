@@ -26,12 +26,12 @@ const corsOptions = {
   exposedHeaders: ["Set-Cookie"],
 }
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions))
+app.options("/.*/", cors(corsOptions))
 
 app.use(express.json());
 app.use(cookieParser())
 
-app.all("/api/auth/*", toNodeHandler(auth));
+app.all("/api/auth", toNodeHandler(auth));
 
 
 app.use("/api/v1", IndexRoutes)
