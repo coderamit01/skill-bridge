@@ -1,9 +1,9 @@
-import { Prisma, User } from "../../../generated/prisma/client";
+import { Prisma } from "../../../generated/prisma/client";
 import { AppError } from "../../helpers/appError";
 import { IRequestUser, ITutorAvailability, IUpdateTutorAvailability } from "../../interface/requestUser.interface";
 import { UserRole } from "../../lib/auth";
 import { prisma } from "../../lib/prisma";
-import { TutorFilters, TutorProfile, TutorUpdateProfile } from "../../type/tutor";
+import { TutorFilters, TutorUpdateProfile } from "../../type/tutor";
 
 const getAllTutors = async (filters: TutorFilters = {}, page: number = 1, limit: number = 12) => {
 
