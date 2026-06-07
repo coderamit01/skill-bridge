@@ -9,8 +9,7 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://skill-bridge-frontend-two-flame.vercel.app",
-  envVars.APP_URL
+  "https://frontend-skill-bridge.onrender.com"
 ].filter(Boolean)
 const corsOptions = {
   origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {

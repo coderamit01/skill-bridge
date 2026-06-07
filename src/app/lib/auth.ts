@@ -17,7 +17,7 @@ export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
-  trustedOrigins: [envVars.APP_URL, envVars.BETTER_AUTH_URL, "https://skill-bridge-frontend-two-flame.vercel.app"],
+  trustedOrigins: [envVars.APP_URL, envVars.BETTER_AUTH_URL, "https://frontend-skill-bridge.onrender.com"],
   advanced: {
     cookiePrefix: "skillbridge",
     cookies: {
