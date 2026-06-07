@@ -6,9 +6,19 @@ import { toNodeHandler } from "better-auth/node";
 import { IndexRoutes } from "./app/routes";
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://backend-skillbridge-jzux.onrender.com",
+]
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true)
+      } else {
+        callback(new Error("Not allowed by CORS"))
+      }
+    },
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   }),

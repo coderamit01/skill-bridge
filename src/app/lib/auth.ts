@@ -17,7 +17,18 @@ export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
-  trustedOrigins: [envVars.APP_URL, envVars.BETTER_AUTH_URL],
+  trustedOrigins: [envVars.APP_URL, envVars.BETTER_AUTH_URL, "https://backend-skillbridge-jzux.onrender.com"],
+  advanced: {
+    cookiePrefix: "skillbridge",
+    cookies: {
+      session_token: {
+        attributes: {
+          secure: true,
+          sameSite: "none",
+        }
+      }
+    }
+  },
   session: {
     expiresIn: 60 * 60 * 24 * 7, // 7 days
     updateAge: 60 * 60 * 24 // update every day
